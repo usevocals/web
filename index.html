@@ -1001,6 +1001,7 @@ function renderTicker(){
   if(t2){ var h2=TICKS2[LANG].map(function(s,i){ var last=i===TICKS2[LANG].length-1; return '<span'+(last?' class="hl"':'')+'>'+s+' <i class="s">●</i></span>'; }).join(''); t2.innerHTML=h2+h2; }
 }
 renderTicker();
+document.querySelectorAll('a.flegal').forEach(function(a){ var b=a.getAttribute('href').split('?')[0]; a.setAttribute('href', b+(LANG==='en'?'?lang=en':'')); });
 
 // ---- anillo del CTA: una letra por posición, reparto exacto ----
 function renderRing(){
