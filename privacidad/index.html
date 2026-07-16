@@ -11,13 +11,19 @@
 <style>
   :root{--paper:#F6F3EE; --ink:#16130F; --dim:#7C7468; --violet:#7B6FE0; --rule:rgba(22,19,15,.16); --rule-soft:rgba(22,19,15,.08)}
   *{margin:0; padding:0; box-sizing:border-box}
+  html[lang="es"] [data-en]{display:none !important}
+  html[lang="en"] [data-es]{display:none !important}
   body{background:var(--paper); color:var(--ink); font-family:Inter,-apple-system,sans-serif; line-height:1.7; font-size:15.5px}
   .wrap{max-width:760px; margin:0 auto; padding:0 24px}
-  header{border-bottom:1px solid var(--rule); padding:20px 0}
-  header .wrap{display:flex; justify-content:space-between; align-items:center}
-  header a{color:var(--ink); text-decoration:none; font-weight:800; letter-spacing:-.02em; font-size:19px}
-  header .back{font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); font-weight:500}
-  main{padding:64px 0 90px}
+  header{border-bottom:1px solid var(--rule); padding:18px 0}
+  header .wrap{display:flex; justify-content:space-between; align-items:center; gap:14px}
+  header a.logo{color:var(--ink); text-decoration:none; font-weight:800; letter-spacing:-.02em; font-size:19px}
+  .hright{display:flex; align-items:center; gap:16px}
+  .lang{display:flex; border:1px solid var(--rule); border-radius:999px; padding:3px}
+  .lang button{border:none; background:transparent; font-family:'Spline Sans Mono',monospace; font-size:11px; font-weight:600; color:var(--dim); padding:5px 10px; border-radius:999px; cursor:pointer}
+  .lang button.on{background:var(--ink); color:var(--paper)}
+  header a.back{font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); text-decoration:none}
+  main{padding:60px 0 90px}
   .k{font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--violet); margin-bottom:14px}
   h1{font-size:clamp(30px,4.5vw,42px); font-weight:800; letter-spacing:-.03em; line-height:1.1; margin-bottom:10px}
   .upd{font-family:'Spline Sans Mono',monospace; font-size:11px; color:var(--dim); margin-bottom:44px}
@@ -35,37 +41,30 @@
 </style>
 </head>
 <body>
-<header><div class="wrap"><a href="/">Vocals</a><a class="back" href="/">&larr; Volver a la web</a></div></header>
+<header><div class="wrap">
+  <a class="logo" href="/">Vocals</a>
+  <div class="hright">
+    <div class="lang"><button id="l-es" class="on" onclick="setLang('es')">ES</button><button id="l-en" onclick="setLang('en')">EN</button></div>
+    <a class="back" href="/"><span data-es>&larr; Volver</span><span data-en>&larr; Back</span></a>
+  </div>
+</div></header>
 <main><div class="wrap">
-<div class="k">Protección de datos</div>
-<h1>Política de privacidad</h1>
-<div class="upd">Última actualización: 15 de julio de 2026</div>
-<div class="box">
-<p><strong>Titular:</strong> Usevocals LLC (nombre comercial: «Vocals»)</p>
-<p><strong>EIN (Employer Identification Number, EE.&nbsp;UU.):</strong> 36-5177991</p>
-<p><strong>Domicilio social:</strong> 25 Southwest 9th Street, Suite 406, Miami, FL 33130, Estados Unidos</p>
-<p><strong>Correo electrónico de contacto:</strong> contact@usevocals.com</p>
-<p><strong>Datos registrales:</strong> Sociedad de responsabilidad limitada (LLC) constituida en el Estado de Delaware, Estados Unidos</p>
-</div>
-<h2>1. Responsable del tratamiento</h2>
-<p>El responsable del tratamiento de los datos personales recogidos a través de <strong>usevocals.com</strong> es la entidad identificada arriba, conforme al Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD).</p>
-<h2>2. Datos que tratamos y finalidades</h2>
-<ul>
-<li><strong>Reserva de demo (Cal.com):</strong> nombre, correo electrónico y datos que facilites al agendar una reunión. Finalidad: gestionar la reunión solicitada y el contacto comercial posterior.</li>
-<li><strong>Contacto directo:</strong> los datos que nos remitas por correo electrónico. Finalidad: atender tu solicitud.</li>
-<li><strong>Navegación:</strong> este Sitio no utiliza cookies propias de seguimiento ni herramientas de analítica propia. Los servicios embebidos de terceros (Cal.com) pueden utilizar cookies técnicas necesarias para su funcionamiento.</li>
-</ul>
-<h2>3. Base jurídica</h2>
-<p>La base del tratamiento es la ejecución de medidas precontractuales a solicitud del interesado (art. 6.1.b RGPD) para la gestión de demos, y el interés legítimo o consentimiento (art. 6.1.a y 6.1.f RGPD) para el resto de comunicaciones.</p>
-<h2>4. Conservación</h2>
-<p>Los datos se conservarán durante el tiempo necesario para atender tu solicitud y, en su caso, durante los plazos legales aplicables.</p>
-<h2>5. Destinatarios y encargados</h2>
-<p>No se ceden datos a terceros salvo obligación legal. Para la prestación del servicio utilizamos proveedores que actúan como encargados del tratamiento (alojamiento web, gestión de reservas Cal.com, correo electrónico), algunos de ellos ubicados fuera del EEE al amparo de cláusulas contractuales tipo u otros mecanismos válidos de transferencia internacional.</p>
-<h2>6. Derechos</h2>
-<p>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a <strong>contact@usevocals.com</strong>. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
-<h2>7. Seguridad</h2>
-<p>Aplicamos medidas técnicas y organizativas apropiadas para garantizar la seguridad de los datos personales, de acuerdo con el estado de la técnica y los riesgos del tratamiento.</p>
+<div class="k"><span data-es>Protección de datos</span><span data-en>Data protection</span></div>
+<h1><span data-es>Política de privacidad</span><span data-en>Privacy policy</span></h1>
+<div class="upd"><span data-es>Última actualización: 15 de julio de 2026</span><span data-en>Last updated: July 15, 2026</span></div>
+<div class="box"><p><span data-es><strong>Titular:</strong> Usevocals LLC (nombre comercial: «Vocals»)</span><span data-en><strong>Owner:</strong> Usevocals LLC (trading as “Vocals”)</span></p><p><span data-es><strong>EIN (Employer Identification Number, EE.&nbsp;UU.):</strong> 36-5177991</span><span data-en><strong>EIN (Employer Identification Number, US):</strong> 36-5177991</span></p><p><span data-es><strong>Domicilio social:</strong> 25 Southwest 9th Street, Suite 406, Miami, FL 33130, Estados Unidos</span><span data-en><strong>Registered address:</strong> 25 Southwest 9th Street, Suite 406, Miami, FL 33130, United States</span></p><p><span data-es><strong>Correo electrónico de contacto:</strong> contact@usevocals.com</span><span data-en><strong>Contact email:</strong> contact@usevocals.com</span></p><p><span data-es><strong>Datos registrales:</strong> Sociedad de responsabilidad limitada (LLC) constituida en el Estado de Delaware, Estados Unidos</span><span data-en><strong>Registration:</strong> Limited liability company (LLC) formed in the State of Delaware, United States</span></p></div><h2><span data-es>1. Responsable del tratamiento</span><span data-en>1. Data controller</span></h2><p><span data-es>El responsable del tratamiento de los datos personales recogidos a través de <strong>usevocals.com</strong> es la entidad identificada arriba, conforme al Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD).</span><span data-en>The controller of the personal data collected through <strong>usevocals.com</strong> is the entity identified above, in accordance with Regulation (EU) 2016/679 (GDPR) and Spanish Organic Law 3/2018 (LOPDGDD).</span></p><h2><span data-es>2. Datos que tratamos y finalidades</span><span data-en>2. Data we process and purposes</span></h2><ul><li><span data-es><strong>Reserva de demo (Cal.com):</strong> nombre, correo electrónico y datos que facilites al agendar una reunión. Finalidad: gestionar la reunión solicitada y el contacto comercial posterior.</span><span data-en><strong>Demo booking (Cal.com):</strong> name, email and any details you provide when scheduling a meeting. Purpose: managing the requested meeting and subsequent business contact.</span></li><li><span data-es><strong>Contacto directo:</strong> los datos que nos remitas por correo electrónico. Finalidad: atender tu solicitud.</span><span data-en><strong>Direct contact:</strong> the data you send us by email. Purpose: handling your request.</span></li><li><span data-es><strong>Navegación:</strong> este Sitio no utiliza cookies propias de seguimiento ni herramientas de analítica propia. Los servicios embebidos de terceros (Cal.com) pueden utilizar cookies técnicas necesarias para su funcionamiento.</span><span data-en><strong>Browsing:</strong> this Site does not use its own tracking cookies or analytics. Embedded third-party services (Cal.com) may use technical cookies required for their operation.</span></li></ul><h2><span data-es>3. Base jurídica</span><span data-en>3. Legal basis</span></h2><p><span data-es>La base del tratamiento es la ejecución de medidas precontractuales a solicitud del interesado (art. 6.1.b RGPD) para la gestión de demos, y el interés legítimo o consentimiento (art. 6.1.a y 6.1.f RGPD) para el resto de comunicaciones.</span><span data-en>Processing is based on pre-contractual measures taken at the data subject’s request (art. 6.1.b GDPR) for demo management, and on legitimate interest or consent (arts. 6.1.a and 6.1.f GDPR) for other communications.</span></p><h2><span data-es>4. Conservación</span><span data-en>4. Retention</span></h2><p><span data-es>Los datos se conservarán durante el tiempo necesario para atender tu solicitud y, en su caso, durante los plazos legales aplicables.</span><span data-en>Data will be kept for as long as necessary to handle your request and, where applicable, for the legally required periods.</span></p><h2><span data-es>5. Destinatarios y encargados</span><span data-en>5. Recipients and processors</span></h2><p><span data-es>No se ceden datos a terceros salvo obligación legal. Para la prestación del servicio utilizamos proveedores que actúan como encargados del tratamiento (alojamiento web, gestión de reservas Cal.com, correo electrónico), algunos de ellos ubicados fuera del EEE al amparo de cláusulas contractuales tipo u otros mecanismos válidos de transferencia internacional.</span><span data-en>Data is not shared with third parties except where legally required. We use service providers acting as data processors (web hosting, Cal.com scheduling, email), some located outside the EEA under standard contractual clauses or other valid international transfer mechanisms.</span></p><h2><span data-es>6. Derechos</span><span data-en>6. Your rights</span></h2><p><span data-es>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a <strong>contact@usevocals.com</strong>. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</span><span data-en>You may exercise your rights of access, rectification, erasure, objection, restriction and portability by writing to <strong>contact@usevocals.com</strong>. You may also lodge a complaint with the Spanish Data Protection Agency (aepd.es).</span></p><h2><span data-es>7. Seguridad</span><span data-en>7. Security</span></h2><p><span data-es>Aplicamos medidas técnicas y organizativas apropiadas para garantizar la seguridad de los datos personales, de acuerdo con el estado de la técnica y los riesgos del tratamiento.</span><span data-en>We apply appropriate technical and organisational measures to ensure the security of personal data, in line with the state of the art and the risks of the processing.</span></p>
 </div></main>
-<footer><div class="wrap"><span>© 2026 Vocals</span><span><a href="/aviso-legal">Aviso legal</a> &nbsp;·&nbsp; <a href="/privacidad">Privacidad</a> &nbsp;·&nbsp; <a href="/terminos">Términos</a></span></div></footer>
+<footer><div class="wrap"><span>© 2026 Vocals · Usevocals LLC</span><span><a class="fl" href="/aviso-legal"><span data-es>Aviso legal</span><span data-en>Legal notice</span></a> &nbsp;·&nbsp; <a class="fl" href="/privacidad"><span data-es>Privacidad</span><span data-en>Privacy</span></a> &nbsp;·&nbsp; <a class="fl" href="/terminos"><span data-es>Términos</span><span data-en>Terms</span></a></span></div></footer>
+<script>
+var LANG='es';
+function setLang(l){
+  LANG=l; document.documentElement.lang=l;
+  document.getElementById('l-es').classList.toggle('on',l==='es');
+  document.getElementById('l-en').classList.toggle('on',l==='en');
+  document.querySelectorAll('a.fl').forEach(function(a){ var b=a.getAttribute('href').split('?')[0]; a.setAttribute('href', b+(l==='en'?'?lang=en':'')); });
+  var back=document.querySelector('a.back'); back.setAttribute('href','/');
+}
+(function(){ var m=location.search.match(/lang=(en|es)/); if(m) setLang(m[1]); })();
+</script>
 </body>
 </html>

@@ -11,13 +11,19 @@
 <style>
   :root{--paper:#F6F3EE; --ink:#16130F; --dim:#7C7468; --violet:#7B6FE0; --rule:rgba(22,19,15,.16); --rule-soft:rgba(22,19,15,.08)}
   *{margin:0; padding:0; box-sizing:border-box}
+  html[lang="es"] [data-en]{display:none !important}
+  html[lang="en"] [data-es]{display:none !important}
   body{background:var(--paper); color:var(--ink); font-family:Inter,-apple-system,sans-serif; line-height:1.7; font-size:15.5px}
   .wrap{max-width:760px; margin:0 auto; padding:0 24px}
-  header{border-bottom:1px solid var(--rule); padding:20px 0}
-  header .wrap{display:flex; justify-content:space-between; align-items:center}
-  header a{color:var(--ink); text-decoration:none; font-weight:800; letter-spacing:-.02em; font-size:19px}
-  header .back{font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); font-weight:500}
-  main{padding:64px 0 90px}
+  header{border-bottom:1px solid var(--rule); padding:18px 0}
+  header .wrap{display:flex; justify-content:space-between; align-items:center; gap:14px}
+  header a.logo{color:var(--ink); text-decoration:none; font-weight:800; letter-spacing:-.02em; font-size:19px}
+  .hright{display:flex; align-items:center; gap:16px}
+  .lang{display:flex; border:1px solid var(--rule); border-radius:999px; padding:3px}
+  .lang button{border:none; background:transparent; font-family:'Spline Sans Mono',monospace; font-size:11px; font-weight:600; color:var(--dim); padding:5px 10px; border-radius:999px; cursor:pointer}
+  .lang button.on{background:var(--ink); color:var(--paper)}
+  header a.back{font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); text-decoration:none}
+  main{padding:60px 0 90px}
   .k{font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--violet); margin-bottom:14px}
   h1{font-size:clamp(30px,4.5vw,42px); font-weight:800; letter-spacing:-.03em; line-height:1.1; margin-bottom:10px}
   .upd{font-family:'Spline Sans Mono',monospace; font-size:11px; color:var(--dim); margin-bottom:44px}
@@ -35,31 +41,30 @@
 </style>
 </head>
 <body>
-<header><div class="wrap"><a href="/">Vocals</a><a class="back" href="/">&larr; Volver a la web</a></div></header>
+<header><div class="wrap">
+  <a class="logo" href="/">Vocals</a>
+  <div class="hright">
+    <div class="lang"><button id="l-es" class="on" onclick="setLang('es')">ES</button><button id="l-en" onclick="setLang('en')">EN</button></div>
+    <a class="back" href="/"><span data-es>&larr; Volver</span><span data-en>&larr; Back</span></a>
+  </div>
+</div></header>
 <main><div class="wrap">
-<div class="k">Marco legal</div>
-<h1>Aviso legal</h1>
-<div class="upd">Última actualización: 15 de julio de 2026</div>
-<div class="box">
-<p><strong>Titular:</strong> Usevocals LLC (nombre comercial: «Vocals»)</p>
-<p><strong>EIN (Employer Identification Number, EE.&nbsp;UU.):</strong> 36-5177991</p>
-<p><strong>Domicilio social:</strong> 25 Southwest 9th Street, Suite 406, Miami, FL 33130, Estados Unidos</p>
-<p><strong>Correo electrónico de contacto:</strong> contact@usevocals.com</p>
-<p><strong>Datos registrales:</strong> Sociedad de responsabilidad limitada (LLC) constituida en el Estado de Delaware, Estados Unidos</p>
-</div>
-<h2>1. Objeto</h2>
-<p>El presente aviso legal regula el uso del sitio web <strong>usevocals.com</strong> (en adelante, «el Sitio»), del que es titular la entidad identificada arriba (en adelante, «Vocals»). La navegación por el Sitio atribuye la condición de usuario e implica la aceptación plena de este aviso legal.</p>
-<h2>2. Condiciones de uso</h2>
-<p>El usuario se compromete a hacer un uso adecuado de los contenidos del Sitio y a no emplearlos para actividades ilícitas o contrarias a la buena fe, ni para difundir contenidos que atenten contra derechos de terceros.</p>
-<h2>3. Propiedad intelectual e industrial</h2>
-<p>Todos los contenidos del Sitio (textos, imágenes, audio de demostración, diseño, código fuente, logotipos y marcas) son titularidad de Vocals o de terceros que han autorizado su uso, y están protegidos por derechos de propiedad intelectual e industrial. Queda prohibida su reproducción, distribución o comunicación pública sin autorización expresa.</p>
-<h2>4. Exclusión de responsabilidad</h2>
-<p>Vocals no se responsabiliza del mal uso que se realice de los contenidos del Sitio ni de los daños derivados de fallos técnicos ajenos a su control. Los audios de demostración del Sitio son conversaciones simuladas generadas con voz sintética con fines ilustrativos.</p>
-<h2>5. Enlaces a terceros</h2>
-<p>El Sitio contiene enlaces y servicios de terceros (por ejemplo, la reserva de reuniones mediante Cal.com). Vocals no se hace responsable del contenido ni de las políticas de dichos terceros.</p>
-<h2>6. Legislación aplicable</h2>
-<p>Este aviso legal se rige por la legislación española, sin perjuicio de las normas imperativas que resulten de aplicación según la jurisdicción de constitución del titular. Para cualquier controversia, las partes se someterán a los juzgados y tribunales competentes.</p>
+<div class="k"><span data-es>Marco legal</span><span data-en>Legal framework</span></div>
+<h1><span data-es>Aviso legal</span><span data-en>Legal notice</span></h1>
+<div class="upd"><span data-es>Última actualización: 15 de julio de 2026</span><span data-en>Last updated: July 15, 2026</span></div>
+<div class="box"><p><span data-es><strong>Titular:</strong> Usevocals LLC (nombre comercial: «Vocals»)</span><span data-en><strong>Owner:</strong> Usevocals LLC (trading as “Vocals”)</span></p><p><span data-es><strong>EIN (Employer Identification Number, EE.&nbsp;UU.):</strong> 36-5177991</span><span data-en><strong>EIN (Employer Identification Number, US):</strong> 36-5177991</span></p><p><span data-es><strong>Domicilio social:</strong> 25 Southwest 9th Street, Suite 406, Miami, FL 33130, Estados Unidos</span><span data-en><strong>Registered address:</strong> 25 Southwest 9th Street, Suite 406, Miami, FL 33130, United States</span></p><p><span data-es><strong>Correo electrónico de contacto:</strong> contact@usevocals.com</span><span data-en><strong>Contact email:</strong> contact@usevocals.com</span></p><p><span data-es><strong>Datos registrales:</strong> Sociedad de responsabilidad limitada (LLC) constituida en el Estado de Delaware, Estados Unidos</span><span data-en><strong>Registration:</strong> Limited liability company (LLC) formed in the State of Delaware, United States</span></p></div><h2><span data-es>1. Objeto</span><span data-en>1. Purpose</span></h2><p><span data-es>El presente aviso legal regula el uso del sitio web <strong>usevocals.com</strong> (en adelante, «el Sitio»), del que es titular la entidad identificada arriba (en adelante, «Vocals»). La navegación por el Sitio atribuye la condición de usuario e implica la aceptación plena de este aviso legal.</span><span data-en>This legal notice governs the use of the website <strong>usevocals.com</strong> (the “Site”), owned by the entity identified above (“Vocals”). Browsing the Site grants you the status of user and implies full acceptance of this legal notice.</span></p><h2><span data-es>2. Condiciones de uso</span><span data-en>2. Conditions of use</span></h2><p><span data-es>El usuario se compromete a hacer un uso adecuado de los contenidos del Sitio y a no emplearlos para actividades ilícitas o contrarias a la buena fe, ni para difundir contenidos que atenten contra derechos de terceros.</span><span data-en>Users agree to make appropriate use of the Site’s contents and not to use them for unlawful activities, in bad faith, or to distribute content that infringes third-party rights.</span></p><h2><span data-es>3. Propiedad intelectual e industrial</span><span data-en>3. Intellectual and industrial property</span></h2><p><span data-es>Todos los contenidos del Sitio (textos, imágenes, audio de demostración, diseño, código fuente, logotipos y marcas) son titularidad de Vocals o de terceros que han autorizado su uso, y están protegidos por derechos de propiedad intelectual e industrial. Queda prohibida su reproducción, distribución o comunicación pública sin autorización expresa.</span><span data-en>All Site contents (text, images, demo audio, design, source code, logos and trademarks) are owned by Vocals or by third parties who have authorised their use, and are protected by intellectual and industrial property rights. Reproduction, distribution or public communication without express authorisation is prohibited.</span></p><h2><span data-es>4. Exclusión de responsabilidad</span><span data-en>4. Disclaimer</span></h2><p><span data-es>Vocals no se responsabiliza del mal uso que se realice de los contenidos del Sitio ni de los daños derivados de fallos técnicos ajenos a su control. Los audios de demostración del Sitio son conversaciones simuladas generadas con voz sintética con fines ilustrativos.</span><span data-en>Vocals is not liable for misuse of the Site’s contents or for damages arising from technical failures beyond its control. The Site’s demo audio consists of simulated conversations generated with synthetic voices for illustrative purposes.</span></p><h2><span data-es>5. Enlaces a terceros</span><span data-en>5. Third-party links</span></h2><p><span data-es>El Sitio contiene enlaces y servicios de terceros (por ejemplo, la reserva de reuniones mediante Cal.com). Vocals no se hace responsable del contenido ni de las políticas de dichos terceros.</span><span data-en>The Site contains third-party links and services (for example, meeting scheduling via Cal.com). Vocals is not responsible for the content or policies of such third parties.</span></p><h2><span data-es>6. Legislación aplicable</span><span data-en>6. Governing law</span></h2><p><span data-es>Este aviso legal se rige por la legislación española, sin perjuicio de las normas imperativas que resulten de aplicación según la jurisdicción de constitución del titular. Para cualquier controversia, las partes se someterán a los juzgados y tribunales competentes.</span><span data-en>This legal notice is governed by Spanish law, without prejudice to any mandatory rules applicable under the owner’s jurisdiction of incorporation. Any dispute shall be submitted to the competent courts.</span></p>
 </div></main>
-<footer><div class="wrap"><span>© 2026 Vocals</span><span><a href="/aviso-legal">Aviso legal</a> &nbsp;·&nbsp; <a href="/privacidad">Privacidad</a> &nbsp;·&nbsp; <a href="/terminos">Términos</a></span></div></footer>
+<footer><div class="wrap"><span>© 2026 Vocals · Usevocals LLC</span><span><a class="fl" href="/aviso-legal"><span data-es>Aviso legal</span><span data-en>Legal notice</span></a> &nbsp;·&nbsp; <a class="fl" href="/privacidad"><span data-es>Privacidad</span><span data-en>Privacy</span></a> &nbsp;·&nbsp; <a class="fl" href="/terminos"><span data-es>Términos</span><span data-en>Terms</span></a></span></div></footer>
+<script>
+var LANG='es';
+function setLang(l){
+  LANG=l; document.documentElement.lang=l;
+  document.getElementById('l-es').classList.toggle('on',l==='es');
+  document.getElementById('l-en').classList.toggle('on',l==='en');
+  document.querySelectorAll('a.fl').forEach(function(a){ var b=a.getAttribute('href').split('?')[0]; a.setAttribute('href', b+(l==='en'?'?lang=en':'')); });
+  var back=document.querySelector('a.back'); back.setAttribute('href','/');
+}
+(function(){ var m=location.search.match(/lang=(en|es)/); if(m) setLang(m[1]); })();
+</script>
 </body>
 </html>

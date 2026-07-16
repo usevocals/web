@@ -860,7 +860,7 @@
     </div>
     <div class="f-bot">
       <span><span data-es>© 2026 Vocals. Todos los derechos reservados.</span><span data-en>© 2026 Vocals. All rights reserved.</span></span>
-      <div style="display:flex; gap:20px"><a href="/privacidad"><span data-es>Privacidad</span><span data-en>Privacy</span></a><a href="/aviso-legal"><span data-es>Aviso legal</span><span data-en>Legal notice</span></a><a href="/terminos"><span data-es>Términos</span><span data-en>Terms</span></a></div>
+      <div style="display:flex; gap:20px"><a class="flegal" href="/privacidad"><span data-es>Privacidad</span><span data-en>Privacy</span></a><a class="flegal" href="/aviso-legal"><span data-es>Aviso legal</span><span data-en>Legal notice</span></a><a class="flegal" href="/terminos"><span data-es>Términos</span><span data-en>Terms</span></a></div>
     </div>
   </div>
 </footer>
@@ -1065,6 +1065,7 @@ function setLang(lang){
   LANG=lang;
   document.documentElement.lang=lang;
   document.getElementById('l-es').classList.toggle('on', lang==='es');
+  document.querySelectorAll('a.flegal').forEach(function(a){ var b=a.getAttribute('href').split('?')[0]; a.setAttribute('href', b+(lang==='en'?'?lang=en':'')); });
   document.getElementById('l-en').classList.toggle('on', lang==='en');
   var tvid=document.getElementById('testivid'); if(tvid){ tvid.pause(); tvid.poster='testimonio-evo-'+lang+'-poster.jpg'; tvid.src='testimonio-evo-'+lang+'.mp4'; tvid.load(); }
   renderRing();

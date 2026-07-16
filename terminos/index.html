@@ -11,13 +11,19 @@
 <style>
   :root{--paper:#F6F3EE; --ink:#16130F; --dim:#7C7468; --violet:#7B6FE0; --rule:rgba(22,19,15,.16); --rule-soft:rgba(22,19,15,.08)}
   *{margin:0; padding:0; box-sizing:border-box}
+  html[lang="es"] [data-en]{display:none !important}
+  html[lang="en"] [data-es]{display:none !important}
   body{background:var(--paper); color:var(--ink); font-family:Inter,-apple-system,sans-serif; line-height:1.7; font-size:15.5px}
   .wrap{max-width:760px; margin:0 auto; padding:0 24px}
-  header{border-bottom:1px solid var(--rule); padding:20px 0}
-  header .wrap{display:flex; justify-content:space-between; align-items:center}
-  header a{color:var(--ink); text-decoration:none; font-weight:800; letter-spacing:-.02em; font-size:19px}
-  header .back{font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); font-weight:500}
-  main{padding:64px 0 90px}
+  header{border-bottom:1px solid var(--rule); padding:18px 0}
+  header .wrap{display:flex; justify-content:space-between; align-items:center; gap:14px}
+  header a.logo{color:var(--ink); text-decoration:none; font-weight:800; letter-spacing:-.02em; font-size:19px}
+  .hright{display:flex; align-items:center; gap:16px}
+  .lang{display:flex; border:1px solid var(--rule); border-radius:999px; padding:3px}
+  .lang button{border:none; background:transparent; font-family:'Spline Sans Mono',monospace; font-size:11px; font-weight:600; color:var(--dim); padding:5px 10px; border-radius:999px; cursor:pointer}
+  .lang button.on{background:var(--ink); color:var(--paper)}
+  header a.back{font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); text-decoration:none}
+  main{padding:60px 0 90px}
   .k{font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--violet); margin-bottom:14px}
   h1{font-size:clamp(30px,4.5vw,42px); font-weight:800; letter-spacing:-.03em; line-height:1.1; margin-bottom:10px}
   .upd{font-family:'Spline Sans Mono',monospace; font-size:11px; color:var(--dim); margin-bottom:44px}
@@ -35,33 +41,30 @@
 </style>
 </head>
 <body>
-<header><div class="wrap"><a href="/">Vocals</a><a class="back" href="/">&larr; Volver a la web</a></div></header>
+<header><div class="wrap">
+  <a class="logo" href="/">Vocals</a>
+  <div class="hright">
+    <div class="lang"><button id="l-es" class="on" onclick="setLang('es')">ES</button><button id="l-en" onclick="setLang('en')">EN</button></div>
+    <a class="back" href="/"><span data-es>&larr; Volver</span><span data-en>&larr; Back</span></a>
+  </div>
+</div></header>
 <main><div class="wrap">
-<div class="k">Condiciones</div>
-<h1>Términos y condiciones de uso</h1>
-<div class="upd">Última actualización: 15 de julio de 2026</div>
-<div class="box">
-<p><strong>Titular:</strong> Usevocals LLC (nombre comercial: «Vocals»)</p>
-<p><strong>EIN (Employer Identification Number, EE.&nbsp;UU.):</strong> 36-5177991</p>
-<p><strong>Domicilio social:</strong> 25 Southwest 9th Street, Suite 406, Miami, FL 33130, Estados Unidos</p>
-<p><strong>Correo electrónico de contacto:</strong> contact@usevocals.com</p>
-<p><strong>Datos registrales:</strong> Sociedad de responsabilidad limitada (LLC) constituida en el Estado de Delaware, Estados Unidos</p>
-</div>
-<h2>1. Objeto</h2>
-<p>Estas condiciones regulan el acceso y uso del sitio web <strong>usevocals.com</strong> y la solicitud de demostraciones del servicio Vocals, una plataforma de agentes de voz con inteligencia artificial para la gestión de llamadas.</p>
-<h2>2. El servicio</h2>
-<p>El Sitio tiene carácter informativo y comercial. La contratación efectiva del servicio Vocals se formaliza, en su caso, mediante contrato o propuesta específica entre las partes, que prevalecerá sobre estas condiciones.</p>
-<h2>3. Solicitud de demo</h2>
-<p>La reserva de una demostración es gratuita y no supone obligación de contratación. Vocals podrá ponerse en contacto con el solicitante en relación con la demo solicitada.</p>
-<h2>4. Uso permitido</h2>
-<p>El usuario se compromete a no utilizar el Sitio con fines ilícitos, a no intentar acceder a áreas restringidas ni a interferir en su funcionamiento.</p>
-<h2>5. Limitación de responsabilidad</h2>
-<p>Los contenidos del Sitio (incluidos los datos de rendimiento y los audios de demostración, que son simulaciones) tienen carácter orientativo y no constituyen garantía contractual. Vocals no garantiza la disponibilidad ininterrumpida del Sitio.</p>
-<h2>6. Modificaciones</h2>
-<p>Vocals podrá actualizar estas condiciones en cualquier momento. La versión vigente será la publicada en el Sitio.</p>
-<h2>7. Ley aplicable y jurisdicción</h2>
-<p>Estas condiciones se rigen por la legislación española, sin perjuicio de las normas imperativas de la jurisdicción de constitución del titular.</p>
+<div class="k"><span data-es>Condiciones</span><span data-en>Terms</span></div>
+<h1><span data-es>Términos y condiciones de uso</span><span data-en>Terms and conditions of use</span></h1>
+<div class="upd"><span data-es>Última actualización: 15 de julio de 2026</span><span data-en>Last updated: July 15, 2026</span></div>
+<div class="box"><p><span data-es><strong>Titular:</strong> Usevocals LLC (nombre comercial: «Vocals»)</span><span data-en><strong>Owner:</strong> Usevocals LLC (trading as “Vocals”)</span></p><p><span data-es><strong>EIN (Employer Identification Number, EE.&nbsp;UU.):</strong> 36-5177991</span><span data-en><strong>EIN (Employer Identification Number, US):</strong> 36-5177991</span></p><p><span data-es><strong>Domicilio social:</strong> 25 Southwest 9th Street, Suite 406, Miami, FL 33130, Estados Unidos</span><span data-en><strong>Registered address:</strong> 25 Southwest 9th Street, Suite 406, Miami, FL 33130, United States</span></p><p><span data-es><strong>Correo electrónico de contacto:</strong> contact@usevocals.com</span><span data-en><strong>Contact email:</strong> contact@usevocals.com</span></p><p><span data-es><strong>Datos registrales:</strong> Sociedad de responsabilidad limitada (LLC) constituida en el Estado de Delaware, Estados Unidos</span><span data-en><strong>Registration:</strong> Limited liability company (LLC) formed in the State of Delaware, United States</span></p></div><h2><span data-es>1. Objeto</span><span data-en>1. Purpose</span></h2><p><span data-es>Estas condiciones regulan el acceso y uso del sitio web <strong>usevocals.com</strong> y la solicitud de demostraciones del servicio Vocals, una plataforma de agentes de voz con inteligencia artificial para la gestión de llamadas.</span><span data-en>These terms govern access to and use of the website <strong>usevocals.com</strong> and requests for demonstrations of the Vocals service, an AI voice-agent platform for call management.</span></p><h2><span data-es>2. El servicio</span><span data-en>2. The service</span></h2><p><span data-es>El Sitio tiene carácter informativo y comercial. La contratación efectiva del servicio Vocals se formaliza, en su caso, mediante contrato o propuesta específica entre las partes, que prevalecerá sobre estas condiciones.</span><span data-en>The Site is informational and commercial in nature. Any actual engagement of the Vocals service is formalised through a specific contract or proposal between the parties, which shall prevail over these terms.</span></p><h2><span data-es>3. Solicitud de demo</span><span data-en>3. Demo requests</span></h2><p><span data-es>La reserva de una demostración es gratuita y no supone obligación de contratación. Vocals podrá ponerse en contacto con el solicitante en relación con la demo solicitada.</span><span data-en>Booking a demo is free of charge and entails no obligation to purchase. Vocals may contact the requester regarding the requested demo.</span></p><h2><span data-es>4. Uso permitido</span><span data-en>4. Permitted use</span></h2><p><span data-es>El usuario se compromete a no utilizar el Sitio con fines ilícitos, a no intentar acceder a áreas restringidas ni a interferir en su funcionamiento.</span><span data-en>Users agree not to use the Site for unlawful purposes, attempt to access restricted areas, or interfere with its operation.</span></p><h2><span data-es>5. Limitación de responsabilidad</span><span data-en>5. Limitation of liability</span></h2><p><span data-es>Los contenidos del Sitio (incluidos los datos de rendimiento y los audios de demostración, que son simulaciones) tienen carácter orientativo y no constituyen garantía contractual. Vocals no garantiza la disponibilidad ininterrumpida del Sitio.</span><span data-en>The Site’s contents (including performance figures and demo audio, which are simulations) are indicative and do not constitute a contractual guarantee. Vocals does not guarantee uninterrupted availability of the Site.</span></p><h2><span data-es>6. Modificaciones</span><span data-en>6. Changes</span></h2><p><span data-es>Vocals podrá actualizar estas condiciones en cualquier momento. La versión vigente será la publicada en el Sitio.</span><span data-en>Vocals may update these terms at any time. The current version is the one published on the Site.</span></p><h2><span data-es>7. Ley aplicable y jurisdicción</span><span data-en>7. Governing law and jurisdiction</span></h2><p><span data-es>Estas condiciones se rigen por la legislación española, sin perjuicio de las normas imperativas de la jurisdicción de constitución del titular.</span><span data-en>These terms are governed by Spanish law, without prejudice to the mandatory rules of the owner’s jurisdiction of incorporation.</span></p>
 </div></main>
-<footer><div class="wrap"><span>© 2026 Vocals</span><span><a href="/aviso-legal">Aviso legal</a> &nbsp;·&nbsp; <a href="/privacidad">Privacidad</a> &nbsp;·&nbsp; <a href="/terminos">Términos</a></span></div></footer>
+<footer><div class="wrap"><span>© 2026 Vocals · Usevocals LLC</span><span><a class="fl" href="/aviso-legal"><span data-es>Aviso legal</span><span data-en>Legal notice</span></a> &nbsp;·&nbsp; <a class="fl" href="/privacidad"><span data-es>Privacidad</span><span data-en>Privacy</span></a> &nbsp;·&nbsp; <a class="fl" href="/terminos"><span data-es>Términos</span><span data-en>Terms</span></a></span></div></footer>
+<script>
+var LANG='es';
+function setLang(l){
+  LANG=l; document.documentElement.lang=l;
+  document.getElementById('l-es').classList.toggle('on',l==='es');
+  document.getElementById('l-en').classList.toggle('on',l==='en');
+  document.querySelectorAll('a.fl').forEach(function(a){ var b=a.getAttribute('href').split('?')[0]; a.setAttribute('href', b+(l==='en'?'?lang=en':'')); });
+  var back=document.querySelector('a.back'); back.setAttribute('href','/');
+}
+(function(){ var m=location.search.match(/lang=(en|es)/); if(m) setLang(m[1]); })();
+</script>
 </body>
 </html>
