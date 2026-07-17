@@ -326,6 +326,8 @@
   .tick2 .ticker-in{animation-duration:38s}
   @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   @keyframes spin{to{transform:rotate(360deg)}}
+  body{transition:opacity .3s ease}
+  .uc-sound.attn{animation:pulse 1.8s ease-out 2; animation-delay:.6s}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(123,111,224,.45)}70%{box-shadow:0 0 0 9px rgba(123,111,224,0)}100%{box-shadow:0 0 0 0 rgba(123,111,224,0)}}
 
   @media(prefers-reduced-motion:reduce){
@@ -1076,7 +1078,8 @@ function openCal(){
 }
 
 // ---- idioma ----
-function setLang(lang){
+function setLang(lang){ document.body.style.opacity='.55'; setTimeout(function(){ applyLang(lang); requestAnimationFrame(function(){ document.body.style.opacity='1'; }); },150); }
+function applyLang(lang){
   LANG=lang;
   document.documentElement.lang=lang;
   document.getElementById('l-es').classList.toggle('on', lang==='es');
@@ -1232,7 +1235,9 @@ document.querySelectorAll('.cnt').forEach(function(el){ cio.observe(el); });
     var res=cd.querySelector('.uc-res');
     res.classList.remove('show'); res.innerHTML='';
     cd.querySelector('.uc-timer').textContent='0:00';
-    cd.querySelector('.uc-body').innerHTML=c.lines.map(function(l){return turnHTML(l,false);}).join('');
+    var bd=cd.querySelector('.uc-body');
+    bd.innerHTML=c.lines.map(function(l){return turnHTML(l,false);}).join('');
+    if(bd.animate) bd.animate([{opacity:0},{opacity:1}],{duration:220,easing:'cubic-bezier(.23,1,.32,1)'});
     return cd;
   }
   function finish(cd, c){
@@ -1286,6 +1291,7 @@ document.querySelectorAll('.cnt').forEach(function(el){ cio.observe(el); });
   }
   build();
   if(sndBtn) sndBtn.addEventListener('click', function(){
+    sndBtn.classList.remove('attn');
     soundOn=!soundOn;
     sndBtn.classList.toggle('on', soundOn);
     if(cur>=0) play(cur); else play(0);
@@ -1299,7 +1305,7 @@ document.querySelectorAll('.cnt').forEach(function(el){ cio.observe(el); });
   document.getElementById('uc-next').addEventListener('click', function(){ play((cur+1)%N); });
   window.__ucRefresh=function(){ if(cur>=0){ var i=cur; build(); play(i); } };
   var started=false;
-  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting && !started){ started=true; play(0); } },{threshold:0.25});
+  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting && !started){ started=true; play(0); if(sndBtn){ sndBtn.classList.add('attn'); setTimeout(function(){ sndBtn.classList.remove('attn'); },4600); } } },{threshold:0.25});
   io.observe(document.querySelector('.uc'));
 })();
 
