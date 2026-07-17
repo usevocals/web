@@ -1,0 +1,23 @@
+# Vocals (usevocals.com)
+
+> Vocals is an AI voice-agent platform by Usevocals LLC that handles inbound and outbound business calls with real conversations — no scripts. It dials at scale, qualifies leads in real time and pushes them to your CRM automatically.
+
+## Key facts
+- Real-time voice pipeline with under 2 seconds of latency per turn
+- 500,000+ completed customer calls; >50% conversion rate; full integration in under 14 days
+- Mass dialing: up to 500 calls every 10 minutes
+- Bring-your-own API keys (OpenAI, Anthropic Claude, Google Gemini, ElevenLabs, Deepgram, Twilio) — no per-minute markup, full data control
+- Languages: English and Spanish (native)
+- Customer case: EVO Beauty Clinics (Spain) — +25% conversion, 400+ appointments booked, response to every lead in under 5 minutes
+
+## Use-case sectors
+Clinics & dentists, restaurants, elevators & maintenance, real estate, auto shops, schools, vending operators, property managers, suppliers & wholesalers.
+
+## Pages
+- [Home (English)](https://usevocals.com/)
+- [Home (Spanish)](https://usevocals.com/es/)
+- [Legal notice](https://usevocals.com/aviso-legal/) · [Privacy](https://usevocals.com/privacidad/) · [Terms](https://usevocals.com/terminos/)
+
+## Contact
+- Email: contact@usevocals.com
+- Company: Usevocals LLC, 25 Southwest 9th Street, Suite 406, Miami, FL 33130, US
