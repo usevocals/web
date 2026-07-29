@@ -144,7 +144,7 @@
 
   /* cinta de datos */
   .stats{border-top:1px solid var(--rule); border-bottom:1px solid var(--rule-soft); margin-top:64px}
-  .stats-in{display:grid; grid-template-columns:repeat(4,1fr)}
+  .stats-in{display:grid; grid-template-columns:repeat(2,1fr); max-width:620px}
   .stats-in>div{padding:34px 30px 36px; border-right:1px solid var(--rule-soft)}
   .stats-in>div:first-child{padding-left:0}
   .stats-in>div:last-child{border-right:none}
@@ -671,7 +671,7 @@
           <div class="live-play"><button id="playbtn" class="uc-sound" type="button" onclick="toggleCall()"><svg class="ic-off" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><line x1="15" y1="9" x2="21" y2="15"/><line x1="21" y1="9" x2="15" y2="15"/></svg><svg class="ic-on" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg><span class="lbl-off"><span data-es>Escuchar la llamada</span><span data-en>Hear the call</span></span><span class="lbl-on"><span data-es>Sonido activado</span><span data-en>Sound on</span></span></button></div>
           <div class="live-foot">
             <div class="qual" id="qual"><span class="d"></span> <span data-es id="qres-es">Lead calificado → CRM</span><span data-en id="qres-en">Qualified lead → CRM</span></div>
-            <div class="lat"><span data-es>latencia</span><span data-en>latency</span> <b>&lt;2s</b></div>
+            <div class="lat"><span data-es>latencia</span><span data-en>latency</span> <b>1s</b></div>
           </div>
         </div>
         <div class="hpick">
@@ -682,9 +682,7 @@
     </div>
     <div class="wrap stats rv">
       <div class="stats-in">
-        <div><b><span class="cnt" data-n="500" data-suf="K+">0K+</span></b><span data-es>llamadas completadas</span><span data-en>calls completed</span></div>
-        <div><b class="vio"><span class="cnt" data-n="50" data-pre="&gt;" data-suf="%">&gt;0%</span></b><span data-es>tasa de conversión</span><span data-en>conversion rate</span></div>
-        <div><b><span class="cnt" data-n="2" data-pre="&lt;" data-suf="s">&lt;0s</span></b><span data-es>latencia por turno</span><span data-en>latency per turn</span></div>
+        <div><b><span class="cnt" data-n="1" data-suf="s">0s</span></b><span data-es>latencia por turno</span><span data-en>latency per turn</span></div>
         <div><b><span class="cnt" data-n="14" data-pre="&lt;">&lt;0</span> <span style="font-size:20px;font-weight:700"><span data-es>días</span><span data-en>days</span></span></b><span data-es>integración completa</span><span data-en>full integration</span></div>
       </div>
     </div>
@@ -710,7 +708,7 @@
     <div class="ticker-in" id="ticker-in"><span><s class="x">centros saturados</s> <i class="s">●</i></span><span><s class="x">voces robóticas</s> <i class="s">●</i></span><span><s class="x">guiones rígidos</s> <i class="s">●</i></span><span><s class="x">bajo engagement</s> <i class="s">●</i></span><span><s class="x">datos incompletos</s> <i class="s">●</i></span><span><s class="x">encuestas eternas</s> <i class="s">●</i></span><span><s class="x">centros saturados</s> <i class="s">●</i></span><span><s class="x">voces robóticas</s> <i class="s">●</i></span><span><s class="x">guiones rígidos</s> <i class="s">●</i></span><span><s class="x">bajo engagement</s> <i class="s">●</i></span><span><s class="x">datos incompletos</s> <i class="s">●</i></span><span><s class="x">encuestas eternas</s> <i class="s">●</i></span></div>
   </div>
   <div class="ticker tpos">
-    <div class="ticker-in" id="tickerp-in"><span>conversaciones reales — sin scripts <i class="s">●</i></span><span>califica leads en tiempo real <i class="s">●</i></span><span>respuesta en &lt;2s <i class="s">●</i></span><span>directo a tu CRM <i class="s">●</i></span><span>llamadas entrantes y salientes <i class="s">●</i></span><span>miles de llamadas a escala <i class="s">●</i></span><span>conversaciones reales — sin scripts <i class="s">●</i></span><span>califica leads en tiempo real <i class="s">●</i></span><span>respuesta en &lt;2s <i class="s">●</i></span><span>directo a tu CRM <i class="s">●</i></span><span>llamadas entrantes y salientes <i class="s">●</i></span><span>miles de llamadas a escala <i class="s">●</i></span></div>
+    <div class="ticker-in" id="tickerp-in"><span>conversaciones reales — sin scripts <i class="s">●</i></span><span>califica leads en tiempo real <i class="s">●</i></span><span>respuesta en 1s <i class="s">●</i></span><span>directo a tu CRM <i class="s">●</i></span><span>llamadas entrantes y salientes <i class="s">●</i></span><span>miles de llamadas a escala <i class="s">●</i></span><span>conversaciones reales — sin scripts <i class="s">●</i></span><span>califica leads en tiempo real <i class="s">●</i></span><span>respuesta en 1s <i class="s">●</i></span><span>directo a tu CRM <i class="s">●</i></span><span>llamadas entrantes y salientes <i class="s">●</i></span><span>miles de llamadas a escala <i class="s">●</i></span></div>
   </div>
 
   <!-- 01 FEATURES -->
@@ -773,7 +771,7 @@
           <p><span data-es>Si el llamante interrumpe a mitad de una respuesta, Vocals lo detecta al instante y se adapta — igual que en una conversación real.</span><span data-en>If the caller interrupts mid-response, Vocals detects it instantly and adapts — just like a real conversation.</span></p>
         </div>
         <div class="pl-nums">
-          <div><b class="vio" style="font-style:italic">&lt;2s</b><span data-es>latencia extremo a extremo</span><span data-en>end-to-end latency</span></div>
+          <div><b class="vio" style="font-style:italic">1s</b><span data-es>latencia extremo a extremo</span><span data-en>end-to-end latency</span></div>
           <div><b>9+</b><span data-es>proveedores de IA</span><span data-en>AI providers</span></div>
         </div>
       </div>
@@ -1156,9 +1154,9 @@ syncPlayBtn(); renderHeroPick();
 // ---- ticker bilingüe ----
 var TICKS={
   es:{items:['centros saturados','voces robóticas','guiones rígidos','bajo engagement','datos incompletos','encuestas eternas'],
-      pos:['conversaciones reales — sin scripts','califica leads en tiempo real','respuesta en &lt;2s','directo a tu CRM','llamadas entrantes y salientes','miles de llamadas a escala']},
+      pos:['conversaciones reales — sin scripts','califica leads en tiempo real','respuesta en 1s','directo a tu CRM','llamadas entrantes y salientes','miles de llamadas a escala']},
   en:{items:['crowded call centers','robotic voices','rigid scripts','low engagement','incomplete data','endless surveys'],
-      pos:['real conversations — no scripts','qualifies leads in real time','&lt;2s response','straight into your CRM','inbound &amp; outbound calls','thousands of calls at scale']}
+      pos:['real conversations — no scripts','qualifies leads in real time','1s response','straight into your CRM','inbound &amp; outbound calls','thousands of calls at scale']}
 };
 var TICKS2={
   es:['Clínicas','Restaurantes','Ascensores','Inmobiliarias','Talleres','Colegios','Vending','Fincas','Mayoristas','¿El tuyo?'],
@@ -1410,7 +1408,7 @@ document.querySelectorAll('.cnt').forEach(function(el){ cio.observe(el); });
       +'<div class="uc-sub"><span class="uc-dot"></span><span data-es>En directo con Vocals</span><span data-en>Live with Vocals</span> · <span class="uc-timer">0:00</span></div>'
       +'</div><div class="uc-eq"><i></i><i></i><i></i><i></i><i></i></div></div>'
       +'<div class="uc-body">'+c.lines.map(function(l){return turnHTML(l,true);}).join('')+'</div>'
-      +'<div class="uc-foot"><span class="uc-res show"><span data-es>'+c.resEs+'</span><span data-en>'+c.resEn+'</span></span><span class="uc-lat"><span data-es>latencia</span><span data-en>latency</span> <b>&lt;2s</b></span></div></article>';
+      +'<div class="uc-foot"><span class="uc-res show"><span data-es>'+c.resEs+'</span><span data-en>'+c.resEn+'</span></span><span class="uc-lat"><span data-es>latencia</span><span data-en>latency</span> <b>1s</b></span></div></article>';
   }
   var cards=[], cur=-1, timers=[], autoT=null, tick=null, aud=null;
   function build(){
