@@ -613,6 +613,7 @@
   }
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Organization", "@id": "https://usevocals.com/#org", "name": "Vocals", "legalName": "Usevocals LLC", "url": "https://usevocals.com/", "logo": "https://usevocals.com/favicon-512.png", "email": "contact@usevocals.com", "address": {"@type": "PostalAddress", "streetAddress": "25 Southwest 9th Street, Suite 406", "addressLocality": "Miami", "addressRegion": "FL", "postalCode": "33130", "addressCountry": "US"}, "sameAs": ["https://www.linkedin.com/company/usevocals", "https://github.com/usevocals"]}, {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Vocals", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "url": "https://usevocals.com/", "description": "Vocals es una plataforma de agentes de voz con IA que gestiona llamadas entrantes y salientes con conversaciones reales — marca a escala, califica leads en tiempo real y los envía a tu CRM. Sectores: clínicas, restaurantes, ascensores y mantenimiento, inmobiliarias, talleres, colegios, vending, fincas y mayoristas.", "publisher": {"@id": "https://usevocals.com/#org"}, "inLanguage": ["en", "es"]}, {"@context": "https://schema.org", "@type": "WebSite", "name": "Vocals", "url": "https://usevocals.com/", "inLanguage": "es", "publisher": {"@id": "https://usevocals.com/#org"}}]</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 <div id="progress"></div>
@@ -1239,6 +1240,7 @@ function openCal(){
 
 // ---- live demo modal ----
 function openLiveDemo(){
+  try{ if(window.turnstile) turnstile.reset(); }catch(e){}
   var ov=document.getElementById('ldOverlay');
   var done=document.getElementById('ldDone'), form=document.getElementById('ldForm'), err=document.getElementById('ldErr');
   if(done) done.classList.remove('on');
@@ -1263,6 +1265,10 @@ function ldSubmitForm(e){
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email))
     return fail('Introduce un email válido.','Enter a valid email address.');
   if(!/^https?:\/\//i.test(d.company_website)) d.company_website='https://'+d.company_website;
+  var tsTok = (window.turnstile ? turnstile.getResponse() : '');
+  if(!tsTok) return fail('Confirma que no eres un robot.','Please complete the verification.');
+  d.cf_turnstile_token = tsTok;
+
   btn.disabled=true; var orig=btn.innerHTML; btn.textContent=(LANG==='en'?'Sending…':'Enviando…');
   fetch('https://n8n.cashtanic.com/webhook/vocals-demo-request-web',{
     method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(d)
@@ -1271,6 +1277,7 @@ function ldSubmitForm(e){
     document.getElementById('ldDone').classList.add('on');
   }).catch(function(){
     btn.disabled=false; btn.innerHTML=orig;
+    if(window.turnstile) turnstile.reset();
     fail('Ha habido un problema. Inténtalo de nuevo.','Something went wrong. Please try again.');
   });
   return false;
@@ -1646,7 +1653,8 @@ document.querySelectorAll('.cnt').forEach(function(el){ cio.observe(el); });
           </select>
         </div>
         <div class="ld-err" id="ldErr"></div>
-        <button class="ld-submit" type="submit" id="ldSubmit"><span data-es>Recibir mi demo</span><span data-en>Get my demo</span> →</button>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAEArqpZqQka_mqEg" data-theme="light" data-size="flexible" style="margin:2px 0 12px"></div>
+          <button class="ld-submit" type="submit" id="ldSubmit"><span data-es>Recibir mi demo</span><span data-en>Get my demo</span> →</button>
         <p class="ld-note"><span data-es>Sin compromiso. Te llamamos en menos de un minuto.</span><span data-en>No commitment. We call you in under a minute.</span></p>
       </form>
       <div class="ld-done" id="ldDone">
