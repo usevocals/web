@@ -590,6 +590,7 @@
   .ld-submit:active{transform:translateY(0)}
   .ld-submit[disabled]{opacity:.55; cursor:default; transform:none}
   .ld-note{margin:2px 0 0; font-size:11.5px; line-height:1.5; color:var(--dim,#8a857c); text-align:center}
+  .fhint{font-size:11.5px; line-height:1.45; color:var(--dim); margin-top:1px}
   .ld-err{display:none; font-size:13px; color:#c0392b; background:rgba(192,57,43,.07); border:1px solid rgba(192,57,43,.2); border-radius:10px; padding:9px 12px}
   .ld-err.on{display:block}
   .ld-done{display:none; flex-direction:column; align-items:center; text-align:center; gap:12px; padding:30px 12px 12px}
@@ -1259,6 +1260,13 @@ function ldSubmitForm(e){
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email))
     return fail('Introduce un email válido.','Enter a valid email address.');
   if(!/^https?:\/\//i.test(d.company_website)) d.company_website='https://'+d.company_website;
+  var _w = d.company_website.replace(/^https?:\/\//i,'').replace(/^www\./i,'').split(/[\/?#]/)[0].toLowerCase().trim();
+  if(!/^[a-z0-9][a-z0-9-]*(\.[a-z0-9-]+)+$/.test(_w) || _w.split('.').pop().length < 2)
+    return fail('Introduce la web real de tu empresa (por ejemplo: tuempresa.com).','Enter your real company website (e.g. yourcompany.com).');
+  var _banned = ['usevocals.com','vocals.com','example.com','ejemplo.com','test.com','prueba.com','google.com','gmail.com','hotmail.com','facebook.com','instagram.com','asdf.com','aaa.com'];
+  if(_banned.indexOf(_w) >= 0)
+    return fail('Necesitamos la web de TU empresa para preparar la demo, no una genérica.','We need YOUR company website to build the demo, not a generic one.');
+
   var tsTok = (window.turnstile ? turnstile.getResponse() : '');
   if(!tsTok) return fail('Confirma que no eres un robot.','Please complete the verification.');
   d.cf_turnstile_token = tsTok;
@@ -1638,6 +1646,7 @@ document.querySelectorAll('.cnt').forEach(function(el){ cio.observe(el); });
         <div class="ld-f">
           <label for="ld-web"><span data-es>Web de la empresa</span><span data-en>Company website</span> <span class="req">*</span></label>
           <input id="ld-web" name="company_website" type="text" inputmode="url" placeholder="https://tuempresa.com" required>
+            <div class="fhint"><span data-es>La IA analiza tu web para preparar la demo, así que debe ser la real de tu empresa.</span><span data-en>Our AI reads your site to build the demo, so it must be your real company website.</span></div>
         </div>
         <div class="ld-f">
           <label for="ld-lang"><span data-es>Idioma de la llamada</span><span data-en>Call language</span></label>
