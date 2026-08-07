@@ -1268,13 +1268,15 @@ function ldSubmitForm(e){
     return fail('Necesitamos la web de TU empresa para preparar la demo, no una genérica.','We need YOUR company website to build the demo, not a generic one.');
 
   var tsTok = (window.turnstile ? turnstile.getResponse() : '');
-  if(!tsTok) return fail('Confirma que no eres un robot.','Please complete the verification.');
+  if(!tsTok){ if(window.turnstile) turnstile.reset();
+    return fail('La verificacion ha caducado. Espera un segundo y vuelve a enviar.','The verification expired. Wait a second and submit again.'); }
   d.cf_turnstile_token = tsTok;
 
   btn.disabled=true; var orig=btn.innerHTML; btn.textContent=(LANG==='en'?'Sending…':'Enviando…');
   fetch('https://n8n.cashtanic.com/webhook/vocals-demo-request-web',{
     method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(d)
   }).then(function(){
+    if(window.turnstile) turnstile.reset();
     document.getElementById('ldForm').style.display='none';
     document.getElementById('ldDone').classList.add('on');
   }).catch(function(){
@@ -1656,7 +1658,7 @@ document.querySelectorAll('.cnt').forEach(function(el){ cio.observe(el); });
           </select>
         </div>
         <div class="ld-err" id="ldErr"></div>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAAEArqpZqQka_mqEg" data-theme="light" data-size="flexible" style="margin:2px 0 12px"></div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAEArqpZqQka_mqEg" data-theme="light" data-size="flexible" data-refresh-expired="auto" data-retry="auto" data-retry-interval="2000" style="margin:2px 0 12px"></div>
           <button class="ld-submit" type="submit" id="ldSubmit"><span data-es>Recibir mi demo</span><span data-en>Get my demo</span> →</button>
         <p class="ld-note"><span data-es>Sin compromiso. Te llamamos en menos de un minuto.</span><span data-en>No commitment. We call you in under a minute.</span></p>
       </form>
