@@ -167,7 +167,11 @@
 @media(max-width:700px){.clients-mask{margin:36px 0 34px}.client{margin-right:40px}.client img{transform:scale(.86)}}
 .providers{padding:64px 0 0; text-align:center}
   .prov-k{font-family:'Spline Sans Mono',monospace; font-size:10.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--dim)}
-  .prov-row{display:flex; flex-wrap:wrap; justify-content:center; gap:10px 0; margin-top:22px}
+  .prov-grid{display:flex; flex-wrap:wrap; justify-content:center; gap:14px 30px; margin-top:20px}
+.prov-cat{display:flex; align-items:center; gap:9px; flex-wrap:wrap; justify-content:center}
+.prov-cat i{font-family:'Spline Sans Mono',monospace; font-style:normal; font-size:9.5px; letter-spacing:.18em; color:var(--violet); background:var(--violet-soft); border-radius:100px; padding:3px 8px}
+@media(max-width:640px){.prov-grid{gap:10px 18px}}
+.prov-row{display:flex; flex-wrap:wrap; justify-content:center; gap:10px 0; margin-top:22px}
   .prov-row span{font-size:16px; font-weight:600; color:#A89F92; transition:color .3s; padding:0 22px; border-right:1px solid var(--rule-soft)}
   .prov-row span:last-child{border-right:none}
   .prov-row span:hover{color:var(--ink)}
@@ -694,9 +698,12 @@
       </div>
       <div class="prov-div"></div>
       <div class="prov-o">
-        <div class="prov-k"><span data-es>Orquesta los mejores proveedores de IA</span><span data-en>Orchestrating the best AI providers</span></div>
-        <div class="prov-row">
-          <span>OpenAI</span><span>Anthropic Claude</span><span>Google Gemini</span><span>Deepgram</span><span>Twilio</span>
+        <div class="prov-k"><span data-es>Orquesta los mejores proveedores</span><span data-en>Orchestrating the best providers</span></div>
+        <div class="prov-grid">
+          <div class="prov-cat"><i>SIP</i><span>Netelip</span><span>DIDLogic</span><span>Twilio</span></div>
+          <div class="prov-cat"><i>STT</i><span>ElevenLabs</span><span>Deepgram</span></div>
+          <div class="prov-cat"><i>LLM</i><span>Anthropic</span><span>Google</span><span>OpenAI</span></div>
+          <div class="prov-cat"><i>TTS</i><span>ElevenLabs</span><span>Fish Audio</span></div>
         </div>
       </div>
     </div>
@@ -939,8 +946,7 @@
           <div class="contact">
             <span class="k"><span data-es>O contáctanos directamente</span><span data-en>Or contact us directly</span></span>
             <b>contact@usevocals.com</b>
-            <b>+34 682 78 45 20</b>
-            <span>Madrid · Barcelona</span>
+            <b>+1 415 200 5960</b>
           </div>
         </div>
         <div class="rv" style="display:flex; align-items:center; justify-content:center">
@@ -973,8 +979,7 @@
           <span class="h"><span data-es>Contacto</span><span data-en>Contact</span></span>
           <a href="javascript:void(0)" onclick="openCal()"><span data-es>Agenda una llamada</span><span data-en>Book a call</span></a>
           <span>contact@usevocals.com</span>
-          <span>+34 682 78 45 20</span>
-          <span>Madrid · Barcelona</span>
+          <span>+1 415 200 5960</span>
         </div>
       </div>
     </div>
