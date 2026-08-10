@@ -285,7 +285,17 @@
   .byok{padding-bottom:100px}
   .byok-in{display:grid; grid-template-columns:1fr 1fr; gap:70px; margin-top:56px; align-items:start}
   .byok-l{border-left:2px solid var(--violet); padding-left:28px}
-  .byok-l h3{font-weight:800; letter-spacing:-0.03em; font-size:26px; line-height:1.15; margin-bottom:14px}
+  .prov-solo{justify-content:center}
+.stack{margin-top:30px; padding-top:26px; border-top:1px solid var(--rule-soft)}
+.stack-k{font-family:'Spline Sans Mono',monospace; font-size:10.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--dim); margin-bottom:18px}
+.stack-grid{display:grid; grid-template-columns:repeat(4,1fr)}
+.stack-cat{padding:0 18px; border-left:1px solid var(--rule-soft)}
+.stack-cat:first-child{border-left:0; padding-left:0}
+.stack-cat i{font-family:'Spline Sans Mono',monospace; font-style:normal; font-size:9.5px; letter-spacing:.2em; color:var(--violet); display:block; margin-bottom:9px}
+.stack-cat span{display:block; font-size:14px; line-height:1.9}
+@media(max-width:760px){.stack-grid{grid-template-columns:repeat(2,1fr); gap:18px 0}.stack-cat:nth-child(3){border-left:0; padding-left:0}}
+@media(max-width:420px){.stack-grid{grid-template-columns:1fr}.stack-cat{border-left:0; padding-left:0}}
+.byok-l h3{font-weight:800; letter-spacing:-0.03em; font-size:26px; line-height:1.15; margin-bottom:14px}
   .byok-l h3 em{font-style:italic; color:var(--violet)}
   .byok-l p{font-size:14.5px; line-height:1.7; color:var(--dim); max-width:440px; margin-bottom:18px}
   .byok-list{display:flex; flex-direction:column}
@@ -694,20 +704,10 @@
 
   <!-- PROVEEDORES + TICKER -->
   <section class="providers rv">
-    <div class="prov-in">
+    <div class="prov-in prov-solo">
       <div class="prov-p">
         <div class="prov-k">Partner</div>
         <a class="prov-logo" href="https://elevenlabs.io" target="_blank" rel="noopener"><img src="/elevenlabs-grants.webp" alt="ElevenLabs" width="210" height="18" loading="lazy"></a>
-      </div>
-      <div class="prov-div"></div>
-      <div class="prov-o">
-        <div class="prov-k"><span data-es>Orquesta los mejores proveedores</span><span data-en>Orchestrating the best providers</span></div>
-        <div class="prov-grid">
-          <div class="prov-cat"><i>SIP</i><span>Netelip</span><span>DIDLogic</span><span>Twilio</span></div>
-          <div class="prov-cat"><i>STT</i><span>ElevenLabs</span><span>Deepgram</span></div>
-          <div class="prov-cat"><i>LLM</i><span>Anthropic</span><span>Google</span><span>OpenAI</span></div>
-          <div class="prov-cat"><i>TTS</i><span>ElevenLabs</span><span>Fish Audio</span></div>
-        </div>
       </div>
     </div>
   </section>
@@ -799,6 +799,16 @@
             <span data-es>Conecta tus cuentas de OpenAI, ElevenLabs, Deepgram o Anthropic. Vocals las orquesta - tú mantienes el control total de tus costes y tus datos. Sin tarifas ocultas, sin dependencias.</span>
             <span data-en>Connect your OpenAI, ElevenLabs, Deepgram or Anthropic accounts. Vocals orchestrates them - you keep full control of your costs and your data. No hidden fees, no lock-in.</span>
           </p>
+        <div class="stack rv">
+          <div class="stack-k"><span data-es>Proveedores que puedes conectar</span><span data-en>Providers you can connect</span></div>
+          <div class="stack-grid">
+            <div class="stack-cat"><i>SIP</i><span>Netelip</span><span>DIDLogic</span><span>Twilio</span></div>
+            <div class="stack-cat"><i>STT</i><span>ElevenLabs</span><span>Deepgram</span></div>
+            <div class="stack-cat"><i>LLM</i><span>Anthropic</span><span>Google</span><span>OpenAI</span></div>
+            <div class="stack-cat"><i>TTS</i><span>ElevenLabs</span><span>Fish Audio</span></div>
+          </div>
+        </div>
+
           <a class="arrowlink" href="javascript:void(0)" onclick="openCal()"><span data-es>Habla con nosotros</span><span data-en>Talk to us</span> <span>→</span></a>
         </div>
         <div class="byok-list st">
