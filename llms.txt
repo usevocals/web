@@ -1,14 +1,14 @@
 # Vocals (usevocals.com)
 
-> Vocals is an AI voice-agent platform by Usevocals LLC that handles inbound and outbound business calls with real conversations — no scripts. It dials at scale, qualifies leads in real time and pushes them to your CRM automatically.
+> Vocals is an AI voice-agent platform by Usevocals LLC that handles inbound and outbound business calls with real conversations, no scripts. It dials at scale, qualifies leads in real time and pushes them to your CRM automatically.
 
 ## Key facts
 - Real-time voice pipeline with under 2 seconds of latency per turn
 - 500,000+ completed customer calls; >50% conversion rate; full integration in under 14 days
 - Mass dialing: up to 500 calls every 10 minutes
-- Bring-your-own API keys (OpenAI, Anthropic Claude, Google Gemini, ElevenLabs, Deepgram, Twilio) — no per-minute markup, full data control
+- Bring-your-own API keys (OpenAI, Anthropic Claude, Google Gemini, ElevenLabs, Deepgram, Twilio): no per-minute markup, full data control
 - Languages: English and Spanish (native)
-- Customer case: EVO Beauty Clinics (Spain) — +25% conversion, 400+ appointments booked, response to every lead in under 5 minutes
+- Customer case: EVO Beauty Clinics (Spain): +25% conversion, 400+ appointments booked, response to every lead in under 5 minutes
 
 ## Use-case sectors
 Clinics & dentists, restaurants, elevators & maintenance, real estate, auto shops, schools, vending operators, property managers, suppliers & wholesalers.
@@ -16,7 +16,12 @@ Clinics & dentists, restaurants, elevators & maintenance, real estate, auto shop
 ## Pages
 - [Home (English)](https://usevocals.com/)
 - [Home (Spanish)](https://usevocals.com/es/)
+- [Lifts and elevators (English)](https://usevocals.com/elevators/)
+- [Ascensores (Spanish)](https://usevocals.com/es/ascensores/)
 - [Legal notice](https://usevocals.com/aviso-legal/) · [Privacy](https://usevocals.com/privacidad/) · [Terms](https://usevocals.com/terminos/)
+
+## Lifts and elevators
+Vocals runs the phone line for lift and elevator operators: out-of-hours cover and in-hours overflow. The agent is trained on the operator's own manuals and manufacturer procedures, answers 24/7, takes over 30 calls at once, and writes each job (machine, site, fault, urgency, who is assigned) into their CRM or ERP. Named client: ACE Lifts, a UK lift operator that moved off a traditional call centre; we handle around 60 calls a day for them. Setup takes under 14 days and needs their manuals plus two hours with their senior technicians.
 
 ## Contact
 - Email: contact@usevocals.com
