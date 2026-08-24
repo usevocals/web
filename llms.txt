@@ -4,7 +4,7 @@
 
 ## Key facts
 - Real-time voice pipeline with under 2 seconds of latency per turn
-- 500,000+ completed customer calls; >50% conversion rate; full integration in under 14 days
+- 1M+ calls run in production; >50% conversion rate; full integration in under 14 days
 - Mass dialing: up to 500 calls every 10 minutes
 - Bring-your-own API keys (OpenAI, Anthropic Claude, Google Gemini, ElevenLabs, Deepgram, Twilio): no per-minute markup, full data control
 - Languages: English and Spanish (native)
