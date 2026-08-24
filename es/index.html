@@ -632,6 +632,30 @@
   @media(prefers-reduced-motion:reduce){
     .ld-ov,.ld-modal{transition:none} .ld-badge .dot{animation:none} .ld-close:hover{transform:none} .ld-submit:hover{transform:none}
   }
+
+  /* menu de sectores */
+  .navdrop{position:relative}
+  .navdrop>button{background:none;border:0;font:inherit;font-size:13.5px;font-weight:500;color:var(--dim);
+    cursor:pointer;padding:4px 0;display:inline-flex;align-items:center;gap:6px;transition:color .25s}
+  .navdrop>button:hover,.navdrop.open>button{color:var(--ink)}
+  .navdrop>button svg{width:9px;height:9px;transition:transform .25s var(--ease-out)}
+  .navdrop.open>button svg{transform:rotate(180deg)}
+  .navmenu{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);
+    min-width:210px;background:var(--card,#FCFAF7);border:1px solid var(--rule);border-radius:14px;
+    padding:7px;box-shadow:0 18px 46px rgba(22,19,15,.16);opacity:0;visibility:hidden;
+    transition:opacity .22s var(--ease-out),transform .22s var(--ease-out),visibility .22s;z-index:60}
+  .navdrop.open .navmenu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .navmenu:before{content:"";position:absolute;top:-10px;left:0;right:0;height:10px}
+  .navmenu a{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;
+    color:var(--ink);font-size:13.5px;font-weight:600;transition:background .18s}
+  .navmenu a:hover{background:var(--violet-soft,rgba(123,111,224,.10));color:var(--ink)}
+  .navmenu a small{display:block;font-size:11.5px;font-weight:400;color:var(--dim);margin-top:2px}
+  .navmenu .ic{width:30px;height:30px;border-radius:8px;background:var(--violet-soft,rgba(123,111,224,.10));
+    display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .navmenu .ic svg{width:15px;height:15px;stroke:var(--violet);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .navmenu .soon{margin-top:4px;padding:9px 12px 5px;border-top:1px solid var(--rule-soft);
+    font-family:'Spline Sans Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+
 </style>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Organization", "@id": "https://usevocals.com/#org", "name": "Vocals", "legalName": "Usevocals LLC", "url": "https://usevocals.com/", "logo": "https://usevocals.com/favicon-512.png", "email": "contact@usevocals.com", "address": {"@type": "PostalAddress", "streetAddress": "25 Southwest 9th Street, Suite 406", "addressLocality": "Miami", "addressRegion": "FL", "postalCode": "33130", "addressCountry": "US"}, "sameAs": ["https://www.linkedin.com/company/usevocals", "https://github.com/usevocals"]}, {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Vocals", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "url": "https://usevocals.com/", "description": "Vocals es una plataforma de agentes de voz con IA que gestiona llamadas entrantes y salientes con conversaciones reales - marca a escala, califica leads en tiempo real y los envía a tu CRM. Sectores: clínicas, restaurantes, ascensores y mantenimiento, inmobiliarias, talleres, colegios, vending, fincas y mayoristas.", "publisher": {"@id": "https://usevocals.com/#org"}, "inLanguage": ["en", "es"]}, {"@context": "https://schema.org", "@type": "WebSite", "name": "Vocals", "url": "https://usevocals.com/", "inLanguage": "es", "publisher": {"@id": "https://usevocals.com/#org"}}]</script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -646,8 +670,20 @@
     <a href="#features"><span data-es>Producto</span><span data-en>Product</span></a>
     <a href="#pipeline"><span data-es>Cómo funciona</span><span data-en>How it works</span></a>
     <a href="#benchmark"><span data-es>Comparativa</span><span data-en>Comparison</span></a>
-    <a href="/elevators" data-en>Sectors</a>
-    <a href="/es/ascensores" data-es>Sectores</a>
+    <div class="navdrop" id="navSectors">
+      <button type="button" aria-expanded="false" aria-haspopup="true">
+        <span data-es>Sectores</span><span data-en>Sectors</span>
+        <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5 10 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="navmenu" role="menu">
+        <a href="/es/ascensores" role="menuitem">
+          <span class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M12 3v18M9 8l3-3 3 3M9 16l3 3 3-3"/></svg></span>
+          <span><span data-es>Ascensores</span><span data-en>Lifts and elevators</span>
+          <small><span data-es>Averías, guardia y desbordamiento</span><span data-en>Breakdowns, out-of-hours and overflow</span></small></span>
+        </a>
+        <div class="soon"><span data-es>Más sectores, próximamente</span><span data-en>More sectors soon</span></div>
+      </div>
+    </div>
   </div>
   <div class="navright">
     <div class="lang">
@@ -1697,5 +1733,14 @@ document.querySelectorAll('.cnt').forEach(function(el){ cio.observe(el); });
   </div>
 </div>
 
+<script>
+(function(){var d=document.getElementById('navSectors');if(!d)return;var b=d.querySelector('button');
+var open=function(v){d.classList.toggle('open',v);b.setAttribute('aria-expanded',v?'true':'false');};
+d.addEventListener('mouseenter',function(){open(true)});
+d.addEventListener('mouseleave',function(){open(false)});
+b.addEventListener('click',function(e){e.stopPropagation();open(!d.classList.contains('open'))});
+document.addEventListener('click',function(e){if(!d.contains(e.target))open(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')open(false)});})();
+</script>
 </body>
 </html>
