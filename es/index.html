@@ -1264,16 +1264,36 @@ var TICKS2={
   es:['Clínicas','Restaurantes','Ascensores','Inmobiliarias','Talleres','Colegios','Vending','Fincas','Mayoristas','¿El tuyo?'],
   en:['Clinics','Restaurants','Elevators','Real estate','Auto shops','Schools','Vending','Property managers','Wholesalers','Yours?']
 };
+
+// --- carruseles sin cortes: repetir hasta cubrir la ventana ---
+function loopFill(el, unit, copies){
+  if(!el || !unit) return;
+  el.innerHTML = unit;
+  var w = el.scrollWidth || 1;
+  var vw = window.innerWidth || document.documentElement.clientWidth || 1200;
+  var reps = Math.max(1, Math.ceil((vw * 1.1) / w));   // margen para que nunca falte
+  var bloque = new Array(reps + 1).join(unit) + unit;  // reps copias
+  el.innerHTML = new Array(copies + 1).join(bloque);   // las que pide la animacion
+}
 function renderTicker(){
   var T=TICKS[LANG];
   var half=T.items.map(function(s){return '<span><s class="x">'+s+'</s> <i class="s">●</i></span>';}).join('');
-  document.getElementById('ticker-in').innerHTML=half+half;
+  loopFill(document.getElementById('ticker-in'), half, 2);
   var tp=document.getElementById('tickerp-in');
-  if(tp){ var hp=T.pos.map(function(s){return '<span>'+s+' <i class="s">●</i></span>';}).join(''); tp.innerHTML=hp+hp; }
+  if(tp){ var hp=T.pos.map(function(s){return '<span>'+s+' <i class="s">●</i></span>';}).join(''); loopFill(tp, hp, 2); }
   var t2=document.getElementById('ticker2-in');
-  if(t2){ var h2=TICKS2[LANG].map(function(s,i){ var last=i===TICKS2[LANG].length-1; return '<span'+(last?' class="hl"':'')+'>'+s+' <i class="s">●</i></span>'; }).join(''); t2.innerHTML=h2+h2; }
+  if(t2){ var h2=TICKS2[LANG].map(function(s,i){ var last=i===TICKS2[LANG].length-1; return '<span'+(last?' class="hl"':'')+'>'+s+' <i class="s">●</i></span>'; }).join(''); loopFill(t2, h2, 2); }
+  // los logos de clientes van a un tercio, asi que necesitan tres copias
+  var ct=document.querySelector('.clients-track');
+  if(ct && !ct.dataset.unit){ ct.dataset.unit = ct.innerHTML; }
+  if(ct){ loopFill(ct, ct.dataset.unit, 3); }
 }
 renderTicker();
+
+// recalcular los carruseles al cambiar el ancho de ventana
+(function(){ var t; addEventListener('resize', function(){
+  clearTimeout(t); t=setTimeout(function(){ try{ renderTicker(); }catch(e){} }, 200);
+}, {passive:true}); })();
 document.querySelectorAll('a.flegal').forEach(function(a){ var b=a.getAttribute('href').split('?')[0]; a.setAttribute('href', b+(LANG==='en'?'?lang=en':'')); });
 
 // ---- anillo del CTA: una letra por posición, reparto exacto ----
