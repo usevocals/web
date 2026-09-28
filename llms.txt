@@ -7,7 +7,7 @@
 - 1M+ calls run in production; >50% conversion rate; full integration in under 14 days
 - Mass dialing: up to 500 calls every 10 minutes
 - Bring-your-own API keys (OpenAI, Anthropic Claude, Google Gemini, ElevenLabs, Deepgram, Twilio): no per-minute markup, full data control
-- Languages: English and Spanish (native)
+- Languages: English, Spanish, French and German
 - Customer case: EVO Beauty Clinics (Spain): +25% conversion, 400+ appointments booked, response to every lead in under 5 minutes
 
 ## Use-case sectors
@@ -18,6 +18,8 @@ Clinics & dentists, restaurants, elevators & maintenance, real estate, auto shop
 - [Home (Spanish)](https://usevocals.com/es/)
 - [Lifts and elevators (English)](https://usevocals.com/elevators/)
 - [Ascensores (Spanish)](https://usevocals.com/es/ascensores/)
+- [Home (French)](https://usevocals.com/fr/) · [Ascenseurs](https://usevocals.com/fr/ascenseurs/)
+- [Home (German)](https://usevocals.com/de/) · [Aufzuege](https://usevocals.com/de/aufzuege/)
 - [Legal notice](https://usevocals.com/aviso-legal/) · [Privacy](https://usevocals.com/privacidad/) · [Terms](https://usevocals.com/terminos/)
 
 ## Lifts and elevators

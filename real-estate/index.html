@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vocals - AI voice agents for lift and elevator operators</title>
-<link rel="alternate" hreflang="en" href="https://usevocals.com/elevators/">
-<link rel="alternate" hreflang="es" href="https://usevocals.com/es/ascensores/">
-<link rel="alternate" hreflang="fr" href="https://usevocals.com/fr/ascenseurs/">
-<link rel="alternate" hreflang="de" href="https://usevocals.com/de/aufzuege/">
-<link rel="alternate" hreflang="x-default" href="https://usevocals.com/elevators/">
+<title>Vocals - AI voice agents for estate agencies and property managers</title>
+<link rel="alternate" hreflang="en" href="https://usevocals.com/real-estate/">
+<link rel="alternate" hreflang="es" href="https://usevocals.com/es/inmobiliarias/">
+
+
+<link rel="alternate" hreflang="x-default" href="https://usevocals.com/real-estate/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -93,6 +93,46 @@
   .lv-stage{position:relative;max-width:1000px;margin:56px auto 0}
   .lv-frame{position:relative;border-radius:22px;overflow:hidden;border:1px solid rgba(22,19,15,.14);box-shadow:0 30px 80px rgba(22,19,15,.24)}
   .lv-frame video{display:block;width:100%;height:auto}
+  /* --- rotulos sobre el video del hero --- */
+  .vo{position:absolute;inset:0;pointer-events:none;font-family:Inter,-apple-system,sans-serif}
+  .vo::after{content:"";position:absolute;inset:auto 0 0 0;height:46%;
+    background:linear-gradient(to top,rgba(22,19,15,.62),rgba(22,19,15,0));}
+  .vo>*{position:absolute;z-index:1}
+  .vo .vo-chip{top:16px;right:16px;display:flex;align-items:center;gap:9px;padding:8px 13px;border-radius:999px;
+    background:rgba(22,19,15,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    color:#fff;font-family:'Spline Sans Mono',monospace;font-size:10.5px;letter-spacing:.16em;font-weight:500}
+  .vo-dot{width:7px;height:7px;border-radius:50%;background:#3ECF7A;box-shadow:0 0 0 3px rgba(62,207,122,.22)}
+  .vo-eq{display:inline-flex;align-items:flex-end;gap:2px;height:12px;margin-left:2px}
+  .vo-eq b{width:2.5px;background:#A99FF0;border-radius:2px;height:40%;animation:voEq 1.1s ease-in-out infinite}
+  .vo-eq b:nth-child(2){animation-delay:.2s;height:90%} .vo-eq b:nth-child(3){animation-delay:.4s;height:60%}
+  .vo-eq b:nth-child(4){animation-delay:.6s;height:75%}
+  @keyframes voEq{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1)}}
+  .vo-card{top:64px;right:16px;width:min(300px,52%);border-radius:14px;background:rgba(22,19,15,.78);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow:hidden}
+  .vo-st{display:none;align-items:center;gap:12px;padding:13px 16px}
+  .vo-card.on .vo-on,.vo-card.ok .vo-ok{display:flex;animation:voIn .45s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes voIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .vo-st div{color:#fff}
+  .vo-st small{display:block;font-family:'Spline Sans Mono',monospace;font-size:9.5px;letter-spacing:.18em;
+    color:#A99FF0;margin-bottom:3px}
+  .vo-st strong{font-size:14px;font-weight:600;letter-spacing:-.01em;line-height:1.25;color:#fff}
+  .vo-ic{flex:0 0 28px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .vo-ic-call{background:rgba(123,111,224,.25);position:relative}
+  .vo-ic-call::before{content:"";width:9px;height:9px;border-radius:50%;background:#A99FF0;animation:voPulse 1.4s ease-out infinite}
+  @keyframes voPulse{0%{box-shadow:0 0 0 0 rgba(169,159,240,.55)}100%{box-shadow:0 0 0 9px rgba(169,159,240,0)}}
+  .vo-ic-ok{background:#3ECF7A}
+  .vo-ic-ok svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .vo-title{left:22px;bottom:20px;right:22px;color:#fff;font-weight:800;letter-spacing:-.03em;line-height:1.08;
+    font-size:clamp(20px,3.1vw,34px);text-shadow:0 2px 18px rgba(22,19,15,.45)}
+  @media(max-width:640px){
+    .vo .vo-chip{top:10px;right:10px;padding:6px 10px;font-size:9px}
+    /* en movil el marco mide ~185px de alto: la tarjeta pisaria el titular */
+    .vo-card{display:none}
+    .vo-title{left:14px;bottom:12px;font-size:18px}
+  }
+  @media(prefers-reduced-motion:reduce){.vo-eq b,.vo-ic-call::before,.vo-st{animation:none}}
+
+
   .lv-chip{position:absolute;top:-14px;left:-20px;display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:var(--paper);font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;border-radius:100px;padding:9px 16px;box-shadow:0 10px 26px rgba(22,19,15,.28);animation:lvfloat 5s ease-in-out infinite}
   .lv-chip .dot{width:6px;height:6px;border-radius:50%;background:#7DFF9B}
   @keyframes lvfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
@@ -131,6 +171,13 @@
   .lv-sec h2 em{font-style:italic;color:var(--violet)}
   .lv-sub{font-size:16px;line-height:1.65;color:var(--dim);max-width:640px;margin-top:14px}
   .lv-three{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:44px}
+  /* el problema aqui son dos publicos, no tres opciones */
+  .lv-two{grid-template-columns:repeat(2,1fr) !important;gap:48px}
+  .lv-list{margin:14px 0 0;padding:0;list-style:none}
+  .lv-list li{position:relative;padding-left:18px;margin-top:11px;font-size:14.5px;line-height:1.62;color:var(--dim)}
+  .lv-list li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--violet)}
+  @media(max-width:860px){.lv-two{grid-template-columns:1fr !important;gap:34px}}
+
   .lv-opt{position:relative;border-top:2px solid var(--ink);padding:18px 4px 0}
   .lv-opt h3{font-size:17.5px;font-weight:800;letter-spacing:-.015em}
   .lv-opt p{font-size:14.5px;line-height:1.62;color:var(--dim);margin-top:10px;min-height:92px}
@@ -343,7 +390,7 @@
 <header><div class="wrap">
   <a class="logo" href="/"><img src="/assets/img-bff3b037.png" alt="Vocals" style="height:24px; display:block"></a>
   <div class="hright">
-    <div class="lang" id="langSel"><button type="button" aria-label="Language" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15 0 18M12 3c-2.6 2.6-2.6 15 0 18"/></svg>EN<svg class="cv" viewBox="0 0 12 12"><path d="M2 4.5 6 8.5 10 4.5"/></svg></button><div class="langmenu"><a href="/elevators/" hreflang="en" class="on">English<i>EN</i></a><a href="/es/ascensores/" hreflang="es">Español<i>ES</i></a><a href="/fr/ascenseurs/" hreflang="fr">Français<i>FR</i></a><a href="/de/aufzuege/" hreflang="de">Deutsch<i>DE</i></a></div></div><a class="back" href="/"><span data-es>&larr; Volver</span><span data-en>&larr; Back</span></a>
+    <div class="lang" id="langSel"><button type="button" aria-label="Language" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15 0 18M12 3c-2.6 2.6-2.6 15 0 18"/></svg>EN<svg class="cv" viewBox="0 0 12 12"><path d="M2 4.5 6 8.5 10 4.5"/></svg></button><div class="langmenu"><a href="/real-estate/" hreflang="en" class="on">English<i>EN</i></a><a href="/es/inmobiliarias/" hreflang="es">Español<i>ES</i></a></div></div><a class="back" href="/"><span data-es>&larr; Volver</span><span data-en>&larr; Back</span></a>
   </div>
 </div></header>
 <main>
@@ -351,14 +398,14 @@
   <section class="lv-hero"><div class="lv-wrap">
     <div class="lv-hero-in">
       <div class="rv in">
-        <div class="lv-eyebrow"><span class="dot"></span><span data-es>Para empresas de ascensores</span><span data-en>For lift and elevator operators</span></div>
+        <div class="lv-eyebrow"><span class="dot"></span><span data-es>Para inmobiliarias y administradores de fincas</span><span data-en>For estate agencies and property managers</span></div>
         <h1>
-          <span data-es>Cada aviso de avería, <em>atendido</em>.<br>A cualquier hora.</span>
-          <span data-en>Every breakdown call, <em>answered</em>.<br>At any hour.</span>
+          <span data-es>El teléfono no para, y<br><em>casi siempre es lo mismo</em>.</span>
+          <span data-en>The phone never stops, and<br><em>it is nearly always the same</em>.</span>
         </h1>
         <p class="lv-lead">
-          <span data-es>Un agente de voz que conoce tu oficio: tus manuales, los procedimientos de tus fabricantes y la forma de trabajar de tu equipo. Atiende, resuelve lo que puede y escribe cada aviso en el sistema que ya usas.</span>
-          <span data-en>A voice agent that knows your trade: your manuals, your manufacturer procedures and the way your team works. It answers, resolves what it can and writes every job into the system you already run.</span>
+          <span data-es>Un agente de voz coge todas las llamadas. Las que se repiten las resuelve él. Las que necesitan a una persona te las pasa con todo apuntado.</span>
+          <span data-en>A voice agent answers every call. The repetitive ones it handles itself. The ones that need a person it hands over with everything already written down.</span>
         </p>
         <div class="lv-cta">
           <a class="lv-btn" href="https://demo.usevocals.com/?lang=en" data-en>Get a live demo &rarr;</a>
@@ -368,14 +415,18 @@
         </div>
       </div>
       <div class="lv-stage rv in" style="--d:.15s">
-        <div class="lv-frame" style="view-transition-name:sec-elevators">
-          <video id="lvVid" autoplay muted loop playsinline preload="metadata" poster="/elevators-poster.jpg">
-            <source src="/elevators-video.mp4" type="video/mp4">
+        <div class="lv-frame" style="view-transition-name:sec-realestate">
+          <video autoplay muted loop playsinline preload="metadata" poster="/real-estate-poster.jpg" aria-hidden="true">
+            <source src="/real-estate-video.mp4" type="video/mp4">
           </video>
-          <button class="lv-mute" id="lvMute" aria-label="Sonido">
-            <svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9.5l4 5M21 9.5l-4 5"/></svg>
-            <svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9a4.5 4.5 0 0 1 0 6"/></svg>
-          </button>
+          <div class="vo" aria-hidden="true">
+            <div class="vo-chip"><i class="vo-dot"></i>VOCALS &middot; INCIDENTS <span class="vo-eq"><b></b><b></b><b></b><b></b></span></div>
+            <div class="vo-card" id="voCard">
+              <div class="vo-st vo-on"><span class="vo-ic vo-ic-call"></span><div><small>ON CALL</small><strong>4 calls, the same issue</strong></div></div>
+              <div class="vo-st vo-ok"><span class="vo-ic vo-ic-ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div><small>ONE TICKET</small><strong>Plumber notified, tenants told</strong></div></div>
+            </div>
+            <div class="vo-title">Four calls.<br>One job.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -396,56 +447,59 @@
   <!-- TRES DESTINOS -->
   <section class="lv-sec"><div class="lv-wrap">
     <div class="lv-k rv"><span data-es>El problema</span><span data-en>The problem</span></div>
-    <h2 class="rv"><span data-es>Hoy tu teléfono solo tiene <em>tres sitios</em> a los que ir.</span><span data-en>Today your phone has exactly <em>three places</em> to go.</span></h2>
-    <p class="lv-sub rv"><span data-es>Todos cuestan algo y ninguno cierra el círculo.</span><span data-en>All three cost something and none of them closes the loop.</span></p>
-    <div class="lv-three">
-      <div class="lv-opt rv"><span class="lv-idx">01</span>
-        <h3><span data-es>Un call center externo</span><span data-en>An outside call centre</span></h3>
-        <p><span data-es>Nunca actúa como parte de tu equipo. Toma el recado, te lo pasa y ahí acaba su parte: el aviso sigue sin resolver.</span><span data-en>It never acts like part of your team. It takes the message, passes it on, and its job ends there: the callout is still unresolved.</span></p>
-        <div class="cost"><i>&#9679;</i><span data-es>caro &middot; factura por recado</span><span data-en>expensive &middot; bills per message</span></div>
+    <h2 class="rv"><span data-es>Las llamadas que recibes <em>todos los días</em>.</span><span data-en>The calls you get <em>every single day</em>.</span></h2>
+    <p class="lv-sub rv"><span data-es>El problema no es que las llamadas sean difíciles. Es cuántas son y a qué hora entran.</span><span data-en>The problem is not that the calls are hard. It is how many there are and when they come in.</span></p>
+    <div class="lv-three lv-two">
+      <div class="lv-opt rv">
+        <span class="lv-idx">01</span>
+        <h3><span data-es>Si vendes o alquilas pisos</span><span data-en>If you sell or let flats</span></h3>
+        <ul class="lv-list">
+          <li><span data-es>Los contactos entran por los portales a cualquier hora, y quien no recibe respuesta llama a la agencia siguiente.</span><span data-en>Enquiries come in from the portals at any hour, and whoever gets no answer rings the next agency.</span></li>
+          <li><span data-es>La misma pregunta cien veces: si el piso sigue libre, cuánto es, cuándo se puede ver.</span><span data-en>The same question a hundred times: is the flat still available, how much is it, when can I see it.</span></li>
+          <li><span data-es>Y las visitas hay que cuadrarlas por teléfono, una a una.</span><span data-en>And every viewing has to be arranged by phone, one at a time.</span></li>
+        </ul>
       </div>
-      <div class="lv-opt rv" style="--d:.12s"><span class="lv-idx">02</span>
-        <h3><span data-es>Tu propio equipo</span><span data-en>Your internal team</span></h3>
-        <p><span data-es>Conoce el oficio como nadie, pero tiene un techo de capacidad claro: cuando entran cuatro llamadas a la vez, la cuarta espera.</span><span data-en>Nobody knows the trade better, but there is a hard capacity ceiling: when four calls come in at once, the fourth one waits.</span></p>
-        <div class="cost"><i>&#9679;</i><span data-es>caro &middot; capacidad limitada</span><span data-en>expensive &middot; hard ceiling</span></div>
-      </div>
-      <div class="lv-opt rv" style="--d:.24s"><span class="lv-idx">03</span>
-        <h3><span data-es>El buzón de voz</span><span data-en>Voicemail</span></h3>
-        <p><span data-es>Frustra a quien llega hasta él, y el trabajo no desaparece: alguien tiene que escucharlo y actuar después.</span><span data-en>It frustrates whoever reaches it, and the work does not go away: someone still has to listen and act on it later.</span></p>
-        <div class="cost"><i>&#9679;</i><span data-es>gratis &middot; no cierra nada</span><span data-en>free &middot; closes nothing</span></div>
+      <div class="lv-opt rv" style="--d:.12s">
+        <span class="lv-idx">02</span>
+        <h3><span data-es>Si administras fincas</span><span data-en>If you manage buildings</span></h3>
+        <ul class="lv-list">
+          <li><span data-es>Se para un ascensor y llaman cuatro vecinos por lo mismo.</span><span data-en>A lift breaks down and four neighbours call about the same thing.</span></li>
+          <li><span data-es>Las urgencias entran de noche, el fin de semana y en agosto.</span><span data-en>The urgent ones come at night, at the weekend and in August.</span></li>
+          <li><span data-es>El resto son las de siempre: no hay luz en la escalera, la puerta del garaje no abre, cuándo viene el fontanero.</span><span data-en>The rest are the usual ones: no light in the stairwell, the garage door will not open, when the plumber is coming.</span></li>
+        </ul>
       </div>
     </div>
     <div class="lv-fourth rv">
       <span class="arr">&rarr;</span>
-      <p><span data-es>Un agente de voz no es una cuarta opción de la misma categoría. Es la primera pensada para <em>conocer el oficio del ascensor</em>, trabajar a todas horas y escribir directamente en los sistemas que ya tienes.</span><span data-en>An AI voice agent is not a fourth option in the same category. It is the first one built to <em>know the lift trade</em>, work around the clock and write straight into the systems you already run.</span></p>
+      <p><span data-es>Un agente de voz no es una persona más al teléfono. Es el primero que <em>coge todas a la vez</em>, a cualquier hora, y deja cada llamada escrita en tu sistema.</span><span data-en>A voice agent is not one more person on the phone. It is the first one that <em>takes them all at once</em>, at any hour, and leaves every call written into your system.</span></p>
     </div>
   </div></section>
 
   <!-- ACTO OSCURO: LA LLAMADA -->
   <section class="lv-dark" id="lvDark"><div class="lv-wrap">
     <div class="lv-k rv"><span data-es>Así suena</span><span data-en>What it sounds like</span></div>
-    <h2 class="rv"><span data-es>Así suena una llamada. <em>De la avería al CRM.</em></span><span data-en>One call, start to finish. <em>From fault to CRM.</em></span></h2>
+    <h2 class="rv"><span data-es>Así suena una llamada. <em>Del aviso a tu sistema.</em></span><span data-en>One call, start to finish. <em>From the report to your system.</em></span></h2>
     <div class="lv-call">
       <div class="lv-phone rv">
-        <div class="lv-phone-h"><span data-es>Línea técnica</span><span data-en>Technical line</span><span class="live"><span class="dot"></span>LIVE</span></div>
+        <div class="lv-phone-h"><span data-es>Línea de incidencias</span><span data-en>Incident line</span><span class="live"><span class="dot"></span>LIVE</span></div>
         <div class="lv-msgs">
-          <div class="lv-msg tech" style="animation-delay:.3s"><span class="who" data-es>Técnico</span><span class="who" data-en>Technician</span><span data-es>Estoy en una FST-3, planta dos, con fallo de puerta. La he reiniciado y sigue igual.</span><span data-en>I'm on an FST-3 on floor two, door fault. I've rebooted it and it's still the same.</span></div>
-          <div class="lv-msg bot" style="animation-delay:1.1s"><span class="who">Vocals</span><span data-es>¿Qué código te aparece en el display?</span><span data-en>What code is showing on the display?</span></div>
-          <div class="lv-msg tech" style="animation-delay:1.9s"><span class="who" data-es>Técnico</span><span class="who" data-en>Technician</span>E-32.</div>
-          <div class="lv-msg bot" style="animation-delay:2.7s"><span class="who">Vocals</span><span data-es>Ese es el contacto de puerta. Revisa el enclavamiento de la planta dos: en ese modelo el microrruptor suele quedarse pegado. Si no cierra, es esa pieza.</span><span data-en>That's the door contact. Check the interlock on floor two: on that model the microswitch tends to stick. If it isn't closing, that's your part.</span></div>
+          <div class="lv-msg tech" style="animation-delay:.3s"><span class="who" data-es>Vecino</span><span class="who" data-en>Neighbour</span><span data-es>Hay una fuga en el garaje, sale agua por la pared del fondo.</span><span data-en>There is a leak in the garage, water is coming through the back wall.</span></div>
+          <div class="lv-msg bot" style="animation-delay:1.1s"><span class="who">Vocals</span><span data-es>Entendido. ¿Sale de una tubería a la vista o viene del techo?</span><span data-en>Understood. Is it coming from a visible pipe or from the ceiling?</span></div>
+          <div class="lv-msg tech" style="animation-delay:1.9s"><span class="who" data-es>Vecino</span><span class="who" data-en>Neighbour</span>Del techo, y ya lleva un rato.</div>
+          <div class="lv-msg bot" style="animation-delay:2.7s"><span class="who">Vocals</span><span data-es>Gracias. Ya tenemos otro aviso por lo mismo de esta mañana, así que no abro uno nuevo. Aviso ahora al fontanero de guardia.</span><span data-en>Thank you. We already have another report for the same thing from this morning, so I will not open a new one. I am calling the on-call plumber now.</span></div>
         </div>
-        <button class="lv-listen" id="lvListen">&#9654; <span data-es>Escucha la llamada</span><span data-en>Hear the call</span></button>
+        
       </div>
       <div class="lv-crm rv" style="--d:.15s">
-        <div class="lv-crm-h"><span data-es>Lo que aterriza en tu sistema</span><span data-en>What lands in your system</span></div>
+        <div class="lv-crm-h"><span data-es>Lo que queda guardado</span><span data-en>What gets stored</span></div>
         <div class="lv-rows">
-          <div class="lv-row" style="animation-delay:3.3s"><span class="ck">&#10003;</span><span class="lab" data-es>Máquina</span><span class="lab" data-en>Machine</span><span class="val">FST-3</span></div>
-          <div class="lv-row" style="animation-delay:3.7s"><span class="ck">&#10003;</span><span class="lab" data-es>Avería</span><span class="lab" data-en>Fault</span><span class="val"><span data-es>Contacto de puerta &middot; E-32</span><span data-en>Door contact &middot; E-32</span></span></div>
-          <div class="lv-row" style="animation-delay:4.1s"><span class="ck">&#10003;</span><span class="lab" data-es>Planta</span><span class="lab" data-en>Floor</span><span class="val">2</span></div>
-          <div class="lv-row" style="animation-delay:4.5s"><span class="ck">&#10003;</span><span class="lab" data-es>Urgencia</span><span class="lab" data-en>Urgency</span><span class="val"><span data-es>Media &middot; nadie atrapado</span><span data-en>Medium &middot; no one stuck</span></span></div>
-          <div class="lv-row" style="animation-delay:4.9s"><span class="ck">&#10003;</span><span class="lab" data-es>Diagnóstico</span><span class="lab" data-en>Diagnosis</span><span class="val"><span data-es>Enclavamiento planta 2</span><span data-en>Floor-two interlock</span></span></div>
+          <div class="lv-row" style="animation-delay:3.3s"><span class="ck">&#10003;</span><span class="lab" data-es>Finca</span><span class="lab" data-en>Building</span><span class="val">Aragón 214</span></div>
+          <div class="lv-row" style="animation-delay:3.7s"><span class="ck">&#10003;</span><span class="lab" data-es>Incidencia</span><span class="lab" data-en>Issue</span><span class="val"><span data-es>Fuga de agua</span><span data-en>Water leak</span></span></div>
+          <div class="lv-row" style="animation-delay:4.1s"><span class="ck">&#10003;</span><span class="lab" data-es>Zona</span><span class="lab" data-en>Area</span><span class="val">Garaje, planta -1</span></div>
+          <div class="lv-row" style="animation-delay:4.5s"><span class="ck">&#10003;</span><span class="lab" data-es>Urgencia</span><span class="lab" data-en>Urgency</span><span class="val"><span data-es>Alta &middot; fontanero avisado</span><span data-en>High &middot; plumber called</span></span></div>
+          <div class="lv-row" style="animation-delay:4.9s"><span class="ck">&#10003;</span><span class="lab" data-es>Aviso</span><span class="lab" data-en>Report</span><span class="val"><span data-es>Se une a uno ya abierto</span><span data-en>Merged into an open one</span></span></div>
         </div>
-        <div class="lv-crm-f"><span data-es>Cada llamada vuelve como <b>datos ordenados</b> en tu CRM o ERP, con un correo de resumen después. No como una transcripción que alguien tiene que leer.</span><span data-en>Every call comes back as <b>structured data</b> in your CRM or ERP, with a summary email after. Not a transcript someone has to read.</span></div>
+        <div class="lv-crm-f"><span data-es>Cada llamada queda escrita en tu sistema: qué finca, qué pasa y a quién se ha avisado. <b>Nadie apunta nada a mano</b> después.</span><span data-en>Every call is written into your system: which building, what happened and who was called. <b>Nobody writes anything down by hand</b> afterwards.</span></div>
       </div>
     </div>
   </div></section>
@@ -453,29 +507,29 @@
   <!-- PILARES -->
   <section class="lv-sec lv-dark pv-dark"><div class="lv-wrap">
     <div class="lv-k rv"><span data-es>Qué lo hace distinto</span><span data-en>What makes it different</span></div>
-    <h2 class="rv"><span data-es>Cuatro cosas que un call center <em>no puede</em> hacer.</span><span data-en>Four things a call centre <em>cannot</em> do.</span></h2>
+    <h2 class="rv"><span data-es>Cuatro cosas que un contestador <em>no puede</em> hacer.</span><span data-en>Four things an answering machine <em>cannot</em> do.</span></h2>
     <div class="lv-pillars">
       <div class="lv-pil rv"><span class="lv-idx">01</span>
-        <h3><span data-es>Conoce tu oficio, no es un bot genérico</span><span data-en>It knows your trade, not a generic bot</span></h3>
-        <p><span data-es>Se entrena con tus manuales, los procedimientos de tus fabricantes y el saber hacer de tu equipo. Responde solo desde lo que le has dado. Cuando no está seguro, pasa la llamada a una persona con todo el contexto por delante.</span><span data-en>It is trained on your manuals, your manufacturer procedures and your team's own know-how. It answers only from what it has been given. When it is not sure, it escalates to a person with the full context.</span></p>
+        <h3><span data-es>Conoce tus edificios</span><span data-en>It knows your buildings</span></h3>
+        <p><span data-es>Se entrena con tus fincas, tus proveedores y vuestras normas. Sabe de qué empresa es cada ascensor y a quién hay que llamar.</span><span data-en>It is trained on your buildings, your suppliers and your rules. It knows which company services each lift and who to call.</span></p>
         <div class="pv-vis"><svg viewBox="0 0 480 162" width="480" height="162" aria-hidden="true" focusable="false"><defs><radialGradient id="pvh1" cx=".5" cy=".5" r=".5"><stop offset="0" class="pv-s" stop-opacity=".55"/><stop offset="1" class="pv-s" stop-opacity="0"/></radialGradient><linearGradient id="pvl1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="pv-s" stop-opacity=".06"/><stop offset="1" class="pv-s" stop-opacity=".9"/></linearGradient><linearGradient id="pvv1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="pv-w" stop-opacity=".22"/><stop offset="1" class="pv-w" stop-opacity="0"/></linearGradient><pattern id="pvp1" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="1.1" cy="1.1" r="1.1" class="pv-dot"/></pattern></defs><rect x=".5" y=".5" width="479" height="161" rx="18" class="pv-plate"/><rect x=".5" y=".5" width="479" height="161" rx="18" fill="url(#pvp1)" opacity=".5" stroke="none"/><rect x=".5" y=".5" width="479" height="161" rx="18" fill="none" stroke-width="1" class="pv-line"/><path d="M17 17 h8 M17 17 v8" class="pv-tick"/><path d="M463 17 h-8 M463 17 v8" class="pv-tick"/><path d="M17 145 h8 M17 145 v-8" class="pv-tick"/><path d="M463 145 h-8 M463 145 v-8" class="pv-tick"/><g transform="rotate(-11 73 81)" opacity="0.3"><rect x="36" y="33" width="74" height="96" rx="7" class="pv-paper" stroke-width="1.2"/></g><g transform="rotate(-5.5 86 81)" opacity="0.55"><rect x="49" y="33" width="74" height="96" rx="7" class="pv-paper" stroke-width="1.2"/></g><g transform="rotate(0 99 81)" opacity="1"><rect x="62" y="33" width="74" height="96" rx="7" class="pv-paper" stroke-width="1.2"/></g><rect x="74" y="46" width="26" height="7" rx="3.5" fill="var(--violet)" opacity=".7"/><rect x="74" y="66" width="48" height="4" rx="2" fill="var(--violet)" opacity=".26"/><rect x="74" y="79" width="38" height="4" rx="2" fill="var(--violet)" opacity=".26"/><rect x="74" y="92" width="44" height="4" rx="2" fill="var(--violet)" opacity=".26"/><rect x="74" y="105" width="30" height="4" rx="2" fill="var(--violet)" opacity=".26"/><circle cx="152.0" cy="46.0" r="1.5" fill="var(--violet)" opacity="0.08"/><circle cx="152.0" cy="64.0" r="1.5" fill="var(--violet)" opacity="0.08"/><circle cx="152.0" cy="82.0" r="1.5" fill="var(--violet)" opacity="0.08"/><circle cx="152.0" cy="100.0" r="1.5" fill="var(--violet)" opacity="0.08"/><circle cx="152.0" cy="118.0" r="1.5" fill="var(--violet)" opacity="0.08"/><circle cx="164.5" cy="52.0" r="1.7" fill="var(--violet)" opacity="0.14"/><circle cx="164.5" cy="70.0" r="1.7" fill="var(--violet)" opacity="0.14"/><circle cx="164.5" cy="88.0" r="1.7" fill="var(--violet)" opacity="0.14"/><circle cx="164.5" cy="106.0" r="1.7" fill="var(--violet)" opacity="0.14"/><circle cx="164.5" cy="124.0" r="1.7" fill="var(--violet)" opacity="0.14"/><circle cx="177.0" cy="46.0" r="1.8" fill="var(--violet)" opacity="0.19"/><circle cx="177.0" cy="64.0" r="1.8" fill="var(--violet)" opacity="0.19"/><circle cx="177.0" cy="82.0" r="1.8" fill="var(--violet)" opacity="0.19"/><circle cx="177.0" cy="100.0" r="1.8" fill="var(--violet)" opacity="0.19"/><circle cx="177.0" cy="118.0" r="1.8" fill="var(--violet)" opacity="0.19"/><circle cx="189.5" cy="52.0" r="2.0" fill="var(--violet)" opacity="0.24"/><circle cx="189.5" cy="70.0" r="2.0" fill="var(--violet)" opacity="0.24"/><circle cx="189.5" cy="88.0" r="2.0" fill="var(--violet)" opacity="0.24"/><circle cx="189.5" cy="106.0" r="2.0" fill="var(--violet)" opacity="0.24"/><circle cx="189.5" cy="124.0" r="2.0" fill="var(--violet)" opacity="0.24"/><circle cx="202.0" cy="46.0" r="2.1" fill="var(--violet)" opacity="0.30"/><circle cx="202.0" cy="64.0" r="2.1" fill="var(--violet)" opacity="0.30"/><circle cx="202.0" cy="82.0" r="2.1" fill="var(--violet)" opacity="0.30"/><circle cx="202.0" cy="100.0" r="2.1" fill="var(--violet)" opacity="0.30"/><circle cx="202.0" cy="118.0" r="2.1" fill="var(--violet)" opacity="0.30"/><circle cx="214.5" cy="52.0" r="2.3" fill="var(--violet)" opacity="0.36"/><circle cx="214.5" cy="70.0" r="2.3" fill="var(--violet)" opacity="0.36"/><circle cx="214.5" cy="88.0" r="2.3" fill="var(--violet)" opacity="0.36"/><circle cx="214.5" cy="106.0" r="2.3" fill="var(--violet)" opacity="0.36"/><circle cx="214.5" cy="124.0" r="2.3" fill="var(--violet)" opacity="0.36"/><circle cx="227.0" cy="46.0" r="2.5" fill="var(--violet)" opacity="0.41"/><circle cx="227.0" cy="64.0" r="2.5" fill="var(--violet)" opacity="0.41"/><circle cx="227.0" cy="82.0" r="2.5" fill="var(--violet)" opacity="0.41"/><circle cx="227.0" cy="100.0" r="2.5" fill="var(--violet)" opacity="0.41"/><circle cx="227.0" cy="118.0" r="2.5" fill="var(--violet)" opacity="0.41"/><circle cx="239.5" cy="52.0" r="2.6" fill="var(--violet)" opacity="0.47"/><circle cx="239.5" cy="70.0" r="2.6" fill="var(--violet)" opacity="0.47"/><circle cx="239.5" cy="88.0" r="2.6" fill="var(--violet)" opacity="0.47"/><circle cx="239.5" cy="106.0" r="2.6" fill="var(--violet)" opacity="0.47"/><circle cx="239.5" cy="124.0" r="2.6" fill="var(--violet)" opacity="0.47"/><circle cx="252.0" cy="46.0" r="2.8" fill="var(--violet)" opacity="0.52"/><circle cx="252.0" cy="64.0" r="2.8" fill="var(--violet)" opacity="0.52"/><circle cx="252.0" cy="82.0" r="2.8" fill="var(--violet)" opacity="0.52"/><circle cx="252.0" cy="100.0" r="2.8" fill="var(--violet)" opacity="0.52"/><circle cx="252.0" cy="118.0" r="2.8" fill="var(--violet)" opacity="0.52"/><circle cx="360" cy="81" r="74" fill="url(#pvh1)" opacity=".5"/><polygon points="360.0,25.0 408.5,53.0 408.5,109.0 360.0,137.0 311.5,109.0 311.5,53.0" fill="none" class="pv-line" stroke-width="1" opacity=".3"/><polygon points="360.0,37.0 398.1,59.0 398.1,103.0 360.0,125.0 321.9,103.0 321.9,59.0" fill="var(--violet)"/><rect x="340.9" y="71.0" width="6.2" height="20" rx="3.1" class="pv-on" opacity=".95"/><rect x="351.4" y="60.0" width="6.2" height="42" rx="3.1" class="pv-on" opacity=".95"/><rect x="361.9" y="67.0" width="6.2" height="28" rx="3.1" class="pv-on" opacity=".95"/><rect x="372.4" y="56.0" width="6.2" height="50" rx="3.1" class="pv-on" opacity=".95"/></svg></div>
       </div>
       <div class="lv-pil rv" style="--d:.12s"><span class="lv-idx">02</span>
-        <h3><span data-es>Menos errores que una persona al teléfono</span><span data-en>Fewer errors than a person on the phone</span></h3>
-        <p><span data-es>Alguien a las once de la noche, cansado y en la decimoquinta llamada del turno, se equivoca más que un sistema que responde igual siempre.</span><span data-en>Someone at eleven at night, tired and on the fifteenth call of the shift, makes more mistakes than a system that answers the same way every time.</span></p>
-        <div class="lv-note"><span data-es>La investigación académica sobre IA en pymes (UOC, 2025) sitúa entre un 40% y un 50% la reducción de errores de información en consultas rutinarias, por menos fatiga y más coherencia. Es un dato del sector, no una medición nuestra.</span><span data-en>Academic research on AI in small and mid-sized companies (UOC, 2025) puts the drop in information errors on routine queries at 40% to 50%, from lower fatigue and more consistency. That is an industry finding, not a measurement of ours.</span></div>
-        <div class="pv-vis"><svg viewBox="0 0 480 166" width="480" height="166" aria-hidden="true" focusable="false"><defs><radialGradient id="pvh2" cx=".5" cy=".5" r=".5"><stop offset="0" class="pv-s" stop-opacity=".55"/><stop offset="1" class="pv-s" stop-opacity="0"/></radialGradient><linearGradient id="pvl2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="pv-s" stop-opacity=".06"/><stop offset="1" class="pv-s" stop-opacity=".9"/></linearGradient><linearGradient id="pvv2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="pv-w" stop-opacity=".22"/><stop offset="1" class="pv-w" stop-opacity="0"/></linearGradient><pattern id="pvp2" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="1.1" cy="1.1" r="1.1" class="pv-dot"/></pattern></defs><rect x=".5" y=".5" width="479" height="165" rx="18" class="pv-plate"/><rect x=".5" y=".5" width="479" height="165" rx="18" fill="url(#pvp2)" opacity=".5" stroke="none"/><rect x=".5" y=".5" width="479" height="165" rx="18" fill="none" stroke-width="1" class="pv-line"/><path d="M17 17 h8 M17 17 v8" class="pv-tick"/><path d="M463 17 h-8 M463 17 v8" class="pv-tick"/><path d="M17 149 h8 M17 149 v-8" class="pv-tick"/><path d="M463 149 h-8 M463 149 v-8" class="pv-tick"/><line x1="74" y1="44" x2="452" y2="44" class="pv-line" opacity=".14"/><line x1="74" y1="70" x2="452" y2="70" class="pv-line" opacity=".14"/><line x1="74" y1="96" x2="452" y2="96" class="pv-line" opacity=".14"/><line x1="74" y1="122" x2="452" y2="122" class="pv-line" opacity=".14"/><line x1="74" y1="124" x2="452" y2="124" class="pv-line" opacity=".3"/><path d="M74.0 52.0 L93.9 54.9 L113.8 53.5 L133.7 59.2 L153.6 57.8 L173.5 65.0 L193.4 63.6 L213.3 72.3 L233.2 69.4 L253.1 79.5 L272.9 83.9 L292.8 81.0 L312.7 91.2 L332.6 96.9 L352.5 94.0 L372.4 104.2 L392.3 110.0 L412.2 107.1 L432.1 117.2 L452.0 123.0 L452.0 124 L74.0 124 Z" fill="url(#pvv2)" opacity=".8"/><path d="M74.0 52.0 L93.9 54.9 L113.8 53.5 L133.7 59.2 L153.6 57.8 L173.5 65.0 L193.4 63.6 L213.3 72.3 L233.2 69.4 L253.1 79.5 L272.9 83.9 L292.8 81.0 L312.7 91.2 L332.6 96.9 L352.5 94.0 L372.4 104.2 L392.3 110.0 L412.2 107.1 L432.1 117.2 L452.0 123.0" fill="none" class="pv-soft" stroke-width="1.6" stroke-linejoin="round" opacity=".5"/><ellipse cx="263" cy="48" rx="170" ry="30" fill="url(#pvh2)" opacity=".5"/><line x1="74" y1="48" x2="452" y2="48" stroke="var(--violet)" stroke-width="2.8" stroke-linecap="round" opacity=".95"/><circle cx="74" cy="48" r="4.6" fill="var(--violet)"/><circle cx="452" cy="48" r="4.6" fill="var(--violet)"/><circle cx="72" cy="26" r="3.4" class="pv-soft-f" opacity=".45"/><text x="84" y="30" font-size="10.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.45" data-es>UNA PERSONA</text><text x="84" y="30" font-size="10.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.45" data-en>A PERSON</text><circle cx="196" cy="26" r="3.4" fill="var(--violet)"/><text x="208" y="30" font-size="10.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-es>EL AGENTE</text><text x="208" y="30" font-size="10.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-en>THE AGENT</text><text x="78" y="146" font-size="10" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.35" data-es>primera llamada</text><text x="78" y="146" font-size="10" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.35" data-en>first call</text><text x="444" y="146" font-size="10" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.35" text-anchor="end" data-es>llamada mil</text><text x="444" y="146" font-size="10" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.35" text-anchor="end" data-en>call one thousand</text></svg></div>
+        <h3><span data-es>Junta las llamadas repetidas</span><span data-en>It merges repeat calls</span></h3>
+        <p><span data-es>Si ya hay un aviso abierto por esa avería, lo dice y no te crea cuatro incidencias iguales.</span><span data-en>If a report is already open for that fault, it says so instead of creating four identical ones.</span></p>
+        <div class="lv-note"><span data-es>Cuatro vecinos llamando por lo mismo dejan de ser cuatro trabajos.</span><span data-en>Four neighbours calling about the same thing stop being four jobs.</span></div>
+        <div class="pv-vis"><svg viewBox="0 0 480 166" width="480" height="166" aria-hidden="true" focusable="false"><defs><radialGradient id="pvh2" cx=".5" cy=".5" r=".5"><stop offset="0" class="pv-s" stop-opacity=".55"/><stop offset="1" class="pv-s" stop-opacity="0"/></radialGradient><linearGradient id="pvl2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="pv-s" stop-opacity=".06"/><stop offset="1" class="pv-s" stop-opacity=".9"/></linearGradient><linearGradient id="pvv2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="pv-w" stop-opacity=".22"/><stop offset="1" class="pv-w" stop-opacity="0"/></linearGradient><pattern id="pvp2" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="1.1" cy="1.1" r="1.1" class="pv-dot"/></pattern></defs><rect x=".5" y=".5" width="479" height="165" rx="18" class="pv-plate"/><rect x=".5" y=".5" width="479" height="165" rx="18" fill="url(#pvp2)" opacity=".5" stroke="none"/><rect x=".5" y=".5" width="479" height="165" rx="18" fill="none" stroke-width="1" class="pv-line"/><path d="M17 17 h8 M17 17 v8" class="pv-tick"/><path d="M463 17 h-8 M463 17 v8" class="pv-tick"/><path d="M17 149 h8 M17 149 v-8" class="pv-tick"/><path d="M463 149 h-8 M463 149 v-8" class="pv-tick"/><polygon points="36.0,20.5 44.2,25.2 44.2,34.8 36.0,39.5 27.8,34.8 27.8,25.2" fill="var(--violet)" opacity=".3"/><rect x="54" y="26.5" width="34" height="7" rx="3.5" fill="var(--violet)" opacity=".18"/><path d="M94 30 C 168 30, 202 83, 262 83" class="pv-soft" stroke-width="1.5" fill="none" opacity=".38"/><polygon points="36.0,46.5 44.2,51.2 44.2,60.8 36.0,65.5 27.8,60.8 27.8,51.2" fill="var(--violet)" opacity=".3"/><rect x="54" y="52.5" width="34" height="7" rx="3.5" fill="var(--violet)" opacity=".18"/><path d="M94 56 C 168 56, 202 83, 262 83" class="pv-soft" stroke-width="1.5" fill="none" opacity=".38"/><polygon points="36.0,72.5 44.2,77.2 44.2,86.8 36.0,91.5 27.8,86.8 27.8,77.2" fill="var(--violet)" opacity=".3"/><rect x="54" y="78.5" width="34" height="7" rx="3.5" fill="var(--violet)" opacity=".18"/><path d="M94 82 C 168 82, 202 83, 262 83" class="pv-soft" stroke-width="1.5" fill="none" opacity=".38"/><polygon points="36.0,98.5 44.2,103.2 44.2,112.8 36.0,117.5 27.8,112.8 27.8,103.2" fill="var(--violet)" opacity=".3"/><rect x="54" y="104.5" width="34" height="7" rx="3.5" fill="var(--violet)" opacity=".18"/><path d="M94 108 C 168 108, 202 83, 262 83" class="pv-soft" stroke-width="1.5" fill="none" opacity=".38"/><polygon points="36.0,124.5 44.2,129.2 44.2,138.8 36.0,143.5 27.8,138.8 27.8,129.2" fill="var(--violet)" opacity=".3"/><rect x="54" y="130.5" width="34" height="7" rx="3.5" fill="var(--violet)" opacity=".18"/><path d="M94 134 C 168 134, 202 83, 262 83" class="pv-soft" stroke-width="1.5" fill="none" opacity=".38"/><line x1="262" y1="83" x2="300" y2="83" stroke="url(#pvl2)" stroke-width="3" stroke-linecap="round"/><rect x="290" y="55" width="164" height="56" rx="20" fill="url(#pvh2)" opacity=".6"/><rect x="298" y="61" width="148" height="44" rx="15" fill="var(--violet)"/><path d="M320 83 l6 6 l12 -14" class="pv-onS" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="350" y="88" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-on" opacity="0.97" letter-spacing=".06em" data-es>UN AVISO</text><text x="350" y="88" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-on" opacity="0.97" letter-spacing=".06em" data-en>ONE ALERT</text></svg></div>
       </div>
       <div class="lv-pil rv"><span class="lv-idx">03</span>
-        <h3><span data-es>Más volumen, sin cola</span><span data-en>More volume, no queue</span></h3>
-        <p><span data-es>Atiende más de 30 llamadas a la vez. Un corte de luz, un lunes por la mañana o una finca entera llamando al mismo tiempo no genera cola ni tono de ocupado.</span><span data-en>It takes over 30 calls at the same time. A power cut, a Monday morning or a whole estate calling at once never queues or hits a busy tone.</span></p>
+        <h3><span data-es>Más de 30 llamadas a la vez</span><span data-en>Over 30 calls at once</span></h3>
+        <p><span data-es>Un corte de luz o una fuga que afecta a un bloque entero no genera cola ni tono de ocupado.</span><span data-en>A power cut or a leak affecting a whole block never queues or hits a busy tone.</span></p>
         <div class="pv-vis"><svg viewBox="0 0 480 162" width="480" height="162" aria-hidden="true" focusable="false"><defs><radialGradient id="pvh3" cx=".5" cy=".5" r=".5"><stop offset="0" class="pv-s" stop-opacity=".55"/><stop offset="1" class="pv-s" stop-opacity="0"/></radialGradient><linearGradient id="pvl3" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="pv-s" stop-opacity=".06"/><stop offset="1" class="pv-s" stop-opacity=".9"/></linearGradient><linearGradient id="pvv3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="pv-w" stop-opacity=".22"/><stop offset="1" class="pv-w" stop-opacity="0"/></linearGradient><pattern id="pvp3" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="1.1" cy="1.1" r="1.1" class="pv-dot"/></pattern></defs><rect x=".5" y=".5" width="479" height="161" rx="18" class="pv-plate"/><rect x=".5" y=".5" width="479" height="161" rx="18" fill="url(#pvp3)" opacity=".5" stroke="none"/><rect x=".5" y=".5" width="479" height="161" rx="18" fill="none" stroke-width="1" class="pv-line"/><path d="M17 17 h8 M17 17 v8" class="pv-tick"/><path d="M463 17 h-8 M463 17 v8" class="pv-tick"/><path d="M17 145 h8 M17 145 v-8" class="pv-tick"/><path d="M463 145 h-8 M463 145 v-8" class="pv-tick"/><circle cx="92" cy="76" r="78" fill="url(#pvh3)" opacity=".4"/><text x="34" y="102" font-size="80" font-weight="800" letter-spacing="-.04em" class="pv-num">30</text><text x="38" y="130" font-size="10.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.5" letter-spacing=".1em" data-es>LLAMADAS A LA VEZ</text><text x="38" y="130" font-size="10.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.5" letter-spacing=".1em" data-en>CALLS AT ONCE</text><line x1="196" y1="30" x2="196" y2="132" class="pv-line" opacity=".2"/><polygon points="232.0,35.6 242.7,41.8 242.7,54.2 232.0,60.4 221.3,54.2 221.3,41.8" fill="var(--violet)" opacity="0.5"/><polygon points="255.4,35.6 266.1,41.8 266.1,54.2 255.4,60.4 244.7,54.2 244.7,41.8" fill="var(--violet)" opacity="0.68"/><polygon points="278.8,35.6 289.5,41.8 289.5,54.2 278.8,60.4 268.1,54.2 268.1,41.8" fill="var(--violet)" opacity="0.86"/><polygon points="302.2,35.6 312.9,41.8 312.9,54.2 302.2,60.4 291.5,54.2 291.5,41.8" fill="var(--violet)" opacity="0.59"/><polygon points="325.6,35.6 336.3,41.8 336.3,54.2 325.6,60.4 314.9,54.2 314.9,41.8" fill="var(--violet)" opacity="0.77"/><polygon points="349.0,35.6 359.7,41.8 359.7,54.2 349.0,60.4 338.3,54.2 338.3,41.8" fill="var(--violet)" opacity="0.5"/><polygon points="372.4,35.6 383.1,41.8 383.1,54.2 372.4,60.4 361.7,54.2 361.7,41.8" fill="var(--violet)" opacity="0.68"/><polygon points="395.8,35.6 406.5,41.8 406.5,54.2 395.8,60.4 385.1,54.2 385.1,41.8" fill="var(--violet)" opacity="0.86"/><polygon points="419.2,35.6 429.9,41.8 429.9,54.2 419.2,60.4 408.5,54.2 408.5,41.8" fill="var(--violet)" opacity="0.59"/><polygon points="442.6,35.6 453.3,41.8 453.3,54.2 442.6,60.4 431.9,54.2 431.9,41.8" fill="var(--violet)" opacity="0.77"/><polygon points="243.7,57.6 254.4,63.8 254.4,76.2 243.7,82.4 233.0,76.2 233.0,63.8" fill="var(--violet)" opacity="0.5"/><polygon points="267.1,57.6 277.8,63.8 277.8,76.2 267.1,82.4 256.4,76.2 256.4,63.8" fill="var(--violet)" opacity="0.68"/><polygon points="290.5,57.6 301.2,63.8 301.2,76.2 290.5,82.4 279.8,76.2 279.8,63.8" fill="var(--violet)" opacity="0.86"/><polygon points="313.9,57.6 324.6,63.8 324.6,76.2 313.9,82.4 303.2,76.2 303.2,63.8" fill="var(--violet)" opacity="0.59"/><polygon points="337.3,57.6 348.0,63.8 348.0,76.2 337.3,82.4 326.6,76.2 326.6,63.8" fill="var(--violet)" opacity="0.77"/><polygon points="360.7,57.6 371.4,63.8 371.4,76.2 360.7,82.4 350.0,76.2 350.0,63.8" fill="var(--violet)" opacity="0.5"/><polygon points="384.1,57.6 394.8,63.8 394.8,76.2 384.1,82.4 373.4,76.2 373.4,63.8" fill="var(--violet)" opacity="0.68"/><polygon points="407.5,57.6 418.2,63.8 418.2,76.2 407.5,82.4 396.8,76.2 396.8,63.8" fill="var(--violet)" opacity="0.86"/><polygon points="430.9,57.6 441.6,63.8 441.6,76.2 430.9,82.4 420.2,76.2 420.2,63.8" fill="var(--violet)" opacity="0.59"/><polygon points="454.3,57.6 465.0,63.8 465.0,76.2 454.3,82.4 443.6,76.2 443.6,63.8" fill="var(--violet)" opacity="0.77"/><polygon points="232.0,79.6 242.7,85.8 242.7,98.2 232.0,104.4 221.3,98.2 221.3,85.8" fill="var(--violet)" opacity="0.5"/><polygon points="255.4,79.6 266.1,85.8 266.1,98.2 255.4,104.4 244.7,98.2 244.7,85.8" fill="var(--violet)" opacity="0.68"/><polygon points="278.8,79.6 289.5,85.8 289.5,98.2 278.8,104.4 268.1,98.2 268.1,85.8" fill="var(--violet)" opacity="0.86"/><polygon points="302.2,79.6 312.9,85.8 312.9,98.2 302.2,104.4 291.5,98.2 291.5,85.8" fill="var(--violet)" opacity="0.59"/><polygon points="325.6,79.6 336.3,85.8 336.3,98.2 325.6,104.4 314.9,98.2 314.9,85.8" fill="var(--violet)" opacity="0.77"/><polygon points="349.0,79.6 359.7,85.8 359.7,98.2 349.0,104.4 338.3,98.2 338.3,85.8" fill="var(--violet)" opacity="0.5"/><polygon points="372.4,79.6 383.1,85.8 383.1,98.2 372.4,104.4 361.7,98.2 361.7,85.8" fill="var(--violet)" opacity="0.68"/><polygon points="395.8,79.6 406.5,85.8 406.5,98.2 395.8,104.4 385.1,98.2 385.1,85.8" fill="var(--violet)" opacity="0.86"/><polygon points="419.2,79.6 429.9,85.8 429.9,98.2 419.2,104.4 408.5,98.2 408.5,85.8" fill="var(--violet)" opacity="0.59"/><polygon points="442.6,79.6 453.3,85.8 453.3,98.2 442.6,104.4 431.9,98.2 431.9,85.8" fill="var(--violet)" opacity="0.77"/></svg></div>
       </div>
       <div class="lv-pil rv" style="--d:.12s"><span class="lv-idx">04</span>
-        <h3><span data-es>Escribe en los sistemas que ya usas</span><span data-en>It writes into the systems you already run</span></h3>
-        <p><span data-es>Máquina, finca, incidencia, urgencia y a quién se asigna, escrito en tu CRM o ERP, con un correo de resumen después.</span><span data-en>Machine, site, issue, urgency and who is assigned, written into your CRM or ERP, with a summary email after.</span></p>
-        <div class="lv-note"><span data-es>La misma investigación describe las &laquo;islas digitales&raquo;: herramientas compradas sin ordenar antes el proceso, cada una funcionando por su lado. Escribir directamente en tu sistema es una isla menos, no una más.</span><span data-en>The same research describes "Digital Islands": tools bought without fixing the process first, each working alone. Writing straight into your system means one island averted, not one more created.</span></div>
-        <div class="pv-vis"><svg viewBox="0 0 480 182" width="480" height="182" aria-hidden="true" focusable="false"><defs><radialGradient id="pvh4" cx=".5" cy=".5" r=".5"><stop offset="0" class="pv-s" stop-opacity=".55"/><stop offset="1" class="pv-s" stop-opacity="0"/></radialGradient><linearGradient id="pvl4" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="pv-s" stop-opacity=".06"/><stop offset="1" class="pv-s" stop-opacity=".9"/></linearGradient><linearGradient id="pvv4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="pv-w" stop-opacity=".22"/><stop offset="1" class="pv-w" stop-opacity="0"/></linearGradient><pattern id="pvp4" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="1.1" cy="1.1" r="1.1" class="pv-dot"/></pattern></defs><rect x=".5" y=".5" width="479" height="181" rx="18" class="pv-plate"/><rect x=".5" y=".5" width="479" height="181" rx="18" fill="url(#pvp4)" opacity=".5" stroke="none"/><rect x=".5" y=".5" width="479" height="181" rx="18" fill="none" stroke-width="1" class="pv-line"/><path d="M17 17 h8 M17 17 v8" class="pv-tick"/><path d="M463 17 h-8 M463 17 v8" class="pv-tick"/><path d="M17 165 h8 M17 165 v-8" class="pv-tick"/><path d="M463 165 h-8 M463 165 v-8" class="pv-tick"/><rect x="18" y="18" width="444" height="146" rx="14" class="pv-paper" stroke-width="1.1"/><circle cx="40" cy="44" r="9" fill="url(#pvh4)"/><circle cx="40" cy="44" r="4" fill="var(--violet)"/><text x="56" y="48" font-size="10.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.5" letter-spacing=".12em" data-es>REGISTRO DE LA LLAMADA</text><text x="56" y="48" font-size="10.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.5" letter-spacing=".12em" data-en>CALL RECORD</text><rect x="374" y="33" width="66" height="23" rx="11.5" fill="var(--violet)"/><text x="407" y="48" font-size="10.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-on" opacity="0.95" text-anchor="middle" letter-spacing=".1em">CRM</text><line x1="18" y1="64" x2="462" y2="64" class="pv-line" opacity=".22"/><path d="M40 86 l4 4 l8 -9" class="pv-accS" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/><text x="64" y="91" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-es>MÁQUINA</text><text x="64" y="91" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-en>MACHINE</text><rect x="232" y="81" width="92" height="9" rx="4.5" fill="url(#pvl4)" opacity=".6"/><path d="M40 115 l4 4 l8 -9" class="pv-accS" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/><text x="64" y="120" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-es>AVERÍA</text><text x="64" y="120" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-en>ISSUE</text><rect x="232" y="110" width="119" height="9" rx="4.5" fill="url(#pvl4)" opacity=".6"/><path d="M40 144 l4 4 l8 -9" class="pv-accS" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/><text x="64" y="149" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-es>URGENCIA</text><text x="64" y="149" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-en>URGENCY</text><rect x="232" y="139" width="146" height="9" rx="4.5" fill="url(#pvl4)" opacity=".6"/><g transform="rotate(-11 420 131)" opacity=".6"><circle cx="420" cy="131" r="22" fill="none" class="pv-line" stroke-width="1.2"/><circle cx="420" cy="131" r="16" fill="none" class="pv-accS" stroke-width="1" opacity=".5" stroke-dasharray="2 4"/><path d="M412 131 l6 6 l12 -14" class="pv-accS" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></svg></div>
+        <h3><span data-es>Todo queda escrito</span><span data-en>Everything gets written down</span></h3>
+        <p><span data-es>Finca, portal, incidencia y a quién se avisó, en el sistema que ya usas.</span><span data-en>Building, entrance, issue and who was called, in the system you already run.</span></p>
+        <div class="lv-note"><span data-es>Sin apuntar nada a mano al colgar.</span><span data-en>Nothing to write up after hanging up.</span></div>
+        <div class="pv-vis"><svg viewBox="0 0 480 182" width="480" height="182" aria-hidden="true" focusable="false"><defs><radialGradient id="pvh4" cx=".5" cy=".5" r=".5"><stop offset="0" class="pv-s" stop-opacity=".55"/><stop offset="1" class="pv-s" stop-opacity="0"/></radialGradient><linearGradient id="pvl4" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="pv-s" stop-opacity=".06"/><stop offset="1" class="pv-s" stop-opacity=".9"/></linearGradient><linearGradient id="pvv4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="pv-w" stop-opacity=".22"/><stop offset="1" class="pv-w" stop-opacity="0"/></linearGradient><pattern id="pvp4" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="1.1" cy="1.1" r="1.1" class="pv-dot"/></pattern></defs><rect x=".5" y=".5" width="479" height="181" rx="18" class="pv-plate"/><rect x=".5" y=".5" width="479" height="181" rx="18" fill="url(#pvp4)" opacity=".5" stroke="none"/><rect x=".5" y=".5" width="479" height="181" rx="18" fill="none" stroke-width="1" class="pv-line"/><path d="M17 17 h8 M17 17 v8" class="pv-tick"/><path d="M463 17 h-8 M463 17 v8" class="pv-tick"/><path d="M17 165 h8 M17 165 v-8" class="pv-tick"/><path d="M463 165 h-8 M463 165 v-8" class="pv-tick"/><rect x="18" y="18" width="444" height="146" rx="14" class="pv-paper" stroke-width="1.1"/><circle cx="40" cy="44" r="9" fill="url(#pvh4)"/><circle cx="40" cy="44" r="4" fill="var(--violet)"/><text x="56" y="48" font-size="10.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.5" letter-spacing=".12em" data-es>REGISTRO DE LA LLAMADA</text><text x="56" y="48" font-size="10.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.5" letter-spacing=".12em" data-en>CALL RECORD</text><rect x="374" y="33" width="66" height="23" rx="11.5" fill="var(--violet)"/><text x="407" y="48" font-size="10.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-on" opacity="0.95" text-anchor="middle" letter-spacing=".1em">CRM</text><line x1="18" y1="64" x2="462" y2="64" class="pv-line" opacity=".22"/><path d="M40 86 l4 4 l8 -9" class="pv-accS" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/><text x="64" y="91" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-es>FINCA</text><text x="64" y="91" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-en>BUILDING</text><rect x="232" y="81" width="92" height="9" rx="4.5" fill="url(#pvl4)" opacity=".6"/><path d="M40 115 l4 4 l8 -9" class="pv-accS" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/><text x="64" y="120" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-es>INCIDENCIA</text><text x="64" y="120" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-en>ISSUE</text><rect x="232" y="110" width="119" height="9" rx="4.5" fill="url(#pvl4)" opacity=".6"/><path d="M40 144 l4 4 l8 -9" class="pv-accS" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/><text x="64" y="149" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-es>AVISADO</text><text x="64" y="149" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-en>NOTIFIED</text><rect x="232" y="139" width="146" height="9" rx="4.5" fill="url(#pvl4)" opacity=".6"/><g transform="rotate(-11 420 131)" opacity=".6"><circle cx="420" cy="131" r="22" fill="none" class="pv-line" stroke-width="1.2"/><circle cx="420" cy="131" r="16" fill="none" class="pv-accS" stroke-width="1" opacity=".5" stroke-dasharray="2 4"/><path d="M412 131 l6 6 l12 -14" class="pv-accS" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></svg></div>
       </div>
     </div>
   </div></section>
@@ -484,21 +538,21 @@
   <section class="lv-ace"><div class="lv-wrap">
     <div class="lv-ace-grid">
       <div class="rv">
-        <div class="lv-live"><span class="dot"></span><span data-es>Su línea, en directo</span><span data-en>Their line, live</span></div>
-        <h2><span data-es>ACE Lifts dejó su call center. <em>Su línea ahora es nuestra.</em></span><span data-en>ACE Lifts moved off their call centre. <em>Their line is ours now.</em></span></h2>
-        <p><span data-es>Llevamos su línea fuera de horario y el desbordamiento en horario de oficina. Cada aviso entra en su sistema, no en una libreta.</span><span data-en>We run their out-of-hours line and their in-hours overflow. Every callout lands in their system, not in a notepad.</span></p>
-        <p><span data-es>Dos operadores de ascensores de Reino Unido han sustituido ya su call center por completo.</span><span data-en>Two UK lift operators have replaced their call centre outright.</span></p>
+        <div class="lv-live"><span class="dot"></span><span data-es>Cómo encaja</span><span data-en>How it fits</span></div>
+        <h2><span data-es>Lo montamos con <em>tus fincas y tus normas</em>.</span><span data-en>We build it around <em>your buildings and your rules</em>.</span></h2>
+        <p><span data-es>Nos das tu lista de edificios, tus proveedores y cómo trabajáis. A partir de ahí coge el teléfono como lo cogería alguien de tu oficina.</span><span data-en>You give us your list of buildings, your suppliers and how you work. From there it answers the phone the way someone in your office would.</span></p>
+        <p><span data-es>Sirve igual para una agencia que vende y alquila y para una administración de fincas: cambia lo que sabe, no cómo funciona.</span><span data-en>It works the same for an agency that sells and lets, and for a property manager: what changes is what it knows, not how it works.</span></p>
       </div>
       <div class="lv-panel rv" style="--d:.15s">
         <div class="lv-panel-h">
           <div class="lv-panel-id">
-            <span class="mark"><img src="/clients/acelifts.webp" alt="ACE Lifts" width="50" height="34"></span>
-            <span><b>ACE Lifts</b><span data-es>Operador de ascensores &middot; Reino Unido</span><span data-en>Lift operator &middot; United Kingdom</span></span>
+            
+            <span><b>Incluido de serie</b><span data-es>Inmobiliarias y administración de fincas</span><span data-en>Estate agencies and property managers</span></span>
           </div>
-          <span class="st"><span data-es>Línea activa</span><span data-en>Line active</span></span>
+          <span class="st"><span data-es>Disponible</span><span data-en>Available</span></span>
         </div>
         <div class="lv-cells">
-          <div class="lv-cell"><div class="k"><span data-es>Volumen</span><span data-en>Volume</span></div><b>~60</b><span data-es>llamadas al día que atendemos</span><span data-en>calls a day we handle</span></div>
+          <div class="lv-cell"><div class="k"><span data-es>Disponibilidad</span><span data-en>Availability</span></div><b>24/7</b><span data-es>atendido al primer tono</span><span data-en>answered on the first ring</span></div>
           <div class="lv-cell"><div class="k"><span data-es>A la vez</span><span data-en>Concurrent</span></div><b>30<i>+</i></b><span data-es>sin cola ni tono de ocupado</span><span data-en>no queue, no busy tone</span></div>
           <div class="lv-cell"><div class="k"><span data-es>Plataforma</span><span data-en>Platform</span></div><b>1M<i>+</i></b><span data-es>llamadas en producción</span><span data-en>calls run in production</span></div>
           <div class="lv-cell"><div class="k"><span data-es>Puesta en marcha</span><span data-en>Go live</span></div><b>&lt;14</b><span data-es>días para estar en marcha</span><span data-en>days to go live</span></div>
@@ -517,24 +571,24 @@
         <div class="lv-mk" style="--md:.15s">01</div>
         <div class="lv-card" style="--md:.25s">
           <span class="who"><span data-es>Lo pones tú</span><span data-en>You bring it</span></span>
-          <b><span data-es>Tus manuales</span><span data-en>Your manuals</span></b>
-          <p><span data-es>Nos pasas la documentación con la que ya trabaja tu equipo.</span><span data-en>You hand over the documentation your team already works from.</span></p>
+          <b><span data-es>Tus fincas y tus normas</span><span data-en>Your buildings and your rules</span></b>
+          <p><span data-es>Nos pasas la lista de edificios, los proveedores con los que trabajáis y cómo resolvéis cada cosa.</span><span data-en>You hand over the list of buildings, the suppliers you work with and how you resolve each thing.</span></p>
         </div>
       </div>
       <div class="lv-step">
         <div class="lv-mk" style="--md:.75s">02</div>
         <div class="lv-card" style="--md:.85s">
           <span class="who"><span data-es>Juntos</span><span data-en>Together</span></span>
-          <b><span data-es>Dos horas con tus técnicos</span><span data-en>Two hours with your techs</span></b>
-          <p><span data-es>Recogemos cómo resuelve tu gente los avisos del día a día.</span><span data-en>We capture how your senior people actually handle day to day jobs.</span></p>
+          <b><span data-es>Dos horas con tu oficina</span><span data-en>Two hours with your office</span></b>
+          <p><span data-es>Recogemos cómo atendéis las llamadas del día a día, con vuestras palabras.</span><span data-en>We capture how your team handles the day to day calls, in your words.</span></p>
         </div>
       </div>
       <div class="lv-step">
         <div class="lv-mk" style="--md:1.35s">03</div>
         <div class="lv-card" style="--md:1.45s">
           <span class="who"><span data-es>Lo hacemos nosotros</span><span data-en>We handle it</span></span>
-          <b><span data-es>Tu línea, en marcha</span><span data-en>Your line, live</span></b>
-          <p><span data-es>Conectado a tu CRM o ERP: cada aviso entra en tu sistema desde el primer día.</span><span data-en>Connected to your CRM or ERP: every job lands in your system from day one.</span></p>
+          <b><span data-es>Empezamos a coger el teléfono</span><span data-en>We start answering the phone</span></b>
+          <p><span data-es>Conectado a tu sistema: cada aviso entra desde el primer día.</span><span data-en>Connected to your system: every report lands from day one.</span></p>
         </div>
       </div>
     </div>
@@ -619,6 +673,18 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')d.classList.
     es.forEach(function(e){ v.fin=e.isIntersecting; });
     pinta();
   },{rootMargin:'0px 0px -8% 0px'}).observe(fin);
+})();
+</script>
+
+
+<script>
+/* La tarjeta sigue el guion del clip: en llamada mientras trabaja, resuelto al terminar. */
+(function(){
+  var v=document.querySelector('.lv-frame video'), c=document.getElementById('voCard');
+  if(!v||!c) return;
+  var CORTE=6.5;
+  function pinta(){ var ok=v.currentTime>=CORTE; c.classList.toggle('ok',ok); c.classList.toggle('on',!ok); }
+  pinta(); v.addEventListener('timeupdate',pinta); v.addEventListener('seeked',pinta);
 })();
 </script>
 <script src="/assets/pulido.js" defer></script>
