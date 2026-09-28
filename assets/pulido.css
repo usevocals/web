@@ -1,0 +1,86 @@
+/* Vocals · capa de pulido (auditoría de diseño, sept. 2026)
+   Se carga DESPUÉS del CSS propio de cada página. Todo lo que hay aquí se
+   retira quitando el <link>; no hay nada en otro sitio que dependa de esto.
+   Curvas: las mismas del sitio (--ease-out .23,1,.32,1 · --ease-io .77,0,.175,1). */
+
+/* ── 1 · Foco visible para teclado ─────────────────────────────────────────
+   No había ni un :focus-visible en todo el sitio: navegando con tabulador no
+   se sabía dónde estabas. El contorno sigue el radio de cada elemento. */
+:focus-visible{outline:2px solid var(--violet,#7B6FE0);outline-offset:3px}
+.vi:focus-visible{outline-offset:4px}
+
+/* ── 2 · Respuesta al pulsar en las landings ───────────────────────────────
+   La home ya la tenía; las landings no. 0.97, dentro de la transición de
+   transform que estos botones ya declaran. */
+.lv-btn:active,.lv-btn2:active,.sb-btn:active{transform:scale(.97)}
+
+/* ── 3 · Hover solo con ratón ──────────────────────────────────────────────
+   En pantallas táctiles un :hover que desplaza se queda "pegado" tras tocar. */
+@media (hover:none){
+  .lv-btn:hover,.lv-btn2:hover,.sb-btn:hover,.lv-pil:hover,.cta:hover,
+  .frow:hover h3,.vi:hover .media img{transform:none}
+}
+
+/* ── 4 · Cabecera y pie de las landings alineados con el contenido ──────────
+   Usaban el contenedor de 760px de las páginas legales; el contenido va a
+   1120px, así que el logo quedaba 180px a la derecha del titular. */
+body:has(.lv-pillars) header .wrap,
+body:has(.lv-pillars) footer .wrap{max-width:1120px}
+
+/* ── 5 · "Empezar" en la home ──────────────────────────────────────────────
+   El titular salía al 55%: `.vsetup .sec` ganaba por especificidad a la regla
+   que lo quería blanco. */
+.vsetup h2.sec{color:var(--paper)}
+
+/* ── 6 · Datos del hero en móvil ───────────────────────────────────────────
+   "+1M llamadas / <14 días" se partía a mitad de dato. Cada uno en su línea. */
+@media (max-width:640px){
+  .topline .tl-sep{flex-basis:100%;height:0;margin:0;overflow:hidden;font-size:0}
+}
+
+/* ── 7 · Tarjetas de sector de la home ─────────────────────────────────────
+   El velo blanco al 82% dejaba la foto casi invisible y el nombre calado
+   sobre niebla; en móvil (sin hover) nunca se llegaba a ver la foto. Ahora la
+   foto manda y el nombre va abajo, sobre un degradado. */
+.vi .veil{
+  background:linear-gradient(to top,rgba(22,19,15,.80) 0%,rgba(22,19,15,.38) 36%,rgba(22,19,15,0) 62%)!important;
+  opacity:1!important}
+.vi .kn{
+  align-items:flex-end;justify-content:flex-start;text-align:left;padding:0 22px 19px;
+  background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;
+  -webkit-text-fill-color:#fff!important;color:#fff!important;
+  text-shadow:0 1px 16px rgba(0,0,0,.3);font-size:clamp(20px,1.75vw,25px);line-height:1.08}
+.vi .soon{
+  background:rgba(22,19,15,.40);color:#fff;border-color:rgba(255,255,255,.24);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+/* avance en vídeo al pasar el ratón (lo inserta pulido.js detrás del degradado) */
+.vi .pv-prev{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity .45s var(--ease-out)}
+.vi.pv-on .pv-prev{opacity:1}
+
+/* ── 8 · Panel "lo que queda registrado" ───────────────────────────────────
+   Estaba vacío unos 3–7 s hasta que la llamada llegaba a cada dato. La
+   coreografía se mantiene (mismos retardos), pero la estructura se ve desde
+   el principio: etiquetas visibles, hueco esbozado, y solo el valor entra. */
+.lv-row{animation-name:none!important;opacity:1!important;transform:none!important;position:relative}
+.lv-row .ck,.lv-row .val{opacity:0;transform:translateX(10px)}
+.lv-row .ck{transform:scale(.6)}
+.play .lv-row .ck,.play .lv-row .val{animation:pvfill .45s var(--ease-out) forwards;animation-delay:inherit}
+.lv-row::after{content:"";position:absolute;left:134px;top:50%;height:7px;width:32%;max-width:190px;
+  border-radius:4px;background:rgba(246,243,238,.08);transform:translateY(-50%)}
+.play .lv-row::after{animation:pvskel .25s ease forwards;animation-delay:inherit}
+@keyframes pvfill{to{opacity:1;transform:none}}
+@keyframes pvskel{to{opacity:0}}
+
+/* ── 9 · Transición entre páginas ──────────────────────────────────────────
+   Al entrar en un sector desde la home, la foto de la tarjeta se convierte en
+   el vídeo del hero de la landing (View Transitions entre documentos). Donde
+   el navegador no lo soporta, navega igual que siempre. */
+@view-transition{navigation:auto}
+::view-transition-group(*){animation-duration:.52s;animation-timing-function:cubic-bezier(.77,0,.175,1)}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.26s;animation-timing-function:ease}
+@media (prefers-reduced-motion:reduce){
+  @view-transition{navigation:none}
+  .lv-row .ck,.lv-row .val{transform:none}
+  .vi .pv-prev{transition:none}
+}
