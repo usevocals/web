@@ -6,8 +6,8 @@
    - Conversión "Reserva de llamada": clic en cualquier enlace a cal.com.
    - Cualquier elemento con [data-cookie-prefs] vuelve a abrir el banner. */
 (function () {
-  var AW = 'AW-18484133424';
-  var RESERVA = AW + '/waUECJTqwosdELD89e1E';
+  var AW = 'AW-18453000788';
+  var RESERVA = AW + '/XKm6CJH6wYsdENTkid9E';
   var CLAVE = 'vocals-consent';
 
   function leer() { try { return localStorage.getItem(CLAVE); } catch (e) { return null; } }
