@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/assets/medicion.js" async></script>
+<title>Vocals - AI voice agents for HVAC and refrigeration</title>
+<meta name="description" content="Your technician reads out the error code and a voice agent walks them through the fix with each manufacturer’s manual and your senior techs’ know-how.">
+<link rel="canonical" href="https://usevocals.com/hvac/">
+<link rel="alternate" hreflang="en" href="https://usevocals.com/hvac/">
+<link rel="alternate" hreflang="es" href="https://usevocals.com/es/climatizacion/">
+
+
+<link rel="alternate" hreflang="x-default" href="https://usevocals.com/hvac/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F6F3EE; --ink:#16130F; --dim:#7C7468; --violet:#7B6FE0; --rule:rgba(22,19,15,.16); --rule-soft:rgba(22,19,15,.08)}
+  *{margin:0; padding:0; box-sizing:border-box}
+  html[lang="es"] [data-en]{display:none !important}
+  html[lang="en"] [data-es]{display:none !important}
+  body{background:var(--paper); color:var(--ink); font-family:Inter,-apple-system,sans-serif; line-height:1.7; font-size:15.5px}
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px}
+  header{border-bottom:1px solid var(--rule); padding:18px 0}
+  header .wrap{display:flex; justify-content:space-between; align-items:center; gap:14px}
+  header a.logo{color:var(--ink); text-decoration:none; font-weight:800; letter-spacing:-.02em; font-size:19px}
+  .hright{display:flex; align-items:center; gap:16px}
+  .lang{display:flex; border:1px solid var(--rule); border-radius:999px; padding:3px}
+  .lang button{border:none; background:transparent; font-family:'Spline Sans Mono',monospace; font-size:11px; font-weight:600; color:var(--dim); padding:5px 10px; border-radius:999px; cursor:pointer}
+  .lang button.on{background:var(--ink); color:var(--paper)}
+  header a.back{font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); text-decoration:none}
+  main{padding:60px 0 90px}
+  .k{font-family:'Spline Sans Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--violet); margin-bottom:14px}
+  h1{font-size:clamp(30px,4.5vw,42px); font-weight:800; letter-spacing:-.03em; line-height:1.1; margin-bottom:10px}
+  .upd{font-family:'Spline Sans Mono',monospace; font-size:11px; color:var(--dim); margin-bottom:44px}
+  h2{font-size:19px; font-weight:700; letter-spacing:-.01em; margin:38px 0 10px}
+  p, li{color:#3E3830; margin-bottom:12px}
+  ul{padding-left:22px; margin-bottom:12px}
+  strong{color:var(--ink)}
+  a{color:var(--violet)}
+  .box{border:1px solid var(--rule); border-radius:14px; padding:20px 22px; background:#FCFAF7; margin:18px 0}
+  .box p{margin-bottom:6px}
+  footer{border-top:1px solid var(--rule); padding:26px 0; font-family:'Spline Sans Mono',monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--dim)}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px}
+  footer a{color:var(--dim); text-decoration:none}
+  footer a:hover{color:var(--ink)}
+
+  /* ============ ELEVATORS: sistema visual ============ */
+  :root{--ease-out:cubic-bezier(.23,1,.32,1); --violet-soft:rgba(123,111,224,.10); --card:#FCFAF7; --paper2:#EFEBE4}
+  .lv-wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);transition-delay:var(--d,0s)}
+  .rv.in{opacity:1;transform:none}
+
+  /* ---- hero ---- */
+  .lv-hero{position:relative;padding:64px 0 76px;overflow:hidden}
+  .lv-hero-in{display:block}
+  .lv-eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:'Spline Sans Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--violet);background:var(--violet-soft);border:1px solid rgba(123,111,224,.18);border-radius:100px;padding:6px 14px;margin-bottom:22px}
+  .lv-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--violet);animation:lvpulse 1.8s infinite}
+  @keyframes lvpulse{0%{box-shadow:0 0 0 0 rgba(123,111,224,.45)}70%{box-shadow:0 0 0 7px rgba(123,111,224,0)}100%{box-shadow:0 0 0 0 rgba(123,111,224,0)}}
+  .lv-hero h1{font-size:clamp(36px,4.6vw,58px);line-height:1.02;letter-spacing:-.038em;font-weight:800}
+  .lv-hero h1 em{font-style:italic;color:var(--violet)}
+  .lv-lead{font-size:clamp(15.5px,1.35vw,18px);line-height:1.62;color:var(--dim);max-width:600px;margin-top:20px}
+  .lv-cta{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:32px}
+  .lv-btn{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff;border:0;border-radius:100px;padding:15px 26px;font:inherit;font-size:15.5px;font-weight:600;cursor:pointer;text-decoration:none;transition:transform .18s var(--ease-out),box-shadow .18s}
+  .lv-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(22,19,15,.18)}
+  .lv-link{font-size:15px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--rule);padding-bottom:2px}
+  /* --- agendar llamada: boton secundario y boton que acompana el scroll --- */
+  .lv-btn2{display:inline-flex; align-items:center; gap:9px; background:transparent;
+    color:var(--ink); border:1.5px solid rgba(22,19,15,.3); border-radius:100px;
+    padding:13.5px 24px; font:inherit; font-size:15.5px; font-weight:600;
+    text-decoration:none; transition:border-color .25s var(--ease-out), transform .25s var(--ease-out)}
+  .lv-btn2:hover{border-color:var(--ink); transform:translateY(-2px)}
+  .sb{position:fixed; z-index:60; opacity:0; visibility:hidden; transform:translateY(16px);
+    transition:opacity .3s var(--ease-out), transform .3s var(--ease-out), visibility .3s}
+  .sb.on{opacity:1; visibility:visible; transform:none}
+  .sb-btn{display:inline-flex; align-items:center; justify-content:center; gap:9px;
+    background:var(--ink); color:var(--paper); border-radius:100px; font:inherit;
+    font-size:15.5px; font-weight:600; padding:15px 26px; text-decoration:none;
+    box-shadow:0 12px 32px rgba(22,19,15,.26);
+    transition:transform .25s var(--ease-out)}
+  .sb-btn:hover{transform:translateY(-2px)}
+  @media(min-width:821px){ .sb{right:26px; bottom:26px} }
+  @media(max-width:820px){
+    .sb{left:0; right:0; bottom:0; background:rgba(246,243,238,.9);
+      -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+      border-top:1px solid var(--rule);
+      padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
+    .sb-btn{display:flex; width:100%; box-shadow:none}
+  }
+  @media(prefers-reduced-motion:reduce){ .sb{transition:none} .sb-btn:hover,.lv-btn2:hover{transform:none} }
+
+
+  .lv-link:hover{border-color:var(--violet);color:var(--violet)}
+
+  .lv-stage{position:relative;max-width:1000px;margin:56px auto 0}
+  .lv-frame{position:relative;border-radius:22px;overflow:hidden;border:1px solid rgba(22,19,15,.14);box-shadow:0 30px 80px rgba(22,19,15,.24);background:var(--paper2,#EFEBE4)}
+  .lv-frame video{display:block;width:100%;height:auto}
+  /* --- rotulos sobre el video del hero --- */
+  .vo{position:absolute;inset:0;pointer-events:none;font-family:Inter,-apple-system,sans-serif}
+  .vo::after{content:"";position:absolute;inset:auto 0 0 0;height:46%;
+    background:linear-gradient(to top,rgba(22,19,15,.62),rgba(22,19,15,0));}
+  .vo>*{position:absolute;z-index:1}
+  .vo-chip{top:16px;right:16px;display:flex;align-items:center;gap:9px;padding:8px 13px;border-radius:999px;
+    background:rgba(22,19,15,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    color:#fff;font-family:'Spline Sans Mono',monospace;font-size:10.5px;letter-spacing:.16em;font-weight:500}
+  .vo-dot{width:7px;height:7px;border-radius:50%;background:#3ECF7A;box-shadow:0 0 0 3px rgba(62,207,122,.22)}
+  .vo-eq{display:inline-flex;align-items:flex-end;gap:2px;height:12px;margin-left:2px}
+  .vo-eq b{width:2.5px;background:#A99FF0;border-radius:2px;height:40%;animation:voEq 1.1s ease-in-out infinite}
+  .vo-eq b:nth-child(2){animation-delay:.2s;height:90%} .vo-eq b:nth-child(3){animation-delay:.4s;height:60%}
+  .vo-eq b:nth-child(4){animation-delay:.6s;height:75%}
+  @keyframes voEq{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1)}}
+  .vo-card{top:64px;right:16px;width:min(300px,52%);border-radius:14px;background:rgba(22,19,15,.78);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;overflow:hidden}
+  .vo-st{display:none;align-items:center;gap:12px;padding:13px 16px}
+  .vo-card.on .vo-on,.vo-card.ok .vo-ok{display:flex;animation:voIn .45s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes voIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .vo-st small{display:block;font-family:'Spline Sans Mono',monospace;font-size:9.5px;letter-spacing:.18em;
+    color:#A99FF0;margin-bottom:3px}
+  .vo-st strong{font-size:14px;font-weight:600;letter-spacing:-.01em;line-height:1.25;color:#fff}
+  .vo-st div{color:#fff}
+  .vo-st small{color:#A99FF0}
+  .vo .vo-chip{color:#fff}
+  .vo-ic{flex:0 0 28px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .vo-ic-call{background:rgba(123,111,224,.25);position:relative}
+  .vo-ic-call::before{content:"";width:9px;height:9px;border-radius:50%;background:#A99FF0;animation:voPulse 1.4s ease-out infinite}
+  @keyframes voPulse{0%{box-shadow:0 0 0 0 rgba(169,159,240,.55)}100%{box-shadow:0 0 0 9px rgba(169,159,240,0)}}
+  .vo-ic-ok{background:#3ECF7A}
+  .vo-ic-ok svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .vo-title{left:22px;bottom:20px;right:22px;color:#fff;font-weight:800;letter-spacing:-.03em;line-height:1.08;
+    font-size:clamp(20px,3.1vw,34px);text-shadow:0 2px 18px rgba(22,19,15,.45)}
+  @media(max-width:640px){
+    .vo-chip{top:10px;right:10px;padding:6px 10px;font-size:9px}
+    /* en movil el marco mide ~185px de alto: la tarjeta pisaba el titular, fuera */
+    .vo-card{display:none}
+    .vo-title{left:14px;bottom:12px;font-size:18px}
+  }
+  @media(prefers-reduced-motion:reduce){.vo-eq b,.vo-ic-call::before,.vo-st{animation:none}}
+
+
+
+
+
+
+  .lv-chip{position:absolute;top:-14px;left:-20px;display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:var(--paper);font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;border-radius:100px;padding:9px 16px;box-shadow:0 10px 26px rgba(22,19,15,.28);animation:lvfloat 5s ease-in-out infinite}
+  .lv-chip .dot{width:6px;height:6px;border-radius:50%;background:#7DFF9B}
+  @keyframes lvfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  .lv-mute{position:absolute;right:12px;bottom:12px;width:30px;height:30px;border-radius:50%;border:0;
+    background:rgba(22,19,15,.34);cursor:pointer;display:flex;align-items:center;justify-content:center;
+    backdrop-filter:blur(6px);opacity:.72;transition:opacity .2s,background .2s;padding:0}
+  .lv-mute:hover{opacity:1;background:rgba(22,19,15,.55)}
+  .lv-mute svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .lv-mute .i-on{display:none}
+  .lv-mute.on .i-off{display:none}
+  .lv-mute.on .i-on{display:block}
+  @media(max-width:960px){.lv-stage{margin-top:40px}}
+
+  /* ---- ticker ---- */
+  .lv-tick{background:var(--ink);color:var(--paper);overflow:hidden;padding:13px 0}
+  .lv-tick-in{display:flex;width:max-content;animation:lvmarq 30s linear infinite;font-family:'Spline Sans Mono',monospace;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase}
+  .lv-tick-in span{display:flex;align-items:center;gap:26px;padding-right:26px;white-space:nowrap}
+  
+  .lv-tick-in b{color:#A99FF0;font-weight:500}
+  .lv-tick-in span:nth-child(odd) b{color:var(--paper)}
+  .lv-tick-in i{font-style:normal;color:var(--violet);font-size:9px}
+  @keyframes lvmarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(max-width:700px){
+    /* pista mas corta: por encima de 4096px muchos moviles dejan la banda en blanco */
+    .lv-tick-in{font-size:11px;letter-spacing:.07em}
+    .lv-tick-in span{gap:18px;padding-right:18px}
+  }
+
+
+  .lv-idx{font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--violet);display:block;margin-bottom:10px}
+
+  /* ---- tres destinos ---- */
+  .lv-sec{padding:84px 0}
+  .lv-k{font-family:'Spline Sans Mono',monospace;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--dim);margin-bottom:20px}
+  .lv-sec h2{font-size:clamp(26px,3.2vw,40px);line-height:1.08;letter-spacing:-.03em;font-weight:800;max-width:780px}
+  .lv-sec h2 em{font-style:italic;color:var(--violet)}
+  .lv-sub{font-size:16px;line-height:1.65;color:var(--dim);max-width:640px;margin-top:14px}
+  .lv-three{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:44px}
+  .lv-opt{position:relative;border-top:2px solid var(--ink);padding:18px 4px 0}
+  .lv-opt h3{font-size:17.5px;font-weight:800;letter-spacing:-.015em}
+  .lv-opt p{font-size:14.5px;line-height:1.62;color:var(--dim);margin-top:10px;min-height:92px}
+  .lv-opt .cost{display:flex;align-items:center;gap:9px;margin-top:16px;padding-top:14px;border-top:1px dashed var(--rule);font-family:'Spline Sans Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+  .lv-opt .cost i{font-style:normal;color:var(--violet)}
+  @media(max-width:860px){.lv-three{grid-template-columns:1fr}.lv-opt p{min-height:0}}
+  .lv-fourth{margin-top:56px;background:var(--violet-soft);border:1px solid rgba(123,111,224,.2);border-radius:22px;padding:40px 42px;display:flex;align-items:center;gap:34px}
+  .lv-fourth .arr{font-size:34px;color:var(--violet);flex-shrink:0}
+  .lv-fourth p{font-size:clamp(18px,2vw,24px);line-height:1.35;letter-spacing:-.02em;font-weight:700;max-width:820px}
+  .lv-fourth p em{font-style:italic;color:var(--violet)}
+  @media(max-width:700px){.lv-fourth{flex-direction:column;align-items:flex-start;gap:14px;padding:30px 26px}}
+
+  /* ---- acto oscuro: la llamada ---- */
+  .lv-dark{background:var(--ink);color:var(--paper);padding:92px 0}
+  .lv-dark .lv-k{color:rgba(246,243,238,.55)}
+  .lv-dark h2{color:var(--paper)}
+  .lv-dark h2 em{color:#A99FF0}
+  .lv-call{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;margin-top:46px;align-items:stretch}
+  .lv-phone{background:rgba(246,243,238,.05);border:1px solid rgba(246,243,238,.12);border-radius:20px;padding:26px 24px;display:flex;flex-direction:column}
+  .lv-phone-h{display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid rgba(246,243,238,.1);font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,243,238,.6)}
+  .lv-phone-h .live{display:inline-flex;align-items:center;gap:8px;color:#7DFF9B}
+  .lv-phone-h .live .dot{width:6px;height:6px;border-radius:50%;background:#7DFF9B;animation:lvpulse 1.6s infinite}
+  .lv-msgs{display:flex;flex-direction:column;gap:13px;padding-top:20px;flex:1}
+  .lv-msg{max-width:88%;border-radius:14px;padding:12px 15px;font-size:14.5px;line-height:1.5;opacity:0;transform:translateY(12px)}
+  .play .lv-msg{animation:lvmsg .55s var(--ease-out) forwards}
+  @keyframes lvmsg{to{opacity:1;transform:none}}
+  .lv-msg.tech{background:rgba(246,243,238,.10);align-self:flex-start}
+  .lv-msg.bot{background:#7B6FE0;color:#fff;align-self:flex-end}
+  .lv-msg .who{display:block;font-family:'Spline Sans Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;opacity:.65;margin-bottom:5px}
+  .lv-listen{margin-top:20px;display:inline-flex;align-items:center;gap:10px;align-self:flex-start;background:transparent;border:1px solid rgba(246,243,238,.3);color:var(--paper);border-radius:100px;padding:11px 20px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s,border-color .2s}
+  .lv-listen:hover{background:rgba(246,243,238,.08);border-color:rgba(246,243,238,.6)}
+  .lv-crm{background:rgba(246,243,238,.05);border:1px solid rgba(246,243,238,.12);border-radius:20px;padding:26px 24px;display:flex;flex-direction:column}
+  .lv-crm-h{font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,243,238,.6);padding-bottom:16px;border-bottom:1px solid rgba(246,243,238,.1)}
+  .lv-rows{display:flex;flex-direction:column;padding-top:8px;flex:1}
+  .lv-row{display:flex;align-items:center;gap:12px;padding:13px 2px;border-bottom:1px solid rgba(246,243,238,.07);opacity:0;transform:translateX(14px)}
+  .play .lv-row{animation:lvrow .5s var(--ease-out) forwards}
+  @keyframes lvrow{to{opacity:1;transform:none}}
+  .lv-row .ck{width:20px;height:20px;border-radius:50%;background:rgba(125,255,155,.14);color:#7DFF9B;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+  .lv-row .lab{font-family:'Spline Sans Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,243,238,.55);width:86px;flex-shrink:0}
+  .lv-row .val{font-size:14.5px;font-weight:600}
+  .lv-crm-f{margin-top:18px;font-size:13px;line-height:1.55;color:rgba(246,243,238,.65)}
+  .lv-crm-f b{color:#A99FF0}
+  @media(max-width:900px){.lv-call{grid-template-columns:1fr}}
+
+  /* ---- pilares ---- */
+  .lv-pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:46px 52px;margin-top:48px}
+  .lv-pil{position:relative;border-top:2px solid var(--ink);padding:20px 4px 0}
+  .lv-pil h3{font-size:19.5px;font-weight:800;letter-spacing:-.02em}
+  .lv-pil p{font-size:14.5px;line-height:1.66;color:var(--dim);margin-top:12px}
+  .lv-note{font-size:12.5px;line-height:1.6;color:var(--dim);margin-top:14px;padding:12px 14px;background:var(--violet-soft);border-radius:12px}
+  /* --- pilares: seccion en negro y graficos dibujados --- */
+  .lv-pil{display:flex; flex-direction:column}
+  .pv-vis{margin-top:auto; padding-top:30px}
+  .pv-vis svg{display:block; width:100%; height:auto}
+  .pv-dark{border-top:1px solid rgba(246,243,238,.09)}
+  .pv-dark .lv-pil{border-top:2px solid rgba(246,243,238,.20)}
+  .pv-dark .lv-pil h3{color:var(--paper)}
+  .pv-dark .lv-pil p{color:rgba(246,243,238,.62)}
+  .pv-dark .lv-idx{color:#A99FF0}
+  .pv-dark .lv-note{background:rgba(123,111,224,.16); color:rgba(246,243,238,.72)}
+  /* el tema de los dibujos vive aqui: cambiando estas reglas cambian los 24 */
+  .pv-vis .pv-plate{fill:#fff; opacity:.045}
+  .pv-vis .pv-line{stroke:rgba(246,243,238,.45); fill:none}
+  .pv-vis .pv-tick{stroke:rgba(246,243,238,.30); fill:none; stroke-width:1}
+  .pv-vis .pv-dot{fill:rgba(246,243,238,.13)}
+  .pv-vis .pv-paper{fill:#1D1916; stroke:rgba(246,243,238,.14)}
+  .pv-vis .pv-tx{fill:#C9C1F5}
+  .pv-vis .pv-num{fill:#A99FF0}
+  .pv-vis .pv-soft{stroke:rgba(246,243,238,.55); fill:none}
+  .pv-vis .pv-soft-f{fill:rgba(246,243,238,.55)}
+  .pv-vis .pv-accS{stroke:var(--violet); fill:none}
+  .pv-vis .pv-s{stop-color:var(--violet)}
+  .pv-vis .pv-w{stop-color:rgba(246,243,238,.9)}
+  .pv-vis .pv-on{fill:#fff}
+  .pv-vis .pv-onS{stroke:#fff; fill:none}
+  @media(hover:hover){ .lv-pil{transition:transform .35s var(--ease-out)} .lv-pil:hover{transform:translateY(-3px)} }
+  @media(prefers-reduced-motion:reduce){ .lv-pil{transition:none} }
+
+  @media(max-width:860px){.lv-pillars{grid-template-columns:1fr}}
+
+  /* ---- ACE: panel de linea en directo ---- */
+  .lv-ace{position:relative;background:var(--ink);color:var(--paper);padding:96px 0;overflow:hidden}
+  .lv-ace:before{content:"";position:absolute;top:-10%;right:-5%;width:70%;height:120%;
+    background:radial-gradient(ellipse at 60% 40%,rgba(123,111,224,.20) 0%,rgba(123,111,224,.06) 40%,transparent 68%);pointer-events:none}
+  .lv-ace .lv-wrap{position:relative}
+  .lv-ace-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .lv-live{display:inline-flex;align-items:center;gap:10px;font-family:'Spline Sans Mono',monospace;font-size:10px;
+    letter-spacing:.2em;text-transform:uppercase;color:#7DFF9B;background:rgba(125,255,155,.08);
+    border:1px solid rgba(125,255,155,.22);border-radius:100px;padding:7px 15px;margin-bottom:24px}
+  .lv-live .dot{width:7px;height:7px;border-radius:50%;background:#7DFF9B;animation:lvbeat 1.8s infinite}
+  @keyframes lvbeat{0%{box-shadow:0 0 0 0 rgba(125,255,155,.5)}70%{box-shadow:0 0 0 8px rgba(125,255,155,0)}100%{box-shadow:0 0 0 0 rgba(125,255,155,0)}}
+  .lv-ace h2{font-size:clamp(27px,3.1vw,40px);line-height:1.06;letter-spacing:-.032em;font-weight:800;color:var(--paper)}
+  .lv-ace h2 em{font-style:italic;color:#A99FF0}
+  .lv-ace p{font-size:15.5px;line-height:1.68;color:rgba(246,243,238,.7);margin-top:18px;max-width:520px}
+
+  .lv-panel{border:1px solid rgba(246,243,238,.14);border-radius:22px;overflow:hidden;
+    background:linear-gradient(160deg,rgba(246,243,238,.07) 0%,rgba(246,243,238,.02) 100%);
+    box-shadow:0 30px 80px rgba(0,0,0,.4)}
+  .lv-panel-h{display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:18px 20px;border-bottom:1px solid rgba(246,243,238,.12)}
+  .lv-panel-id{display:flex;align-items:center;gap:13px}
+  .lv-panel-id .mark{width:64px;height:46px;border-radius:10px;background:var(--paper);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:5px 7px}
+  .lv-panel-id .mark img{width:100%;height:100%;object-fit:contain;display:block}
+  .lv-panel-id b{display:block;font-size:16px;font-weight:800;letter-spacing:-.015em}
+  .lv-panel-id span{display:block;font-size:12.5px;color:rgba(246,243,238,.55);margin-top:2px}
+  .lv-panel-h .st{font-family:'Spline Sans Mono',monospace;font-size:9.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:#7DFF9B;white-space:nowrap}
+  .lv-cells{display:grid;grid-template-columns:1fr 1fr}
+  .lv-cell{padding:26px 22px;border-right:1px solid rgba(246,243,238,.09);border-bottom:1px solid rgba(246,243,238,.09);transition:background .25s}
+  .lv-cell:nth-child(even){border-right:0}
+  .lv-cell:nth-child(n+3){border-bottom:0}
+  .lv-cell:hover{background:rgba(123,111,224,.08)}
+  .lv-cell .k{font-family:'Spline Sans Mono',monospace;font-size:9px;letter-spacing:.2em;
+    text-transform:uppercase;color:rgba(246,243,238,.45)}
+  .lv-cell b{display:block;font-size:clamp(30px,3.6vw,46px);font-weight:800;letter-spacing:-.035em;line-height:1;margin-top:12px}
+  .lv-cell b i{font-style:normal;color:#A99FF0}
+  .lv-cell span{display:block;font-size:12.5px;line-height:1.5;color:rgba(246,243,238,.6);margin-top:9px}
+  @media(max-width:900px){.lv-ace-grid{grid-template-columns:1fr;gap:40px}}
+
+  /* ---- puesta en marcha: pista que se dibuja ---- */
+  .lv-steps{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:58px}
+  .lv-rail{position:absolute;top:16px;left:17px;right:calc(33.333% - 36px);height:3px;background:var(--rule-soft);border-radius:3px;overflow:hidden}
+  .lv-rail i{display:block;height:100%;width:0;border-radius:3px;
+    background:linear-gradient(90deg,var(--violet) 0%,var(--violet) 55%,#3E8E5A 100%);
+    transition:width 1.7s var(--ease-out) .15s}
+  .go .lv-rail i{width:100%}
+  .lv-step{position:relative}
+  .lv-mk{position:relative;z-index:3;width:35px;height:35px;border-radius:50%;background:var(--paper);
+    border:2.5px solid var(--rule);display:flex;align-items:center;justify-content:center;
+    font-family:'Spline Sans Mono',monospace;font-size:11px;font-weight:600;color:var(--dim);
+    transition:border-color .5s var(--ease-out),color .5s,background .5s,transform .5s var(--ease-out);
+    transition-delay:var(--md,0s)}
+  .go .lv-mk{border-color:var(--violet);color:var(--violet);background:#EAE7F8;transform:scale(1.1)}
+  .go .lv-step:last-child .lv-mk{border-color:#3E8E5A;color:#3E8E5A;background:#E2EFE7}
+  .go .lv-step:last-child .lv-mk:after{content:"";position:absolute;inset:-3px;border-radius:50%;
+    border:2px solid rgba(62,142,90,.5);animation:lvring 2.2s ease-out infinite 1.8s}
+  @keyframes lvring{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.55);opacity:0}}
+  .lv-card{margin-top:22px;background:var(--card);border:1px solid var(--rule-soft);border-radius:16px;
+    padding:22px 20px;opacity:0;transform:translateY(20px);
+    transition:opacity .7s var(--ease-out),transform .7s var(--ease-out),box-shadow .3s,border-color .3s;
+    transition-delay:var(--md,0s)}
+  .go .lv-card{opacity:1;transform:none}
+  /* todas las tarjetas de una fila, a la misma altura, sin depender del texto */
+  .lv-step{display:flex; flex-direction:column}
+  .lv-step .lv-card{flex:1 1 auto}
+  .lv-three{align-items:stretch}
+  .lv-opt{display:flex; flex-direction:column}
+  .lv-card:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(22,19,15,.11);border-color:rgba(123,111,224,.38)}
+  .lv-card .who{font-family:'Spline Sans Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--violet);background:var(--violet-soft);border-radius:100px;padding:4px 10px;display:inline-block}
+  .lv-card b{display:block;font-size:17px;letter-spacing:-.015em;margin-top:13px}
+  .lv-card p{font-size:14px;line-height:1.62;color:var(--dim);margin-top:9px}
+  @media(max-width:820px){.lv-steps{grid-template-columns:1fr;gap:22px}.lv-rail{display:none}}
+
+
+  /* movil: menos aire entre secciones */
+  @media(max-width:700px){
+    .lv-hero{padding:44px 0 50px}
+    .lv-sec{padding:54px 0}
+    .lv-dark{padding:58px 0}
+    .lv-ace{padding:58px 0}
+    .lv-end{padding:60px 0 72px}
+    .lv-stage{margin-top:32px}
+    .lv-three{gap:28px;margin-top:30px}
+    .lv-fourth{margin-top:34px;padding:26px 22px}
+    .lv-call{gap:20px;margin-top:30px}
+    .lv-pillars{gap:32px;margin-top:32px}
+    .lv-ace-grid{gap:28px}
+    .lv-steps{margin-top:32px}
+    .lv-cta{margin-top:26px;gap:12px}
+    .lv-lead{margin-top:16px}
+  }
+
+  /* ---- cierre ---- */
+  .lv-end{padding:96px 0 110px;text-align:center}
+  .lv-end h2{font-size:clamp(30px,4vw,52px);line-height:1.05;letter-spacing:-.035em;font-weight:800;max-width:820px;margin:0 auto}
+  .lv-end h2 em{font-style:italic;color:var(--violet)}
+  .lv-end .lv-cta{justify-content:center;margin-top:36px}
+
+
+  /* selector de idioma */
+  .lang{position:relative;display:inline-flex;border:0;background:none;padding:0}
+  .lang>button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--rule);
+    background:rgba(252,250,247,.7);border-radius:999px;padding:6px 11px;cursor:pointer;
+    font-family:'Spline Sans Mono',monospace;font-size:10.5px;font-weight:600;color:var(--ink);
+    transition:border-color .2s,background .2s}
+  .lang>button:hover,.lang.open>button{border-color:var(--ink)}
+  .lang>button svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.5}
+  .lang>button .cv{width:7px;height:7px;stroke:currentColor;fill:none;stroke-width:2;
+    transition:transform .25s var(--ease-out)}
+  .lang.open>button .cv{transform:rotate(180deg)}
+  .langmenu{position:absolute;top:calc(100% + 10px);right:0;min-width:150px;background:var(--card);
+    border:1px solid var(--rule);border-radius:14px;padding:6px;z-index:60;
+    box-shadow:0 18px 44px rgba(22,19,15,.16);opacity:0;visibility:hidden;transform:translateY(-6px);
+    transition:opacity .2s var(--ease-out),transform .2s var(--ease-out),visibility .2s}
+  .lang.open .langmenu{opacity:1;visibility:visible;transform:none}
+  .langmenu a{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:9px 11px;border-radius:9px;color:var(--ink);font-size:13.5px;font-weight:600;
+    text-decoration:none;transition:background .18s}
+  .langmenu a:hover{background:var(--violet-soft)}
+  .langmenu a i{font-style:normal;font-family:'Spline Sans Mono',monospace;font-size:10px;color:var(--dim)}
+  .langmenu a.on{background:var(--ink);color:var(--paper)}
+  .langmenu a.on i{color:rgba(246,243,238,.6)}
+
+</style>
+<link rel="stylesheet" href="/assets/pulido.css">
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="/"><img src="/assets/img-bff3b037.png" alt="Vocals" style="height:24px; display:block"></a>
+  <div class="hright">
+    <div class="lang" id="langSel"><button type="button" aria-label="Language" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15 0 18M12 3c-2.6 2.6-2.6 15 0 18"/></svg>EN<svg class="cv" viewBox="0 0 12 12"><path d="M2 4.5 6 8.5 10 4.5"/></svg></button><div class="langmenu"><a href="/hvac/" hreflang="en" class="on">English<i>EN</i></a><a href="/es/climatizacion/" hreflang="es">Español<i>ES</i></a></div></div><a class="back" href="/"><span data-es>&larr; Volver</span><span data-en>&larr; Back</span></a>
+  </div>
+</div></header>
+<main>
+  <!-- HERO -->
+  <section class="lv-hero"><div class="lv-wrap">
+    <div class="lv-hero-in">
+      <div class="rv in">
+        <div class="lv-eyebrow"><span class="dot"></span><span data-es>Para climatización y frío industrial</span><span data-en>For HVAC and commercial refrigeration</span></div>
+        <h1>
+          <span data-es>Una cámara frigorífica parada<br><em>no espera al lunes</em>.</span>
+          <span data-en>A cold room that’s down<br><em>won’t wait for Monday</em>.</span>
+        </h1>
+        <p class="lv-lead">
+          <span data-es>Tu técnico llama desde el equipo, dice el código de error y un agente de voz le guía paso a paso con los manuales de cada fabricante y lo que saben tus técnicos senior.</span>
+          <span data-en>Your technician calls from the unit, reads out the error code and a voice agent walks them through it with each manufacturer’s manual and your senior technicians’ know-how.</span>
+        </p>
+        <div class="lv-cta">
+          <a class="lv-btn" href="https://demo.usevocals.com/?lang=en" data-en>Get a live demo &rarr;</a>
+          <a class="lv-btn" href="https://demo.usevocals.com/?lang=es" data-es>Prueba la demo en vivo &rarr;</a>
+          <a class="lv-btn2" href="https://cal.com/vocals/30min" target="_blank" rel="noopener" data-en>Book a call</a>
+          <a class="lv-btn2" href="https://cal.com/vocals/30-min-esp" target="_blank" rel="noopener" data-es>Agenda una llamada</a>
+        </div>
+      </div>
+      <div class="lv-stage rv in" style="--d:.15s">
+        <div class="lv-frame lv-foto" style="view-transition-name:sec-hvac">
+          <img src="/sectores/climatizacion-hero.webp" alt="" width="1920" height="1080" fetchpriority="high">
+          <div class="vo" aria-hidden="true">
+            <div class="vo-chip"><i class="vo-dot"></i>VOCALS &middot; TECH SUPPORT <span class="vo-eq"><b></b><b></b><b></b><b></b></span></div>
+            <div class="vo-card on">
+              <div class="vo-st vo-on"><span class="vo-ic vo-ic-call"></span><div><small><span data-es>EN LLAMADA</span><span data-en>ON CALL</span></small><strong><span data-es>Vocals está guiando al técnico</span><span data-en>Vocals is guiding the technician</span></strong></div></div>
+            </div>
+            <div class="vo-title"><span data-es>El técnico senior,<br>en cada llamada.</span><span data-en>The senior technician,<br>on every call.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- TICKER -->
+  <div class="lv-tick"><div class="lv-tick-in" id="lvTick">
+    <span><b data-es>atendido al primer tono</b><b data-en>answered on the first ring</b> <i>&#9679;</i></span>
+    <span><b data-es>24/7 incluidos festivos</b><b data-en>24/7 including holidays</b> <i>&#9679;</i></span>
+    <span><b data-es>más de 30 llamadas a la vez</b><b data-en>over 30 calls at once</b> <i>&#9679;</i></span>
+    <span><b data-es>sin colas ni tono de ocupado</b><b data-en>no queues, no busy tone</b> <i>&#9679;</i></span>
+    <span><b data-es>más de 1M de llamadas en producción</b><b data-en>over 1M calls in production</b> <i>&#9679;</i></span>
+    <span><b data-es>todo escrito en tu sistema</b><b data-en>everything written into your system</b> <i>&#9679;</i></span>
+    <span><b data-es>entrenado con tus documentos</b><b data-en>trained on your documents</b> <i>&#9679;</i></span>
+    <span><b data-es>en marcha en menos de 14 días</b><b data-en>live in under 14 days</b> <i>&#9679;</i></span>
+  </div></div>
+
+  <!-- TRES DESTINOS -->
+  <section class="lv-sec"><div class="lv-wrap">
+    <div class="lv-k rv"><span data-es>El problema</span><span data-en>The problem</span></div>
+    <h2 class="rv"><span data-es>Cuando un técnico se atasca con un equipo, hoy tiene <em>tres salidas</em>.</span><span data-en>When a technician gets stuck on a unit, today they have <em>three ways out</em>.</span></h2>
+    <p class="lv-sub rv"><span data-es>Las tres cuestan tiempo, y en frío el tiempo es género que se pierde.</span><span data-en>All three cost time, and in refrigeration, time is stock you lose.</span></p>
+    <div class="lv-three">
+      <div class="lv-opt rv"><span class="lv-idx">01</span>
+        <h3><span data-es>Llamar al técnico senior</span><span data-en>Call the senior technician</span></h3>
+        <p><span data-es>Conoce cada equipo, pero está en otra avería, en otra llamada o sin cobertura. Y cada vez que le llamas, paras su trabajo.</span><span data-en>They know every unit, but they are on another job, on another call or out of signal. And every time you call, you stop their work.</span></p>
+        <div class="cost"><i>&#9679;</i><span data-es>una sola persona &middot; siempre ocupada</span><span data-en>one person &middot; always busy</span></div>
+      </div>
+      <div class="lv-opt rv" style="--d:.12s"><span class="lv-idx">02</span>
+        <h3><span data-es>Buscar el código en el manual</span><span data-en>Look up the code in the manual</span></h3>
+        <p><span data-es>Cada fabricante tiene sus códigos y su manual. Si lo encuentra, si es el modelo correcto y si está actualizado.</span><span data-en>Every manufacturer has its own codes and its own manual. If they find it, if it is the right model and if it is up to date.</span></p>
+        <div class="cost"><i>&#9679;</i><span data-es>lento &middot; rara vez resuelve</span><span data-en>slow &middot; rarely solves it</span></div>
+      </div>
+      <div class="lv-opt rv" style="--d:.24s"><span class="lv-idx">03</span>
+        <h3><span data-es>Volver otro día con el repuesto</span><span data-en>Come back another day with the part</span></h3>
+        <p><span data-es>El equipo sigue parado, el cliente perdiendo género y el desplazamiento se paga dos veces.</span><span data-en>The unit stays down, the customer keeps losing stock and you pay for the trip twice.</span></p>
+        <div class="cost"><i>&#9679;</i><span data-es>el más caro de los tres</span><span data-en>the most expensive of the three</span></div>
+      </div>
+    </div>
+    <div class="lv-fourth rv">
+      <span class="arr">&rarr;</span>
+      <p><span data-es>Un agente de voz no es un cuarto sitio al que llamar. Es el primero que <em>conoce todos tus equipos</em>, coge siempre y no interrumpe a nadie.</span><span data-en>A voice agent is not a fourth place to call. It is the first one that <em>knows every unit you service</em>, always picks up and interrupts nobody.</span></p>
+    </div>
+  </div></section>
+  <!-- ACTO OSCURO: LA LLAMADA -->
+  <section class="lv-dark" id="lvDark"><div class="lv-wrap">
+    <div class="lv-k rv"><span data-es>Así suena</span><span data-en>What it sounds like</span></div>
+    <h2 class="rv"><span data-es>Así suena una llamada. <em>Del código de error a la cámara enfriando.</em></span><span data-en>One call, start to finish. <em>From error code to a cold room cooling.</em></span></h2>
+    <div class="lv-call">
+      <div class="lv-phone rv">
+        <div class="lv-phone-h"><span data-es>Línea técnica</span><span data-en>Technical line</span><span class="live"><span class="dot"></span>LIVE</span></div>
+        <div class="lv-msgs">
+          <div class="lv-msg tech" style="animation-delay:0.3s"><span class="who" data-es>Técnico</span><span class="who" data-en>Technician</span><span data-es>Cámara de congelado de un supermercado. El compresor arranca y a los pocos segundos para por alta presión.</span><span data-en>Freezer room at a supermarket. The compressor starts and trips on high pressure a few seconds later.</span></div>
+          <div class="lv-msg bot" style="animation-delay:1.1s"><span class="who">Vocals</span><span data-es>¿Giran los ventiladores del condensador cuando arranca? ¿Cómo ves la batería?</span><span data-en>Are the condenser fans turning when it starts? How does the coil look?</span></div>
+          <div class="lv-msg tech" style="animation-delay:1.9s"><span class="who" data-es>Técnico</span><span class="who" data-en>Technician</span><span data-es>Uno no gira. Y la batería está bastante sucia.</span><span data-en>One isn’t turning. And the coil is pretty dirty.</span></div>
+          <div class="lv-msg bot" style="animation-delay:2.7s"><span class="who">Vocals</span><span data-es>Ahí lo tienes: con un ventilador parado y la batería sucia, la presión sube y salta el presostato de alta. Limpia la batería y revisa el condensador de arranque de ese ventilador.</span><span data-en>That’s it: with a fan stopped and a dirty coil, the pressure rises and the high-pressure switch trips. Clean the coil and check that fan’s start capacitor.</span></div>
+        </div>
+      </div>
+      <div class="lv-crm rv" style="--d:.15s">
+        <div class="lv-crm-h"><span data-es>Lo que queda registrado</span><span data-en>What gets recorded</span></div>
+        <div class="lv-rows">
+          <div class="lv-row" style="animation-delay:3.3s"><span class="ck">&#10003;</span><span class="lab" data-es>Equipo</span><span class="lab" data-en>Unit</span><span class="val"><span data-es>Unidad de congelado</span><span data-en>Freezer condensing unit</span></span></div>
+          <div class="lv-row" style="animation-delay:3.7s"><span class="ck">&#10003;</span><span class="lab" data-es>Avería</span><span class="lab" data-en>Fault</span><span class="val"><span data-es>Paro por alta presión</span><span data-en>High-pressure trip</span></span></div>
+          <div class="lv-row" style="animation-delay:4.1s"><span class="ck">&#10003;</span><span class="lab" data-es>Causa</span><span class="lab" data-en>Cause</span><span class="val"><span data-es>Ventilador parado y batería sucia</span><span data-en>Stopped fan, dirty coil</span></span></div>
+          <div class="lv-row" style="animation-delay:4.5s"><span class="ck">&#10003;</span><span class="lab" data-es>Urgencia</span><span class="lab" data-en>Urgency</span><span class="val"><span data-es>Alta &middot; producto congelado</span><span data-en>High &middot; frozen stock</span></span></div>
+          <div class="lv-row" style="animation-delay:4.9s"><span class="ck">&#10003;</span><span class="lab" data-es>Resuelto</span><span class="lab" data-en>Resolved</span><span class="val"><span data-es>En la primera visita</span><span data-en>On the first visit</span></span></div>
+        </div>
+        <div class="lv-crm-f"><span data-es>Cada llamada queda registrada con su equipo, su avería y su solución. <b>Ese conocimiento se queda en tu empresa</b>, no en la cabeza de dos personas.</span><span data-en>Every call is recorded with its machine, its fault and its fix. <b>That knowledge stays in your company</b>, not in two people’s heads.</span></div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- PILARES -->
+  <section class="lv-sec lv-dark pv-dark"><div class="lv-wrap">
+    <div class="lv-k rv"><span data-es>Qué lo hace distinto</span><span data-en>What makes it different</span></div>
+    <h2 class="rv"><span data-es>Cuatro cosas que un manual en PDF <em>no puede</em> hacer.</span><span data-en>Four things a PDF manual <em>cannot</em> do.</span></h2>
+    <div class="lv-pillars">
+      <div class="lv-pil rv"><span class="lv-idx">01</span>
+        <h3><span data-es>Conoce todas tus marcas</span><span data-en>It knows every brand you service</span></h3>
+        <p><span data-es>Se entrena con los manuales y los códigos de error de cada fabricante con el que trabajas, y con el saber hacer de tus técnicos senior.</span><span data-en>It is trained on the manuals and error codes of every manufacturer you work with, and on your senior technicians’ know-how.</span></p>
+        <div class="pv-vis"><svg viewBox="0 0 480 162" width="480" height="162" aria-hidden="true" focusable="false"><defs><radialGradient id="pvh1" cx=".5" cy=".5" r=".5"><stop offset="0" class="pv-s" stop-opacity=".55"/><stop offset="1" class="pv-s" stop-opacity="0"/></radialGradient><linearGradient id="pvl1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="pv-s" stop-opacity=".06"/><stop offset="1" class="pv-s" stop-opacity=".9"/></linearGradient><linearGradient id="pvv1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="pv-w" stop-opacity=".22"/><stop offset="1" class="pv-w" stop-opacity="0"/></linearGradient><pattern id="pvp1" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="1.1" cy="1.1" r="1.1" class="pv-dot"/></pattern></defs><rect x=".5" y=".5" width="479" height="161" rx="18" class="pv-plate"/><rect x=".5" y=".5" width="479" height="161" rx="18" fill="url(#pvp1)" opacity=".5" stroke="none"/><rect x=".5" y=".5" width="479" height="161" rx="18" fill="none" stroke-width="1" class="pv-line"/><path d="M17 17 h8 M17 17 v8" class="pv-tick"/><path d="M463 17 h-8 M463 17 v8" class="pv-tick"/><path d="M17 145 h8 M17 145 v-8" class="pv-tick"/><path d="M463 145 h-8 M463 145 v-8" class="pv-tick"/><g transform="rotate(-11 73 81)" opacity="0.3"><rect x="36" y="33" width="74" height="96" rx="7" class="pv-paper" stroke-width="1.2"/></g><g transform="rotate(-5.5 86 81)" opacity="0.55"><rect x="49" y="33" width="74" height="96" rx="7" class="pv-paper" stroke-width="1.2"/></g><g transform="rotate(0 99 81)" opacity="1"><rect x="62" y="33" width="74" height="96" rx="7" class="pv-paper" stroke-width="1.2"/></g><rect x="74" y="46" width="26" height="7" rx="3.5" fill="var(--violet)" opacity=".7"/><rect x="74" y="66" width="48" height="4" rx="2" fill="var(--violet)" opacity=".26"/><rect x="74" y="79" width="38" height="4" rx="2" fill="var(--violet)" opacity=".26"/><rect x="74" y="92" width="44" height="4" rx="2" fill="var(--violet)" opacity=".26"/><rect x="74" y="105" width="30" height="4" rx="2" fill="var(--violet)" opacity=".26"/><circle cx="152.0" cy="46.0" r="1.5" fill="var(--violet)" opacity="0.08"/><circle cx="152.0" cy="64.0" r="1.5" fill="var(--violet)" opacity="0.08"/><circle cx="152.0" cy="82.0" r="1.5" fill="var(--violet)" opacity="0.08"/><circle cx="152.0" cy="100.0" r="1.5" fill="var(--violet)" opacity="0.08"/><circle cx="152.0" cy="118.0" r="1.5" fill="var(--violet)" opacity="0.08"/><circle cx="164.5" cy="52.0" r="1.7" fill="var(--violet)" opacity="0.14"/><circle cx="164.5" cy="70.0" r="1.7" fill="var(--violet)" opacity="0.14"/><circle cx="164.5" cy="88.0" r="1.7" fill="var(--violet)" opacity="0.14"/><circle cx="164.5" cy="106.0" r="1.7" fill="var(--violet)" opacity="0.14"/><circle cx="164.5" cy="124.0" r="1.7" fill="var(--violet)" opacity="0.14"/><circle cx="177.0" cy="46.0" r="1.8" fill="var(--violet)" opacity="0.19"/><circle cx="177.0" cy="64.0" r="1.8" fill="var(--violet)" opacity="0.19"/><circle cx="177.0" cy="82.0" r="1.8" fill="var(--violet)" opacity="0.19"/><circle cx="177.0" cy="100.0" r="1.8" fill="var(--violet)" opacity="0.19"/><circle cx="177.0" cy="118.0" r="1.8" fill="var(--violet)" opacity="0.19"/><circle cx="189.5" cy="52.0" r="2.0" fill="var(--violet)" opacity="0.24"/><circle cx="189.5" cy="70.0" r="2.0" fill="var(--violet)" opacity="0.24"/><circle cx="189.5" cy="88.0" r="2.0" fill="var(--violet)" opacity="0.24"/><circle cx="189.5" cy="106.0" r="2.0" fill="var(--violet)" opacity="0.24"/><circle cx="189.5" cy="124.0" r="2.0" fill="var(--violet)" opacity="0.24"/><circle cx="202.0" cy="46.0" r="2.1" fill="var(--violet)" opacity="0.30"/><circle cx="202.0" cy="64.0" r="2.1" fill="var(--violet)" opacity="0.30"/><circle cx="202.0" cy="82.0" r="2.1" fill="var(--violet)" opacity="0.30"/><circle cx="202.0" cy="100.0" r="2.1" fill="var(--violet)" opacity="0.30"/><circle cx="202.0" cy="118.0" r="2.1" fill="var(--violet)" opacity="0.30"/><circle cx="214.5" cy="52.0" r="2.3" fill="var(--violet)" opacity="0.36"/><circle cx="214.5" cy="70.0" r="2.3" fill="var(--violet)" opacity="0.36"/><circle cx="214.5" cy="88.0" r="2.3" fill="var(--violet)" opacity="0.36"/><circle cx="214.5" cy="106.0" r="2.3" fill="var(--violet)" opacity="0.36"/><circle cx="214.5" cy="124.0" r="2.3" fill="var(--violet)" opacity="0.36"/><circle cx="227.0" cy="46.0" r="2.5" fill="var(--violet)" opacity="0.41"/><circle cx="227.0" cy="64.0" r="2.5" fill="var(--violet)" opacity="0.41"/><circle cx="227.0" cy="82.0" r="2.5" fill="var(--violet)" opacity="0.41"/><circle cx="227.0" cy="100.0" r="2.5" fill="var(--violet)" opacity="0.41"/><circle cx="227.0" cy="118.0" r="2.5" fill="var(--violet)" opacity="0.41"/><circle cx="239.5" cy="52.0" r="2.6" fill="var(--violet)" opacity="0.47"/><circle cx="239.5" cy="70.0" r="2.6" fill="var(--violet)" opacity="0.47"/><circle cx="239.5" cy="88.0" r="2.6" fill="var(--violet)" opacity="0.47"/><circle cx="239.5" cy="106.0" r="2.6" fill="var(--violet)" opacity="0.47"/><circle cx="239.5" cy="124.0" r="2.6" fill="var(--violet)" opacity="0.47"/><circle cx="252.0" cy="46.0" r="2.8" fill="var(--violet)" opacity="0.52"/><circle cx="252.0" cy="64.0" r="2.8" fill="var(--violet)" opacity="0.52"/><circle cx="252.0" cy="82.0" r="2.8" fill="var(--violet)" opacity="0.52"/><circle cx="252.0" cy="100.0" r="2.8" fill="var(--violet)" opacity="0.52"/><circle cx="252.0" cy="118.0" r="2.8" fill="var(--violet)" opacity="0.52"/><circle cx="360" cy="81" r="74" fill="url(#pvh1)" opacity=".5"/><polygon points="360.0,25.0 408.5,53.0 408.5,109.0 360.0,137.0 311.5,109.0 311.5,53.0" fill="none" class="pv-line" stroke-width="1" opacity=".3"/><polygon points="360.0,37.0 398.1,59.0 398.1,103.0 360.0,125.0 321.9,103.0 321.9,59.0" fill="var(--violet)"/><rect x="340.9" y="71.0" width="6.2" height="20" rx="3.1" class="pv-on" opacity=".95"/><rect x="351.4" y="60.0" width="6.2" height="42" rx="3.1" class="pv-on" opacity=".95"/><rect x="361.9" y="67.0" width="6.2" height="28" rx="3.1" class="pv-on" opacity=".95"/><rect x="372.4" y="56.0" width="6.2" height="50" rx="3.1" class="pv-on" opacity=".95"/></svg></div>
+      </div>
+      <div class="lv-pil rv" style="--d:.12s"><span class="lv-idx">02</span>
+        <h3><span data-es>Coge siempre, también de guardia</span><span data-en>It always picks up, on call too</span></h3>
+        <p><span data-es>Noches, fines de semana y picos de verano: tus técnicos de guardia siempre tienen a quién llamar.</span><span data-en>Nights, weekends and summer peaks: your on-call technicians always have someone to call.</span></p>
+        <div class="pv-vis"><svg viewBox="0 0 480 166" width="480" height="166" aria-hidden="true" focusable="false"><defs><radialGradient id="pvh2" cx=".5" cy=".5" r=".5"><stop offset="0" class="pv-s" stop-opacity=".55"/><stop offset="1" class="pv-s" stop-opacity="0"/></radialGradient><linearGradient id="pvl2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="pv-s" stop-opacity=".06"/><stop offset="1" class="pv-s" stop-opacity=".9"/></linearGradient><linearGradient id="pvv2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="pv-w" stop-opacity=".22"/><stop offset="1" class="pv-w" stop-opacity="0"/></linearGradient><pattern id="pvp2" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="1.1" cy="1.1" r="1.1" class="pv-dot"/></pattern></defs><rect x=".5" y=".5" width="479" height="165" rx="18" class="pv-plate"/><rect x=".5" y=".5" width="479" height="165" rx="18" fill="url(#pvp2)" opacity=".5" stroke="none"/><rect x=".5" y=".5" width="479" height="165" rx="18" fill="none" stroke-width="1" class="pv-line"/><path d="M17 17 h8 M17 17 v8" class="pv-tick"/><path d="M463 17 h-8 M463 17 v8" class="pv-tick"/><path d="M17 149 h8 M17 149 v-8" class="pv-tick"/><path d="M463 149 h-8 M463 149 v-8" class="pv-tick"/><polygon points="36.0,20.5 44.2,25.2 44.2,34.8 36.0,39.5 27.8,34.8 27.8,25.2" fill="var(--violet)" opacity=".3"/><rect x="54" y="26.5" width="34" height="7" rx="3.5" fill="var(--violet)" opacity=".18"/><path d="M94 30 C 168 30, 202 83, 262 83" class="pv-soft" stroke-width="1.5" fill="none" opacity=".38"/><polygon points="36.0,46.5 44.2,51.2 44.2,60.8 36.0,65.5 27.8,60.8 27.8,51.2" fill="var(--violet)" opacity=".3"/><rect x="54" y="52.5" width="34" height="7" rx="3.5" fill="var(--violet)" opacity=".18"/><path d="M94 56 C 168 56, 202 83, 262 83" class="pv-soft" stroke-width="1.5" fill="none" opacity=".38"/><polygon points="36.0,72.5 44.2,77.2 44.2,86.8 36.0,91.5 27.8,86.8 27.8,77.2" fill="var(--violet)" opacity=".3"/><rect x="54" y="78.5" width="34" height="7" rx="3.5" fill="var(--violet)" opacity=".18"/><path d="M94 82 C 168 82, 202 83, 262 83" class="pv-soft" stroke-width="1.5" fill="none" opacity=".38"/><polygon points="36.0,98.5 44.2,103.2 44.2,112.8 36.0,117.5 27.8,112.8 27.8,103.2" fill="var(--violet)" opacity=".3"/><rect x="54" y="104.5" width="34" height="7" rx="3.5" fill="var(--violet)" opacity=".18"/><path d="M94 108 C 168 108, 202 83, 262 83" class="pv-soft" stroke-width="1.5" fill="none" opacity=".38"/><polygon points="36.0,124.5 44.2,129.2 44.2,138.8 36.0,143.5 27.8,138.8 27.8,129.2" fill="var(--violet)" opacity=".3"/><rect x="54" y="130.5" width="34" height="7" rx="3.5" fill="var(--violet)" opacity=".18"/><path d="M94 134 C 168 134, 202 83, 262 83" class="pv-soft" stroke-width="1.5" fill="none" opacity=".38"/><line x1="262" y1="83" x2="300" y2="83" stroke="url(#pvl2)" stroke-width="3" stroke-linecap="round"/><rect x="290" y="55" width="164" height="56" rx="20" fill="url(#pvh2)" opacity=".6"/><rect x="298" y="61" width="148" height="44" rx="15" fill="var(--violet)"/><path d="M320 83 l6 6 l12 -14" class="pv-onS" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="350" y="88" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-on" opacity="0.97" letter-spacing=".06em" data-es>SIN ESPERA</text><text x="350" y="88" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-on" opacity="0.97" letter-spacing=".06em" data-en>NO WAITING</text></svg></div>
+      </div>
+      <div class="lv-pil rv"><span class="lv-idx">03</span>
+        <h3><span data-es>Resolver en la primera visita</span><span data-en>Fixing it on the first visit</span></h3>
+        <p><span data-es>El técnico sigue los pasos con el equipo delante, en vez de irse y volver otro día con el repuesto.</span><span data-en>The technician follows the steps with the unit in front of them, instead of leaving and coming back another day with the part.</span></p>
+        <div class="pv-vis"><svg viewBox="0 0 480 162" width="480" height="162" aria-hidden="true" focusable="false"><defs><radialGradient id="pvh3" cx=".5" cy=".5" r=".5"><stop offset="0" class="pv-s" stop-opacity=".55"/><stop offset="1" class="pv-s" stop-opacity="0"/></radialGradient><linearGradient id="pvl3" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="pv-s" stop-opacity=".06"/><stop offset="1" class="pv-s" stop-opacity=".9"/></linearGradient><linearGradient id="pvv3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="pv-w" stop-opacity=".22"/><stop offset="1" class="pv-w" stop-opacity="0"/></linearGradient><pattern id="pvp3" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="1.1" cy="1.1" r="1.1" class="pv-dot"/></pattern></defs><rect x=".5" y=".5" width="479" height="161" rx="18" class="pv-plate"/><rect x=".5" y=".5" width="479" height="161" rx="18" fill="url(#pvp3)" opacity=".5" stroke="none"/><rect x=".5" y=".5" width="479" height="161" rx="18" fill="none" stroke-width="1" class="pv-line"/><path d="M17 17 h8 M17 17 v8" class="pv-tick"/><path d="M463 17 h-8 M463 17 v8" class="pv-tick"/><path d="M17 145 h8 M17 145 v-8" class="pv-tick"/><path d="M463 145 h-8 M463 145 v-8" class="pv-tick"/><line x1="52" y1="68" x2="400" y2="68" class="pv-line" stroke-width="1.4" opacity=".22"/><line x1="52" y1="68" x2="400" y2="68" stroke="url(#pvl3)" stroke-width="2.4" stroke-linecap="round"/><line x1="88" y1="62" x2="88" y2="74" class="pv-line" opacity=".16"/><line x1="140" y1="62" x2="140" y2="74" class="pv-line" opacity=".16"/><line x1="192" y1="62" x2="192" y2="74" class="pv-line" opacity=".16"/><line x1="244" y1="62" x2="244" y2="74" class="pv-line" opacity=".16"/><line x1="296" y1="62" x2="296" y2="74" class="pv-line" opacity=".16"/><line x1="348" y1="62" x2="348" y2="74" class="pv-line" opacity=".16"/><circle cx="52" cy="68" r="25" class="pv-paper" stroke="none"/><circle cx="52" cy="68" r="25" fill="none" class="pv-accS" stroke-width="1.5" opacity=".65"/><text x="52" y="73" font-size="14" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.95" text-anchor="middle">1</text><circle cx="168" cy="68" r="25" class="pv-paper" stroke="none"/><circle cx="168" cy="68" r="25" fill="none" class="pv-accS" stroke-width="1.5" opacity=".65"/><text x="168" y="73" font-size="14" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.95" text-anchor="middle">2</text><circle cx="284" cy="68" r="25" class="pv-paper" stroke="none"/><circle cx="284" cy="68" r="25" fill="none" class="pv-accS" stroke-width="1.5" opacity=".65"/><text x="284" y="73" font-size="14" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.95" text-anchor="middle">3</text><circle cx="400" cy="68" r="44" fill="url(#pvh3)" opacity=".55"/><circle cx="400" cy="68" r="29" fill="var(--violet)"/><path d="M388 68 l8 8 l16 -18" class="pv-onS" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="30" y="132" font-size="11" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.55" letter-spacing=".08em" data-es>RESUELTO EN LA PRIMERA VISITA</text><text x="30" y="132" font-size="11" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.55" letter-spacing=".08em" data-en>FIXED ON THE FIRST VISIT</text></svg></div>
+      </div>
+      <div class="lv-pil rv" style="--d:.12s"><span class="lv-idx">04</span>
+        <h3><span data-es>El conocimiento se queda en la empresa</span><span data-en>The know-how stays in the company</span></h3>
+        <p><span data-es>Lo que hoy está en la cabeza de dos o tres personas queda registrado, consultable y disponible a cualquier hora.</span><span data-en>What today lives in two or three people’s heads gets recorded, searchable and available at any hour.</span></p>
+        <div class="pv-vis"><svg viewBox="0 0 480 182" width="480" height="182" aria-hidden="true" focusable="false"><defs><radialGradient id="pvh4" cx=".5" cy=".5" r=".5"><stop offset="0" class="pv-s" stop-opacity=".55"/><stop offset="1" class="pv-s" stop-opacity="0"/></radialGradient><linearGradient id="pvl4" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="pv-s" stop-opacity=".06"/><stop offset="1" class="pv-s" stop-opacity=".9"/></linearGradient><linearGradient id="pvv4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="pv-w" stop-opacity=".22"/><stop offset="1" class="pv-w" stop-opacity="0"/></linearGradient><pattern id="pvp4" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="1.1" cy="1.1" r="1.1" class="pv-dot"/></pattern></defs><rect x=".5" y=".5" width="479" height="181" rx="18" class="pv-plate"/><rect x=".5" y=".5" width="479" height="181" rx="18" fill="url(#pvp4)" opacity=".5" stroke="none"/><rect x=".5" y=".5" width="479" height="181" rx="18" fill="none" stroke-width="1" class="pv-line"/><path d="M17 17 h8 M17 17 v8" class="pv-tick"/><path d="M463 17 h-8 M463 17 v8" class="pv-tick"/><path d="M17 165 h8 M17 165 v-8" class="pv-tick"/><path d="M463 165 h-8 M463 165 v-8" class="pv-tick"/><rect x="18" y="18" width="444" height="146" rx="14" class="pv-paper" stroke-width="1.1"/><circle cx="40" cy="44" r="9" fill="url(#pvh4)"/><circle cx="40" cy="44" r="4" fill="var(--violet)"/><text x="56" y="48" font-size="10.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.5" letter-spacing=".12em" data-es>REGISTRO DE LA LLAMADA</text><text x="56" y="48" font-size="10.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.5" letter-spacing=".12em" data-en>CALL RECORD</text><rect x="374" y="33" width="66" height="23" rx="11.5" fill="var(--violet)"/><text x="407" y="48" font-size="10.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-on" opacity="0.95" text-anchor="middle" letter-spacing=".1em">CRM</text><line x1="18" y1="64" x2="462" y2="64" class="pv-line" opacity=".22"/><path d="M40 86 l4 4 l8 -9" class="pv-accS" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/><text x="64" y="91" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-es>MÁQUINA</text><text x="64" y="91" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-en>MACHINE</text><rect x="232" y="81" width="92" height="9" rx="4.5" fill="url(#pvl4)" opacity=".6"/><path d="M40 115 l4 4 l8 -9" class="pv-accS" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/><text x="64" y="120" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-es>AVERÍA</text><text x="64" y="120" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-en>FAULT</text><rect x="232" y="110" width="119" height="9" rx="4.5" fill="url(#pvl4)" opacity=".6"/><path d="M40 144 l4 4 l8 -9" class="pv-accS" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/><text x="64" y="149" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-es>SOLUCIÓN</text><text x="64" y="149" font-size="11.5" font-family="'Spline Sans Mono',ui-monospace,monospace" class="pv-tx" opacity="0.85" data-en>FIX</text><rect x="232" y="139" width="146" height="9" rx="4.5" fill="url(#pvl4)" opacity=".6"/><g transform="rotate(-11 420 131)" opacity=".6"><circle cx="420" cy="131" r="22" fill="none" class="pv-line" stroke-width="1.2"/><circle cx="420" cy="131" r="16" fill="none" class="pv-accS" stroke-width="1" opacity=".5" stroke-dasharray="2 4"/><path d="M412 131 l6 6 l12 -14" class="pv-accS" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></svg></div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ACE -->
+  <section class="lv-ace"><div class="lv-wrap">
+    <div class="lv-ace-grid">
+      <div class="rv">
+        <div class="lv-live"><span class="dot"></span><span data-es>Cómo encaja</span><span data-en>How it fits</span></div>
+        <h2><span data-es>Lo montamos con <em>los manuales de tus equipos</em>.</span><span data-en>We build it around <em>your own equipment manuals</em>.</span></h2>
+        <p><span data-es>Nos das los PDF de los equipos que mantenéis y unas horas con tus técnicos senior. El agente responde desde ahí, y solo desde ahí.</span><span data-en>You give us the PDFs for the units you service and a few hours with your senior technicians. The agent answers from that, and only from that.</span></p>
+        <p><span data-es>Cada marca nueva que incorporas se añade a lo que sabe. No hay que reentrenar a nadie.</span><span data-en>Every new brand you take on gets added to what it knows. Nobody has to be retrained.</span></p>
+      </div>
+      <div class="lv-panel rv" style="--d:.15s">
+        <div class="lv-panel-h">
+          <div class="lv-panel-id">
+            <span><b>Incluido de serie</b><span data-es>Climatización y frío</span><span data-en>HVAC and refrigeration</span></span>
+          </div>
+          <span class="st"><span data-es>Disponible</span><span data-en>Available</span></span>
+        </div>
+        <div class="lv-cells">
+          <div class="lv-cell"><div class="k"><span data-es>Disponibilidad</span><span data-en>Availability</span></div><b>24/7</b><span data-es>atendido al primer tono</span><span data-en>answered on the first ring</span></div>
+          <div class="lv-cell"><div class="k"><span data-es>A la vez</span><span data-en>Concurrent</span></div><b>30<i>+</i></b><span data-es>sin cola ni tono de ocupado</span><span data-en>no queue, no busy tone</span></div>
+          <div class="lv-cell"><div class="k"><span data-es>Plataforma</span><span data-en>Platform</span></div><b>1M<i>+</i></b><span data-es>llamadas en producción</span><span data-en>calls run in production</span></div>
+          <div class="lv-cell"><div class="k"><span data-es>Puesta en marcha</span><span data-en>Go live</span></div><b>&lt;14</b><span data-es>días para estar en marcha</span><span data-en>days to go live</span></div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- PUESTA EN MARCHA -->
+  <section class="lv-sec"><div class="lv-wrap">
+    <div class="lv-k rv"><span data-es>Puesta en marcha</span><span data-en>Getting started</span></div>
+    <h2 class="rv"><span data-es>En marcha en <em>menos de 14 días</em>.</span><span data-en>Live in <em>under 14 days</em>.</span></h2>
+    <div class="lv-steps" id="lvSteps">
+      <div class="lv-rail"><i></i></div>
+      <div class="lv-step">
+        <div class="lv-mk" style="--md:.15s">01</div>
+        <div class="lv-card" style="--md:.25s">
+          <span class="who"><span data-es>Lo pones tú</span><span data-en>You bring it</span></span>
+          <b><span data-es>Los manuales de tus marcas</span><span data-en>Your manufacturers’ manuals</span></b>
+          <p><span data-es>Nos pasas los PDF de los equipos que mantenéis.</span><span data-en>You hand over the PDFs for the units you service.</span></p>
+        </div>
+      </div>
+      <div class="lv-step">
+        <div class="lv-mk" style="--md:.75s">02</div>
+        <div class="lv-card" style="--md:.85s">
+          <span class="who"><span data-es>Juntos</span><span data-en>Together</span></span>
+          <b><span data-es>Dos horas con tus senior</span><span data-en>Two hours with your senior techs</span></b>
+          <p><span data-es>Recogemos los diagnósticos que no están escritos en ningún manual.</span><span data-en>We capture the diagnoses that are not written in any manual.</span></p>
+        </div>
+      </div>
+      <div class="lv-step">
+        <div class="lv-mk" style="--md:1.35s">03</div>
+        <div class="lv-card" style="--md:1.45s">
+          <span class="who"><span data-es>Lo hacemos nosotros</span><span data-en>We handle it</span></span>
+          <b><span data-es>Empezamos a coger sus llamadas</span><span data-en>We start taking their calls</span></b>
+          <p><span data-es>Tus técnicos llaman y el agente responde desde el primer día.</span><span data-en>Your technicians call and the agent answers from day one.</span></p>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- CIERRE -->
+  <section class="lv-end"><div class="lv-wrap">
+    <h2 class="rv"><span data-es>Pruébalo con <em>una avería de verdad</em>.</span><span data-en>Try it with <em>a real breakdown</em>.</span></h2>
+    <div class="lv-cta rv" style="--d:.12s">
+      <a class="lv-btn" href="https://demo.usevocals.com/?lang=en" data-en>Get a live demo &rarr;</a>
+      <a class="lv-btn" href="https://demo.usevocals.com/?lang=es" data-es>Prueba la demo en vivo &rarr;</a>
+      <a class="lv-btn2" href="https://cal.com/vocals/30min" target="_blank" rel="noopener" data-en>Talk to the team</a>
+      <a class="lv-btn2" href="https://cal.com/vocals/30-min-esp" target="_blank" rel="noopener" data-es>Hablar con el equipo</a>
+    </div>
+  </div></section>
+</main>
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+  var tk=document.getElementById('lvTick');
+  if(tk){tk.innerHTML+=tk.innerHTML;}
+  var dark=document.getElementById('lvDark');
+  var steps=document.getElementById('lvSteps');
+  var arm=function(el,cls){if(!el)return;var chk=function(){var r=el.getBoundingClientRect();var vh=window.innerHeight||document.documentElement.clientHeight||800;if(r.top<vh*.85&&r.bottom>0){el.classList.add(cls);window.removeEventListener('scroll',chk);}};window.addEventListener('scroll',chk,{passive:true});setTimeout(chk,300);setInterval(function(){if(!el.classList.contains(cls))chk();},1200);};
+  arm(dark,'play'); arm(steps,'go');
+  var v=document.getElementById('lvVid'),m=document.getElementById('lvMute');
+  if(v&&m){m.addEventListener('click',function(){v.muted=!v.muted;m.classList.toggle('on',!v.muted);m.setAttribute('aria-label',v.muted?'Activar sonido':'Silenciar');});}
+  var btn=document.getElementById('lvListen'),au=null;
+  if(btn){btn.addEventListener('click',function(){
+    var src=(document.documentElement.lang==='es')?'/uc-es-vending.mp3':'/uc-vending.mp3';
+    if(au&&!au.paused){au.pause();btn.innerHTML='&#9654; '+btn.textContent.replace(/^[^A-Za-z]+/,'');return;}
+    au=new Audio(src);au.play();
+  });}
+})();
+</script>
+<footer><div class="wrap"><span>© 2026 Vocals · Usevocals LLC</span><span><a class="fl" href="/aviso-legal"><span data-es>Aviso legal</span><span data-en>Legal notice</span></a> &nbsp;·&nbsp; <a class="fl" href="/privacidad"><span data-es>Privacidad</span><span data-en>Privacy</span></a> &nbsp;·&nbsp; <a class="fl" href="/terminos"><span data-es>Términos</span><span data-en>Terms</span></a></span></div></footer>
+<script>
+var LANG='es';
+function setLang(l){
+  LANG=l; document.documentElement.lang=l;
+  document.querySelectorAll('a.fl').forEach(function(a){ var b=a.getAttribute('href').split('?')[0]; a.setAttribute('href', b+(l==='en'?'?lang=en':'')); });
+  var back=document.querySelector('a.back'); back.setAttribute('href','/');
+}
+(function(){ var m=location.search.match(/lang=(en|es)/); if(m) setLang(m[1]); })();
+</script>
+<script>
+(function(){var d=document.getElementById('langSel');if(!d)return;var b=d.querySelector('button');
+b.addEventListener('click',function(e){e.stopPropagation();var o=!d.classList.contains('open');
+d.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');});
+document.addEventListener('click',function(e){if(!d.contains(e.target))d.classList.remove('open');});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')d.classList.remove('open');});})();
+</script>
+
+
+
+<div class="sb" aria-hidden="true"><a class="sb-btn" href="https://cal.com/vocals/30-min-esp" target="_blank" rel="noopener" data-es tabindex="-1">Agenda una llamada <span aria-hidden="true">&rarr;</span></a><a class="sb-btn" href="https://cal.com/vocals/30min" target="_blank" rel="noopener" data-en tabindex="-1">Book a call <span aria-hidden="true">&rarr;</span></a></div>
+
+<script>
+/* El boton de agendar acompana el scroll: aparece cuando el CTA del hero sale de
+   pantalla y se esconde al llegar al CTA del cierre, para no repetirse. */
+(function(){
+  var b=document.querySelector('.sb'); if(!b) return;
+  var c=document.querySelectorAll('.lv-cta');
+  if(c.length<2) return;
+  var ini=c[0], fin=c[c.length-1], v={};
+  function pinta(){
+    var on=!v.ini && !v.fin;
+    b.classList.toggle('on', on);
+    b.setAttribute('aria-hidden', on?'false':'true');
+    b.querySelectorAll('.sb-btn').forEach(function(a){
+      if(on) a.removeAttribute('tabindex'); else a.setAttribute('tabindex','-1');
+    });
+  }
+  if(!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(es){
+    es.forEach(function(e){ v[e.target===ini?'ini':'fin']=e.isIntersecting; });
+    pinta();
+  },{rootMargin:'0px 0px -8% 0px'}).observe(ini);
+  new IntersectionObserver(function(es){
+    es.forEach(function(e){ v.fin=e.isIntersecting; });
+    pinta();
+  },{rootMargin:'0px 0px -8% 0px'}).observe(fin);
+})();
+</script>
+
+
+
+
+
+
+<script>
+/* La tarjeta sigue el guion del clip: en llamada mientras repara, resuelto al cerrar la puerta. */
+(function(){
+  var v=document.querySelector('.lv-frame video'), c=document.getElementById('voCard');
+  if(!v||!c) return;
+  var CORTE=6.2;
+  function pinta(){ var ok=v.currentTime>=CORTE; c.classList.toggle('ok',ok); c.classList.toggle('on',!ok); }
+  pinta(); v.addEventListener('timeupdate',pinta); v.addEventListener('seeked',pinta);
+})();
+</script>
+<script src="/assets/pulido.js" defer></script>
+</body>
+</html>
