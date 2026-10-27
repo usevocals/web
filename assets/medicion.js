@@ -3,7 +3,7 @@
      no guarda cookies y solo recibe avisos anónimos de conversión.
    - Banner Aceptar / Rechazar en el idioma de la página (lee <html lang>, que
      cambia al usar el selector de idioma).
-   - Conversión "Reserva de llamada": clic en cualquier enlace a cal.com.
+   - Conversión "Reserva de llamada": clic en un enlace a Calendly o en un botón que abre el calendario (openCal).
    - Cualquier elemento con [data-cookie-prefs] vuelve a abrir el banner. */
 (function () {
   var AW = 'AW-18453000788';
@@ -37,7 +37,7 @@
 
   // ── Conversión: clic en un enlace de reserva ────────────────────────────
   document.addEventListener('click', function (e) {
-    var a = e.target && e.target.closest ? e.target.closest('a[href*="cal.com/"]') : null;
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="calendly.com/"], a[href*="cal.com/"], [onclick*="openCal"], .hp-mdl-cal') : null;
     if (!a) return;
     window.gtag('event', 'conversion', { send_to: RESERVA, transport_type: 'beacon' });
   }, true);

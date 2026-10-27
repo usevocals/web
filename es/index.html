@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="/assets/medicion.js" async></script>
+<script src="/assets/medicion.js?v=2" async></script>
 <title>Vocals · Un agente de voz que conoce tus máquinas</title>
 <link rel="alternate" hreflang="en" href="https://usevocals.com/">
 <link rel="alternate" hreflang="es" href="https://usevocals.com/es/">
@@ -1561,13 +1561,16 @@ function renderRing(){
 }
 renderRing();
 
-// ---- cal.com ----
+// ---- calendario (Calendly) ----
 function openCal(){
-  var ns = LANG==='es' ? '30-min-esp' : '30min';
-  var link = LANG==='es' ? 'vocals/30-min-esp' : 'vocals/30min';
-  if(window.Cal && Cal.ns && Cal.ns[ns]){
-    Cal.ns[ns]('modal', {calLink: link, config:{layout:'month_view', locale: LANG}});
-  }
+  // Llamadas con el equipo (en inglés): ventana de Calendly; si no carga, se abre en otra pestaña
+  var u='https://calendly.com/roger-usevocals/30min';
+  if(window.Calendly){ Calendly.initPopupWidget({url:u}); return false; }
+  var l=document.createElement('link'); l.rel='stylesheet'; l.href='https://assets.calendly.com/assets/external/widget.css'; document.head.appendChild(l);
+  var s=document.createElement('script'); s.src='https://assets.calendly.com/assets/external/widget.js';
+  s.onload=function(){ Calendly.initPopupWidget({url:u}); };
+  s.onerror=function(){ window.open(u,'_blank','noopener'); };
+  document.head.appendChild(s); return false;
 }
 
 // ---- live demo modal ----
@@ -1844,16 +1847,6 @@ document.querySelectorAll('.cnt').forEach(function(el){ cio.observe(el); });
 
 </script>
 
-<!-- Cal embed -->
-<script type="text/javascript">
-  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-  Cal("init", "30min", {origin:"https://app.cal.com"});
-  Cal("init", "30-min-esp", {origin:"https://app.cal.com"});
-  Cal.config = Cal.config || {};
-  Cal.config.forwardQueryParams = true;
-  Cal.ns["30min"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#7B6FE0"},"dark":{"cal-brand":"#fafafa"}},"hideEventTypeDetails":false,"layout":"month_view"});
-  Cal.ns["30-min-esp"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#7B6FE0"},"dark":{"cal-brand":"#fafafa"}},"hideEventTypeDetails":false,"layout":"month_view"});
-</script>
 <noscript>
 <div>
 <section><h2><span data-es>Ejemplos de llamadas con Vocals</span><span data-en>Sample calls with Vocals</span></h2></section>
