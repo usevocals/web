@@ -232,3 +232,18 @@
   d.addEventListener('keydown',function(e){if(e.key==='ArrowRight')fill(cur+1);if(e.key==='ArrowLeft')fill(cur-1);});
   q('.hp-mdl-cal').addEventListener('click',function(){d.close();if(typeof openCal==='function')openCal();});
 })();
+
+/* Preguntas frecuentes: en escritorio una respuesta a la vez en el panel; en móvil, todas abiertas en tarjetas */
+(function(){
+  var b=document.querySelector('.hp-fqs'); if(!b) return;
+  var I=[].slice.call(b.querySelectorAll('.hp-fq')), mq=window.matchMedia('(max-width:820px)');
+  function sync(){ I.forEach(function(d,i){ d.open=mq.matches||i===0; }); }
+  I.forEach(function(d){
+    d.querySelector('summary').addEventListener('click',function(e){
+      e.preventDefault(); if(mq.matches) return;
+      I.forEach(function(x){ x.open=x===d; });
+    });
+  });
+  if(mq.addEventListener) mq.addEventListener('change',sync);
+  sync();
+})();
