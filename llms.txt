@@ -1,24 +1,33 @@
 # Vocals (usevocals.com)
 
-> Vocals is an AI voice agent that guides maintenance technicians by phone. The technician calls from the machine, and the agent walks them through the fault step by step using the company's own manuals, documentation and machine history. Each job is then written into the company's CRM, ERP or SAP. Vocals is made by Usevocals LLC.
+> Vocals is an AI voice agent that turns a company's technical knowledge into instant phone support for its field technicians, and every repair into information that helps prevent the next breakdown. Vocals is made by Usevocals LLC.
 
 ## Who it is for
-Companies that maintain machines in the field: elevators, vending machines, cranes, mining and quarries, production lines, HVAC and refrigeration.
+Field service and maintenance companies: elevators, vending machines, cranes, mining and quarries, production lines, HVAC and refrigeration.
 
-## How it works
-1. Listens: the technician calls from the machine and describes the fault in their own words.
-2. Checks: the agent looks up that machine's history, the company's documentation and, where the company has it, its telemetry.
-3. Guides: it goes step by step, from the most likely cause to the least likely.
-4. Logs: it writes unit, fault, cause and fix as a service report in the company's CRM, ERP or SAP.
+## What technicians can do
+Field technicians talk directly to the voice agent, which helps them diagnose and fix breakdowns in real time, while they work. They can:
+- Get instant answers from technical manuals, without searching through hundreds of pages
+- Check the repair history to see how similar issues were solved
+- Follow step-by-step diagnostics adapted to the equipment and the fault
+- Log every intervention by voice: the fault, the diagnosis, the actions taken and the fix
+
+## How it helps get ahead of breakdowns
+- Every repair builds the history of each machine: what failed, why and how it was fixed
+- That history makes recurring faults and early warning signs visible across equipment
+- It helps identify the machines most likely to fail again, so preventive visits can be planned
+- Service managers can plan maintenance ahead instead of reacting to emergencies
 
 ## What makes it different
-- It knows each machine's history: what was done before, what didn't work and which faults keep coming back.
 - It answers only from what the company provides: manuals, procedures, service history and its senior technicians' know-how. It cites where each step comes from.
-- It listens to the technician and reads the machine: telemetry shows what the technician can't see, and the technician reports what no sensor measures.
+- It listens to the technician and reads the machine: where the company has telemetry, it shows what the technician can't see, and the technician reports what no sensor measures.
 - Safety: it never explains how to disable a safety device. If a fault involves a safety system, or there is smoke or a burning smell, it stops and hands the call to a person.
 - It doesn't replace senior technicians on complex cases. It stops every fault from ending up on their phone.
-- It helps get ahead of breakdowns: it spots recurring faults and the signs that tend to announce a stoppage.
+- It writes each job as a service report in the company's CRM, ERP or SAP.
 - Technicians use an ordinary phone call, at any hour and in any language.
+
+## Results for field service companies
+Less time searching for answers, a clearer view of every machine and technical know-how that stays inside the organisation.
 
 ## Key facts
 - 1M+ calls handled
