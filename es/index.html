@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="/assets/medicion.js?v=2" async></script>
-<title>Vocals · Un agente de voz que conoce tus máquinas</title>
+<title>Vocals · Un agente de voz que conoce vuestras máquinas</title>
 <link rel="alternate" hreflang="en" href="https://usevocals.com/">
 <link rel="alternate" hreflang="es" href="https://usevocals.com/es/">
 <link rel="alternate" hreflang="fr" href="https://usevocals.com/fr/">
@@ -13,10 +13,10 @@
 <meta name="description" content="Vocals crea agentes de voz que guían a vuestros técnicos de mantenimiento por teléfono con vuestros manuales y el saber de vuestros técnicos senior: ascensores, vending, grúas, minería, líneas de producción y climatización.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Vocals">
-<meta property="og:title" content="Vocals · Un agente de voz que conoce tus máquinas">
+<meta property="og:title" content="Vocals · Un agente de voz que conoce vuestras máquinas">
 <meta property="og:description" content="Agentes de voz que guían a vuestros técnicos de mantenimiento, con vuestros manuales, a cualquier hora.">
 <meta property="og:url" content="https://usevocals.com/es/">
-<meta property="og:image" content="https://usevocals.com/og-image-es.png">
+<meta property="og:image" content="https://usevocals.com/og-tecnicos-es.png">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -991,7 +991,7 @@
       <div>
         <div class="live">
           <div class="live-top">
-            <div class="id"><img class="av" src="/vocals-pillow.png" alt="Vocals"> <span id="hklabel"><span data-es>Llamada de un técnico</span><span data-en>A technician’s call</span></span> <span id="hkagent" style="display:none;color:var(--dim); font-weight:400;">· Ana</span></div>
+            <div class="id"><img class="av" src="/vocals-pillow.png" alt="Vocals"> <span id="hklabel"><span data-es>Llamada de un técnico</span><span data-en>A technician’s call</span></span> <span id="hkagent" style="display:none;color:var(--dim); font-weight:400;"></span></div>
             <div class="eq"><i style="height:60%"></i><i style="height:95%"></i><i style="height:45%"></i><i style="height:85%"></i><i style="height:55%"></i></div>
           </div>
           <div class="live-body">
@@ -1396,29 +1396,6 @@ function draw(){
 }
 draw();
 
-// ---- transcripción bilingüe ----
-var LINES_ALL={
-  es:[
-    ['Ana · Agente IA','Hola, soy de Vocals. ¿Tienes veinte segundos?'],
-    ['Contacto','Eh… sí, dime.'],
-    ['Ana · Agente IA','Tu equipo hace unas 200 llamadas al día, ¿verdad? Puedo encargarme de todas - cada lead, cada seguimiento, sin que se caiga ninguno.'],
-    ['Contacto','Mira, ya hemos probado voces IA. Suenan a robot.'],
-    ['Ana · Agente IA','Te entiendo. Llevas veinte segundos hablando con una.'],
-    ['Contacto','Espera… ¿en serio? Vaya, qué bueno.'],
-    ['Ana · Agente IA','Pues te agendo una demo en directo. ¿El jueves a las diez?'],
-    ['Contacto','El jueves me va bien. Perfecto.']
-  ],
-  en:[
-    ['Ana · AI Agent','Hi, it\'s Vocals. Got twenty seconds?'],
-    ['Contact','Uh… sure, go ahead.'],
-    ['Ana · AI Agent','Your team makes around 200 outbound calls a day, right? I can handle every one - each lead, each follow-up, nothing dropped.'],
-    ['Contact','Look, we\'ve tried AI callers. They sound robotic.'],
-    ['Ana · AI Agent','Understandable. You\'ve been talking to one for the last twenty seconds.'],
-    ['Contact','…wait, really? That\'s actually impressive.'],
-    ['Ana · AI Agent','Then let me book you a live demo. Thursday at ten?'],
-    ['Contact','Thursday works. Perfect.']
-  ]
-};
 // Selector del hero: los seis sectores técnicos. Ascensores y vending llevan
 // su llamada grabada (ElevenLabs); el resto, de momento, solo el texto.
 var HCASES=[{"k": "vending", "es": "Operadores de vending", "en": "Vending operators", "lines": [{"b": 0, "es": "Estoy con la máquina 1047. El agua no calienta y salta la alarma de la resistencia.", "en": "I’m at machine 1047. The water won’t heat up and the heater alarm is on."}, {"b": 1, "es": "Vale. Con la máquina desenchufada, mira primero el fusible de 10 A y el clixon de la caldera.", "en": "Okay. With the machine unplugged, check the 10 A fuse and the boiler cut-out first."}, {"b": 0, "es": "Fusible bien, y el clixon no ha saltado.", "en": "Fuse is fine, and the cut-out hasn’t tripped."}, {"b": 1, "es": "Entonces mide en el conector JP11, pines 1 y 3. Ojo, que es con tensión. Si llegan 220 V y no calienta, es la resistencia: hay que cambiarla.", "en": "Then measure at connector JP11, pins 1 and 3. Careful, it’s live. If you get 220 V and it still won’t heat, it’s the heating element: it needs replacing."}], "res": {"es": "Incidencia localizada · parte registrado", "en": "Fault found · job logged"}, "a": {"es": {"f": "/home-es-vending.mp3?v=2", "s": [0.25, 5.49, 12.18, 14.55], "d": [4.86, 6.31, 1.99, 11.82]}, "en": {"f": "/home-vending.mp3?v=2", "s": [0.25, 5.17, 11.29, 13.81], "d": [4.54, 5.74, 2.14, 11.88]}}}];
@@ -1645,7 +1622,7 @@ function applyLang(lang){
   var tvid=document.getElementById('testivid'); if(tvid){ tvid.pause(); tvid.poster='/testimonio-evo-'+lang+'-poster.jpg'; tvid.src='/testimonio-evo-'+lang+'.mp4'; tvid.load(); }
   renderRing();
   if(window.__ucRefresh) window.__ucRefresh();
-  document.title = lang==='en' ? 'Vocals · A voice agent that knows your machines' : 'Vocals · Un agente de voz que conoce tus máquinas';
+  document.title = lang==='en' ? 'Vocals · A voice agent that knows your machines' : 'Vocals · Un agente de voz que conoce vuestras máquinas';
   if(callAudio){ callAudio.pause(); callAudio=null; } callPlaying=false; curLine=-1; if(caretEl) caretEl.style.display='';
   clearTimeout(typeTimer); li=0; ci=0; qual.classList.remove('on'); type();
   setBtn(false); syncPlayBtn();

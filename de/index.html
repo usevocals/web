@@ -16,7 +16,7 @@
 <meta property="og:title" content="Vocals · Ein Sprachagent, der Ihre Maschinen kennt">
 <meta property="og:description" content="Sprachagenten, die Ihre Wartungstechniker anleiten – mit Ihren Handbüchern, rund um die Uhr.">
 <meta property="og:url" content="https://usevocals.com/de/">
-<meta property="og:image" content="https://usevocals.com/og-image.png">
+<meta property="og:image" content="https://usevocals.com/og-tecnicos-de.png">
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -991,7 +991,7 @@
       <div>
         <div class="live">
           <div class="live-top">
-            <div class="id"><img class="av" src="/vocals-pillow.png" alt="Vocals"> <span id="hklabel"><span data-de>Anruf eines Technikers</span><span data-en>A technician’s call</span></span> <span id="hkagent" style="display:none;color:var(--dim); font-weight:400;">· Ana</span></div>
+            <div class="id"><img class="av" src="/vocals-pillow.png" alt="Vocals"> <span id="hklabel"><span data-de>Anruf eines Technikers</span><span data-en>A technician’s call</span></span> <span id="hkagent" style="display:none;color:var(--dim); font-weight:400;"></span></div>
             <div class="eq"><i style="height:60%"></i><i style="height:95%"></i><i style="height:45%"></i><i style="height:85%"></i><i style="height:55%"></i></div>
           </div>
           <div class="live-body">
@@ -1396,29 +1396,6 @@ function draw(){
 }
 draw();
 
-// ---- transcripción bilingüe ----
-var LINES_ALL={
-  es:[
-    ['Ana · Agente IA','Hallo, hier ist Vocals. Haben Sie zwanzig Sekunden?'],
-    ['Kontakt','Äh … ja, bitte.'],
-    ['Ana · Agente IA','Ihr Team führt rund 200 Anrufe am Tag, richtig? Die kann ich alle übernehmen - jeden Lead, jedes Follow-up, ohne dass einer verloren geht.'],
-    ['Kontakt','Mira, ya hemos probado voces IA. Suenan a robot.'],
-    ['Ana · Agente IA','Verstehe. Sie sprechen seit zwanzig Sekunden mit einer.'],
-    ['Kontakt','Moment … im Ernst? Wow, nicht schlecht.'],
-    ['Ana · Agente IA','Dann vereinbare ich eine Live-Demo mit Ihnen. Donnerstag um zehn?'],
-    ['Kontakt','El jueves me va bien. Perfecto.']
-  ],
-  en:[
-    ['Ana · AI Agent','Hi, it\'s Vocals. Got twenty seconds?'],
-    ['Contact','Uh… sure, go ahead.'],
-    ['Ana · AI Agent','Your team makes around 200 outbound calls a day, right? I can handle every one - each lead, each follow-up, nothing dropped.'],
-    ['Contact','Look, we\'ve tried AI callers. They sound robotic.'],
-    ['Ana · AI Agent','Understandable. You\'ve been talking to one for the last twenty seconds.'],
-    ['Contact','…wait, really? That\'s actually impressive.'],
-    ['Ana · AI Agent','Then let me book you a live demo. Thursday at ten?'],
-    ['Contact','Thursday works. Perfect.']
-  ]
-};
 // Selector del hero: los seis sectores técnicos. Ascensores y vending llevan
 // su llamada grabada (ElevenLabs); el resto, de momento, solo el texto.
 var HCASES=[{"k": "vending", "es": "Automatenbetreiber", "en": "Vending operators", "lines": [{"b": 0, "es": "Ich bin an Automat 1047. Das Wasser wird nicht heiß und der Alarm für das Heizelement geht los.", "en": "I’m at machine 1047. The water won’t heat up and the heater alarm is on."}, {"b": 1, "es": "Okay. Trennen Sie den Automaten vom Netz und prüfen Sie zuerst die Sicherung (10 A) und den Klixon am Boiler.", "en": "Okay. With the machine unplugged, check the 10 A fuse and the boiler cut-out first."}, {"b": 0, "es": "Sicherung ist in Ordnung, und der Klixon hat nicht ausgelöst.", "en": "Fuse is fine, and the cut-out hasn’t tripped."}, {"b": 1, "es": "Dann messen Sie am Stecker JP11, Pins 1 und 3. Vorsicht, das ist unter Spannung. Liegen 220 V an und es heizt nicht, ist es das Heizelement: Das muss getauscht werden.", "en": "Then measure at connector JP11, pins 1 and 3. Careful, it’s live. If you get 220 V and it still won’t heat, it’s the heating element: it needs replacing."}], "res": {"es": "Störung lokalisiert · Servicebericht erfasst", "en": "Fault found · job logged"}, "a": {"es": {"f": "/home-es-vending.mp3?v=2", "s": [0.25, 5.49, 12.18, 14.55], "d": [4.86, 6.31, 1.99, 11.82]}, "en": {"f": "/home-vending.mp3?v=2", "s": [0.25, 5.17, 11.29, 13.81], "d": [4.54, 5.74, 2.14, 11.88]}, "de": {"f": "/home-de-vending.mp3", "s": [0.25, 6.73, 14.89, 18.11], "d": [6.1, 7.78, 2.84, 12.08]}}}];
