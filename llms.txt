@@ -1,29 +1,41 @@
 # Vocals (usevocals.com)
 
-> Vocals is an AI voice-agent platform by Usevocals LLC that handles inbound and outbound business calls with real conversations, no scripts. It dials at scale, qualifies leads in real time and pushes them to your CRM automatically.
+> Vocals is an AI voice agent that guides maintenance technicians by phone. The technician calls from the machine, and the agent walks them through the fault step by step using the company's own manuals, documentation and machine history. Each job is then written into the company's CRM, ERP or SAP. Vocals is made by Usevocals LLC.
+
+## Who it is for
+Companies that maintain machines in the field: elevators, vending machines, cranes, mining and quarries, production lines, HVAC and refrigeration.
+
+## How it works
+1. Listens: the technician calls from the machine and describes the fault in their own words.
+2. Checks: the agent looks up that machine's history, the company's documentation and, where the company has it, its telemetry.
+3. Guides: it goes step by step, from the most likely cause to the least likely.
+4. Logs: it writes unit, fault, cause and fix as a service report in the company's CRM, ERP or SAP.
+
+## What makes it different
+- It knows each machine's history: what was done before, what didn't work and which faults keep coming back.
+- It answers only from what the company provides: manuals, procedures, service history and its senior technicians' know-how. It cites where each step comes from.
+- It listens to the technician and reads the machine: telemetry shows what the technician can't see, and the technician reports what no sensor measures.
+- Safety: it never explains how to disable a safety device. If a fault involves a safety system, or there is smoke or a burning smell, it stops and hands the call to a person.
+- It doesn't replace senior technicians on complex cases. It stops every fault from ending up on their phone.
+- It helps get ahead of breakdowns: it spots recurring faults and the signs that tend to announce a stoppage.
+- Technicians use an ordinary phone call, at any hour and in any language.
 
 ## Key facts
-- Real-time voice pipeline with under 2 seconds of latency per turn
-- 1M+ calls run in production; >50% conversion rate; full integration in under 14 days
-- Mass dialing: up to 500 calls every 10 minutes
-- Bring-your-own API keys (OpenAI, Anthropic Claude, Google Gemini, ElevenLabs, Deepgram, Twilio): no per-minute markup, full data control
-- Languages: English, Spanish, French and German
-- Customer case: EVO Beauty Clinics (Spain): +25% conversion, 400+ appointments booked, response to every lead in under 5 minutes
-
-## Use-case sectors
-Clinics & dentists, restaurants, elevators & maintenance, real estate, auto shops, schools, vending operators, property managers, suppliers & wholesalers.
+- 1M+ calls handled
+- Under 30 days to full integration
 
 ## Pages
 - [Home (English)](https://usevocals.com/)
 - [Home (Spanish)](https://usevocals.com/es/)
-- [Lifts and elevators (English)](https://usevocals.com/elevators/)
-- [Ascensores (Spanish)](https://usevocals.com/es/ascensores/)
-- [Home (French)](https://usevocals.com/fr/) · [Ascenseurs](https://usevocals.com/fr/ascenseurs/)
-- [Home (German)](https://usevocals.com/de/) · [Aufzuege](https://usevocals.com/de/aufzuege/)
+- [Home (French)](https://usevocals.com/fr/)
+- [Home (German)](https://usevocals.com/de/)
+- [Elevators](https://usevocals.com/elevators/) · [Ascensores](https://usevocals.com/es/ascensores/) · [Ascenseurs](https://usevocals.com/fr/ascenseurs/) · [Aufzüge](https://usevocals.com/de/aufzuege/)
+- [Vending](https://usevocals.com/vending/) · [Vending (Spanish)](https://usevocals.com/es/vending/)
+- [Cranes](https://usevocals.com/cranes/) · [Grúas](https://usevocals.com/es/gruas/)
+- [Mining](https://usevocals.com/mining/) · [Minería](https://usevocals.com/es/mineria/)
+- [Production lines](https://usevocals.com/manufacturing/) · [Líneas de producción](https://usevocals.com/es/produccion/)
+- [HVAC and refrigeration](https://usevocals.com/hvac/) · [Climatización](https://usevocals.com/es/climatizacion/)
 - [Legal notice](https://usevocals.com/aviso-legal/) · [Privacy](https://usevocals.com/privacidad/) · [Terms](https://usevocals.com/terminos/)
-
-## Lifts and elevators
-Vocals runs the phone line for lift and elevator operators: out-of-hours cover and in-hours overflow. The agent is trained on the operator's own manuals and manufacturer procedures, answers 24/7, takes over 30 calls at once, and writes each job (machine, site, fault, urgency, who is assigned) into their CRM or ERP. Named client: ACE Lifts, a UK lift operator that moved off a traditional call centre; we handle around 60 calls a day for them. Setup takes under 14 days and needs their manuals plus two hours with their senior technicians.
 
 ## Contact
 - Email: contact@usevocals.com
