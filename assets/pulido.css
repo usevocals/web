@@ -598,3 +598,7 @@ body:has(.lv-pillars) footer .wrap{max-width:1120px}
 /* ===== 25 · "Se conecta con" con telemetría: cuatro columnas ===== */
 @media (min-width:1001px){.hp-con{grid-template-columns:140px repeat(4,minmax(0,1fr))}}
 .hpick[hidden]{display:none!important}
+
+/* ===== 26 · Hero: frase que define Vocals, encima del subtítulo ===== */
+.hero .sub .hero-def{display:block;color:var(--ink);font-weight:600;margin-bottom:8px}
+.hero .sub .hero-def{margin-bottom:0}
