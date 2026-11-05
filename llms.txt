@@ -20,11 +20,12 @@ Field technicians talk directly to the voice agent, which helps them diagnose an
 
 ## What makes it different
 - It answers only from what the company provides: manuals, procedures, service history and its senior technicians' know-how. It cites where each step comes from.
+- It doesn't make anything up: if the answer isn't in what the company provides, it says so and transfers the call to the right person on the team.
 - It listens to the technician and reads the machine: where the company has telemetry, it shows what the technician can't see, and the technician reports what no sensor measures.
 - Safety: it never explains how to disable a safety device. If a fault involves a safety device, it hands the call to a person.
 - It doesn't replace senior technicians on complex cases. It stops every fault from ending up on their phone.
 - It writes each job as a service report in the company's CRM, ERP or SAP.
-- Technicians use an ordinary phone call, at any hour and in any language.
+- Technicians use an ordinary phone call, at any hour, in their own language, even if the manual is written in another.
 
 ## Results for field service companies
 Less time searching for answers, a clearer view of every machine and technical know-how that stays inside the organisation.
