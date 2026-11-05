@@ -22,7 +22,7 @@ Companies that maintain machines in the field: elevators, vending machines, cran
 
 ## Key facts
 - 1M+ calls handled
-- Under 14 days to full integration
+- Under 30 days to full integration
 
 ## Pages
 - [Home (English)](https://usevocals.com/)
