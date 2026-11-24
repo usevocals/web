@@ -50,3 +50,9 @@ Less time searching for answers, a clearer view of every machine and technical k
 ## Contact
 - Email: contact@usevocals.com
 - Company: Usevocals LLC, 25 Southwest 9th Street, Suite 406, Miami, FL 33130, US
+
+## Blog
+- [Blog (English)](https://usevocals.com/blog/)
+- [Blog (Spanish)](https://usevocals.com/es/blog/)
+- [The field technician shortage: how to support the technicians you still have](https://usevocals.com/blog/field-technician-shortage/): Skilled technicians are retiring faster than they are being replaced. What knowledge leaves with each retirement, and how to support the technicians who stay, hands-free and at any hour.
+- [Faltan técnicos de mantenimiento: cómo ayudar a los que se quedan en campo](https://usevocals.com/es/blog/falta-de-tecnicos-de-mantenimiento/): Se jubilan más técnicos de los que entran. Qué conocimiento se pierde con cada jubilación y cómo dar soporte a los técnicos que quedan, con las manos libres y a cualquier hora.
